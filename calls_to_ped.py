@@ -6,11 +6,10 @@ This script converts calls file to ped file
 The input is expected to be phased. So each sample except REF is presented by two sequences distinguished by _1 and _2.
 
 The input file should look like this:
+
 Chr	pos	REF  indA_1	indA_2	indB_1	indB_2	indC_1	 indC_2
-HE669513	1	A	G	G	A	T	G	G
-HE669513	2	G	C	G	C	C	C	T
-
-
+chr1	1	A	G	G	A	T	G	G
+chr1	2	G	C	G	C	C	C	T
 
 The pedInfo file should look like this:
 
