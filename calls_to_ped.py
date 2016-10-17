@@ -8,8 +8,8 @@ The input is expected to be phased. So each sample except REF is presented by tw
 The input file should look like this:
 
 Chr	pos	REF  indA_1	indA_2	indB_1	indB_2	indC_1	 indC_2
-chr1	1	A	G	G	A	T	G	G
-chr1	2	G	C	G	C	C	C	T
+chr_1	1	A	G	G	A	T	G	G
+chr_1	2	G	C	G	C	C	C	T
 
 The pedInfo file should look like this:
 
