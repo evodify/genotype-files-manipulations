@@ -102,7 +102,7 @@ plt.xlabel("Number of Ns")
 plt.ylabel("Number of sites")
 plt.title("Ns per site", size = 18)
 plt.tight_layout()
-plt.savefig("Ns_per_site.pdf", dpi=90)
+plt.savefig("Ns_per_site.png", dpi=90)
 plt.close()
 
 # Plot the barplot of Ns per sample
@@ -113,7 +113,7 @@ plt.tick_params(axis='both', labelsize=8)
 plt.ylabel("Number of Ns")
 plt.title("Ns per sample", size = 18)
 plt.tight_layout()
-plt.savefig("Ns_per_sample.pdf", dpi=90)
+plt.savefig("Ns_per_sample.png", dpi=90)
 plt.close()
 
 print('Done!')
