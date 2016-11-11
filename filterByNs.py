@@ -67,9 +67,7 @@ with open(args.input) as datafile:
     count=collections.Counter(genotypes)
     valueN = count['N']
     
-    if set(['N']).issuperset(genotypes):
-      continue
-    elif valueN >= args.missing:
+    if valueN >= args.missing:
       continue
     else:
       fileoutput.write(line)
