@@ -88,7 +88,7 @@ with open(args.input) as datafile:
 
     # track progress
     counter += 1
-    if counter % 10000000 == 0:
+    if counter % 1000000 == 0:
       print str(counter), "lines processed"
 
 datafile.close()
