@@ -53,7 +53,6 @@ with open(args.input) as datafile:
 
   # index samples
   samplesCol = [str(j) for j in re.findall(r'[^,\s]+', args.samples)]
-  numberSites = len(samplesCol)
   sampCol = []
   sampColnames = []
   sampNs = []
