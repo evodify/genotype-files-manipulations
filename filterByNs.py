@@ -1,7 +1,7 @@
 #! /usr/bin/env python
 
 """
-This script removes all sites which consists of more than given amount of missing data (Ns).
+This script removes all sites that consists of more than given amount of missing data (Ns).
 
 # input:
 
