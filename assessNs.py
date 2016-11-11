@@ -6,8 +6,8 @@ This script calculates missing data (Ns) per position
 # input:
 
 Chr		pos	ind1	ind2	 ind3	ind4	ind5	ind6	ind7	ind8
-HE669513	1	A	G	G	A	G	G	R	A
-HE669513	2	Y	C	T	C	C	C	T	C
+chr1	1	A	G	G	A	G	G	R	A
+chr1	2	Y	C	T	C	C	C	T	C
 
 # output:
 
@@ -44,7 +44,7 @@ args = parser.parse_args()
 
 counter = 0
 
-#########################   script    #######################
+############################# program #############################
 
 print('Opening the file...')
 with open(args.input) as datafile:
