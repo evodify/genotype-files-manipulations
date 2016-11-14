@@ -52,7 +52,7 @@ chr_3   5   G   -   N   N   G   G   G   C   G
 
 ##
 
-[vcfTab_to_callsTab.py](vcfTab_to_callsTab.py) converts Two character-code table (e.g. produced with VariantsToTable (GATK)) to one-character coded genotype table (calls format).
+[vcfTab_to_callsTab.py](vcfTab_to_callsTab.py) converts two-character coded genotype table (e.g. produced with VariantsToTable (GATK)) to one-character coded genotype table (calls format).
 
 ##
 
@@ -60,7 +60,7 @@ chr_3   5   G   -   N   N   G   G   G   C   G
 
 ##
 
-[filterByNs.py](filterByNs.py) removes all sites that consists of more than given amount of missing data (Ns).
+[filterByNs.py](filterByNs.py) removes all sites that consists of more than a given amount of missing data (Ns).
 
 ##
 
@@ -68,6 +68,6 @@ chr_3   5   G   -   N   N   G   G   G   C   G
 
 ##
 
-[calculateNsPerWindow.py](calculateNsPerWindow.py) calculates number of positions with missing data (Ns) using sliding window approach.
+[calculateNsPerWindow.py](calculateNsPerWindow.py) calculates number of positions with missing data (Ns) using the sliding window approach.
 
 ##
