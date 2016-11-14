@@ -7,9 +7,9 @@ To see possible options, run python script with --help option:
 `python script.py --help`
 
 
-Examples of a tab-delimited genotype calls file.
+Examples of a tab-delimited genotype calls file (hereafter, tab file).
 
-Two character-code:
+Two-character coded table:
 
 ```
 CHROM   POS REF sample1 sample2 sample3 sample4 sample5 sample6 sample7 sample8
@@ -30,7 +30,7 @@ chr_3   5   G   */* G/* ./. G/G G/G G/G C/C G/G
 
 ```
 
-One character-code (heterozygous genotypes are represented by ambiguous characters R,Y,M,K,S,W):
+One-character coded tab file (heterozygous genotypes are represented by ambiguous characters R,Y,M,K,S,W):
 
 ```
 CHROM   POS REF sample1 sample2 sample3 sample4 sample5 sample6 sample7 sample8
