@@ -125,9 +125,12 @@ with open(args.reference_input) as datafile:
     # find overlap
     while (ch > linput_ch) or (ch == linput_ch and pos > linput_pos):
       linput_words = linput.readline().split()
-      linput_ch = int(linput_words[0].split('_')[1])
-      linput_pos = int(linput_words[1])
-      linput_gt = linput_words[2:]
+      if linput_words == []:
+        break
+      else:
+        linput_ch = int(linput_words[0].split('_')[1])
+        linput_pos = int(linput_words[1])
+        linput_gt = linput_words[2:]
 
     # introduce missing data if there is no overlap
     if pos != linput_pos:
