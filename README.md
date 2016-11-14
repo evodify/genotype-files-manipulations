@@ -50,12 +50,24 @@ chr_3   4   N   T   T   N   T   T   T   T   N
 chr_3   5   G   -   N   N   G   G   G   C   G
 ```
 
+##
+
 [vcfTab_to_callsTab.py](vcfTab_to_callsTab.py) converts Two character-code table (e.g. produced with VariantsToTable (GATK)) to one-character coded genotype table (calls format).
+
+##
 
 [mergeTabFiles.py](mergeTabFiles.py) merges two tab files by their overlapping positions.
 
+##
+
 [filterByNs.py](filterByNs.py) removes all sites that consists of more than given amount of missing data (Ns).
+
+##
 
 [assessNs.py](assessNs.py) calculates missing data (Ns) per position/sample and visualize the results.
 
+##
+
 [calculateNsPerWindow.py](calculateNsPerWindow.py) calculates number of positions with missing data (Ns) using sliding window approach.
+
+##
