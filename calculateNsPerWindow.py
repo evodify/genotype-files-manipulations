@@ -42,10 +42,8 @@ Dmytro Kryvokhyzha dmytro.kryvokhyzha@evobio.eu
 
 ############################# modules #############################
 
-import math, string, re, collections, argparse
+import sys, argparse # for input options
 import calls # my custom module
-
-counter = 0
 
 ############################# options #############################
 
@@ -58,7 +56,7 @@ class MyParser(argparse.ArgumentParser):
 parser = MyParser()
 parser.add_argument('-i', '--input', help = 'name of the input file', type=str, required=True)
 parser.add_argument('-o', '--output', help = 'name of the output file', type=str, required=True)
-parser.add_argument('-s', '--samples', help = 'column names of the samples for with to calculate Ns', type=str, required=True)
+parser.add_argument('-s', '--samples', help = 'column names of the samples to process', type=str, required=True)
 parser.add_argument('-w', '--window', help = 'sliding window size', type=int, required=True)
 args = parser.parse_args()
 
@@ -74,12 +72,14 @@ def processWindow(Chr, FirstPos, LastPos, Ns, outputFile):
 print('Opening the file...')
 
 windSize = args.window
+counter = 0
 
 with open(args.input) as datafile:
-
-  # index samples
   header_line = datafile.readline()
-  sampCol = calls.indexSamples(args.samples, header_line)
+  header_words = header_line.split()
+  
+  # index samples
+  sampCol = calls.indexSamples(args.samples, header_words)
 
   # make output header
   print('Creating the output file...')
@@ -119,7 +119,6 @@ with open(args.input) as datafile:
       Nwindow = []
       posS = pos
     elif sites == windSize:
-      print Nwindow
       processWindow(Chr1, posS, posE, Nwindow, NsFr_output)
       sites = 0
       Nwindow = []
@@ -128,8 +127,7 @@ with open(args.input) as datafile:
     posE = pos
 
     # count Ns
-    count = collections.Counter(sample_charaters)
-    contNsOnly = count['N']
+    contNsOnly = calls.countPerPosition(sample_charaters, 'N')
     Nwindow.append(float(contNsOnly))
 
     # track progress

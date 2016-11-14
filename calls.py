@@ -45,10 +45,22 @@ Phased:
 
 
 '''
+############################# modules #############################
 
-def indexSamples(sampNames, fileheader):
+import collections # to perform counting
+
+############################# classes  ############################
+
+#class MyParser(argparse.ArgumentParser): 
+   #def error(self, message):
+      #sys.stderr.write('error: %s\n' % message)
+      #self.print_help()
+      #sys.exit(2)
+
+############################# functions ###########################
+
+def indexSamples(sampNames, header_words):
   ''' extract the index of a given list of sample names'''
-  header_words = fileheader.split()
   sampIndex = []
   for i in sampNames.split(','):
     indnumber = header_words.index(i)
@@ -64,21 +76,19 @@ def selectSamples(sampIndex, words):
   return sampWords
 
 
-def countNsPosition(sampWords):
+def countPerPosition(sampWords, characterToCount):
   '''Counts Ns (missing data) in each position along the genome '''
-  Ns = []
-  count=collections.Counter(sampWords)
-  contNsOnly = count['N']
-  Ns.append(contNsOnly)
-  return Ns
+  characterCount = []
+  count = collections.Counter(sampWords)
+  characterCount = count[characterToCount]
+  return characterCount
 
 
-def countNsSample(sampNames, fileheader, sampWords):
+def countPerSample(sampWords, countList, characterToCount):
   '''Counts Ns (missing data) in each sample'''
-  for i in range(len(sampCol)):
-    if sample_charaters[i] == 'N':
-      sampNs[i] += 1
-
+  for i in range(len(sampWords)):
+    if sampWords[i] == characterToCount:
+      countList[i] += 1
 
 def twoToOne(GT):
   ''' converts two character coded genotypes to one character code '''

@@ -40,7 +40,6 @@ args = parser.parse_args()
 
 output = open(args.output, 'w')
 
-
 with open(args.input) as datafile:
   header = datafile.readline()
     
