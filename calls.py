@@ -50,7 +50,7 @@ def indexSamples(sampNames, fileheader):
   ''' extract the index of a given list of sample names'''
   header_words = fileheader.split()
   sampIndex = []
-  for i in sampNames:
+  for i in sampNames.split(','):
     indnumber = header_words.index(i)
     sampIndex.append(indnumber)
   return sampIndex
