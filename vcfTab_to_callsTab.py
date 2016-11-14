@@ -54,6 +54,7 @@ N -> missing or indels
 $ python vcfTab_to_callsTab.py -i input.table -o output.tab
 
 #contact:
+
 Dmytro Kryvokhyzha dmytro.kryvokhyzha@evobio.eu
 
 '''
