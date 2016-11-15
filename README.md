@@ -52,7 +52,7 @@ chr_3   5   G   -   N   N   G   G   G   C   G
 
 ##
 
-[vcfTab_to_callsTab.py](vcfTab_to_callsTab.py) converts two-character coded genotype table (e.g. produced with VariantsToTable (GATK)) to one-character coded genotype table (calls format).
+[vcfTab_to_callsTab.py](vcfTab_to_callsTab.py) converts two-character coded genotype table (e.g. produced with [VariantsToTable](https://software.broadinstitute.org/gatk/gatkdocs/org_broadinstitute_gatk_tools_walkers_variantutils_VariantsToTable.php) from the GATK) to one-character coded genotype table (calls format).
 
 ##
 
