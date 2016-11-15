@@ -62,18 +62,11 @@ Dmytro Kryvokhyzha dmytro.kryvokhyzha@evobio.eu
 
 ############################# modules #############################
 
-import sys, argparse
 import calls # my custom module
 
 ############################# options #############################
 
-class MyParser(argparse.ArgumentParser): 
-   def error(self, message):
-      sys.stderr.write('error: %s\n' % message)
-      self.print_help()
-      sys.exit(2)
-
-parser = MyParser()
+parser = calls.MyParser()
 parser.add_argument('-i', '--input', help = 'name of the input file', type=str, required=True)
 parser.add_argument('-o', '--output', help = 'name of the output file', type=str, required=True)
 args = parser.parse_args()

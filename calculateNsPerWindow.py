@@ -42,7 +42,6 @@ Dmytro Kryvokhyzha dmytro.kryvokhyzha@evobio.eu
 
 ############################# modules #############################
 
-import sys, argparse # for input options
 import calls # my custom module
 
 ############################# options #############################
