@@ -30,23 +30,16 @@ contact Dmytro Kryvokhyzha dmytro.kryvokhyzha@evobio.eu
 """
 ############################# modules #############################
 
-import sys, argparse, collections
+#import collections
 import calls # my custom module
 
 ############################# options #############################
 
-class MyParser(argparse.ArgumentParser): 
-   def error(self, message):
-      sys.stderr.write('error: %s\n' % message)
-      self.print_help()
-      sys.exit(2)
-
-parser = MyParser()
+parser = calls.MyParser()
 parser.add_argument('-i', '--input', help = 'name of the input file', type=str, required=True)
 parser.add_argument('-o', '--output', help = 'name of the output file', type=str, required=True)
 parser.add_argument('-m', '--missing', help = 'missing data threshold to remove sites', type=int, required=True)
 parser.add_argument('-s', '--samples', help = 'column names of the samples to process', type=str, required=True)
-
 args = parser.parse_args()
 
 ############################# program #############################
@@ -58,24 +51,24 @@ print('Opening the file...')
 with open(args.input) as datafile:
   header_line = datafile.readline()
   header_words = header_line.split()
-  
+
   # index samples
   sampCol = calls.indexSamples(args.samples, header_words)
-  
+
   print('Creating the output file...')
   fileoutput = open(args.output, 'w')
   fileoutput.write(header_line)
-  
+
   for line in datafile:
     words = line.split()
     chr_pos = words[0:2]
-    
+
     # select samples
     genotypes = calls.selectSamples(sampCol, words)
 
-    count=collections.Counter(genotypes)
-    valueN = count['N']
-    
+    # count Ns
+    valueN = calls.countPerPosition(genotypes, 'N')
+
     if valueN < args.missing:
       fileoutput.write(line)
 

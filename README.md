@@ -30,7 +30,7 @@ chr_3   5   G   */* G/* ./. G/G G/G G/G C/C G/G
 
 ```
 
-One-character coded tab file (heterozygous genotypes are represented by ambiguous characters R,Y,M,K,S,W):
+One-character coded tab file (heterozygous genotypes are represented by ambiguous characters R, Y, M, K, S, W):
 
 ```
 CHROM   POS REF sample1 sample2 sample3 sample4 sample5 sample6 sample7 sample8
@@ -69,5 +69,9 @@ chr_3   5   G   -   N   N   G   G   G   C   G
 ##
 
 [calculateNsPerWindow.py](calculateNsPerWindow.py) calculates number of positions with missing data (Ns) using the sliding window approach.
+
+##
+
+[removeMonomorphic.py](removeMonomorphic.py) removes monomorphic positions, i.e. keeps only SNPs.
 
 ##

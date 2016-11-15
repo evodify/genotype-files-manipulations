@@ -47,17 +47,25 @@ Phased:
 '''
 ############################# modules #############################
 
+import argparse, sys # for input options
 import collections # to perform counting
 
 ############################# classes  ############################
 
-#class MyParser(argparse.ArgumentParser): 
-   #def error(self, message):
-      #sys.stderr.write('error: %s\n' % message)
-      #self.print_help()
-      #sys.exit(2)
+class MyParser(argparse.ArgumentParser): 
+   def error(self, message):
+      sys.stderr.write('error: %s\n' % message)
+      self.print_help()
+      sys.exit(2)
 
 ############################# functions ###########################
+
+def add_argument():
+  parser = MyParser()
+
+def parse_args():
+  args = parser.parse_args()
+
 
 def indexSamples(sampNames, header_words):
   ''' extract the index of a given list of sample names'''
@@ -89,6 +97,17 @@ def countPerSample(sampWords, countList, characterToCount):
   for i in range(len(sampWords)):
     if sampWords[i] == characterToCount:
       countList[i] += 1
+
+def is_polymorphic(sampWords):
+  ''' check if the set of genotypes is polymorphic '''
+  # fist skip missing data
+  noNsGT = []
+  for i in (sampWords):
+    if i != 'N':
+      noNsGT.append(i)
+  # check if there is polymorphism:
+  return any(x in 'RYMKSW' or x != noNsGT[0] for x in noNsGT)
+
 
 def twoToOne(GT):
   ''' converts two character coded genotypes to one character code '''

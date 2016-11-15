@@ -22,7 +22,6 @@ contact Dmytro Kryvokhyzha dmytro.kryvokhyzha@evobio.eu
 """
 ############################# modules #############################
 
-import argparse, sys, re, collections
 import matplotlib
 matplotlib.use('Agg') # to avoid RuntimeError('Invalid DISPLAY variable'). Must be before importing matplotlib.pyplot!
 import matplotlib.pyplot as plt
@@ -31,30 +30,25 @@ import calls # my custom module
 
 ############################# options #############################
 
-class MyParser(argparse.ArgumentParser): 
-   def error(self, message):
-      sys.stderr.write('error: %s\n' % message)
-      self.print_help()
-      sys.exit(2)
-
-parser = MyParser()
+parser = calls.MyParser()
 parser.add_argument('-i', '--input', help = 'name of the input file', type=str, required=True)
 parser.add_argument('-o', '--output', help = 'name of the output file', type=str, required=True)
 parser.add_argument('-s', '--samples', help = 'column names of the samples to process', type=str, required=True)
 args = parser.parse_args()
 
-counter = 0
-
 ############################# program #############################
 
+counter = 0
+
 print('Opening the file...')
+
 with open(args.input) as datafile:
   header_line = datafile.readline()
   header_words = header_line.split()
 
   # index samples
   sampCol = calls.indexSamples(args.samples, header_words)
-  
+
   # create lists for output
   sampColnames = calls.selectSamples(sampCol, header_words)
   sampNs = [0 for i in sampColnames]
