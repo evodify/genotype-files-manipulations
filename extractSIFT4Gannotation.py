@@ -28,6 +28,9 @@ CHROM   POS sample1 sample2 sample3 sample4
 chr_1   2068    1.000|TOLERATED NA  1.000|TOLERATED 1.000|TOLERATED
 chr_1   2069    0.000|DELETERIOUS   0.000|DELETERIOUS   0.000|DELETERIOUS   NA
 
+Note! Chromosome number must be separated by _.
+For example, chr_1 - correct, chr1 - incorrect.
+
 # command:
 
 $ python extractSIFT4Gannotation.py -i test.sift4g -t test.tab -o test.output -s "sample1,sample2,sample3,sample4" -f "SIFT_SCORE,PREDICTION"

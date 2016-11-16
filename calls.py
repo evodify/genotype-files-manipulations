@@ -44,6 +44,9 @@ chr_3   5   G   -   N   N   G   G   G   C   G
 Phased:
 
 
+Note! Chromosome number must be separated by _.
+For example, chr_1 - correct, chr1 - incorrect.
+
 '''
 ############################# modules #############################
 
@@ -141,3 +144,11 @@ def twoToOne(GT):
         g = 'N'
     GTone.append(g)
   return GTone
+
+
+def countPositions(fileName):
+  '''count number of genomic position in a file'''
+  with open(fileName) as f:
+      for i, l in enumerate(f):
+          pass
+  return i
