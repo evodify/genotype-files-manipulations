@@ -105,5 +105,5 @@ with open(args.input) as datafile:
 
 datafile.close()
 outfile.close()
+
 print('Done!')
- 

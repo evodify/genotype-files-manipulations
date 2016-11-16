@@ -139,6 +139,8 @@ with open(args.reference_input) as datafile:
     if counter % 1000000 == 0:
       print str(counter), "lines processed"
 
+datafile.close()
 linput.close()
 output.close()
+
 print('Done!')

@@ -4,7 +4,7 @@ This is a python module to operate on call files.
 
 #File examples:
 
-Two-character code:
+#Two-character code:
 
 CHROM   POS REF sample1 sample2 sample3 sample4 sample5 sample6 sample7 sample8
 chr_1   1   A   T/A ./. ./. A/A ./. ./. ./. ./.
@@ -23,7 +23,7 @@ chr_3   4   TA  T/T T/T ./. T/T T/T T/T T/T T/TA
 chr_3   5   G   */* G/* ./. G/G G/G G/G C/C G/G
 
 
-One-character code:
+#One-character code:
 
 CHROM   POS REF sample1 sample2 sample3 sample4 sample5 sample6 sample7 sample8
 chr_1   1   A   W   N   N   A   N   N   N   N

@@ -1,36 +1,41 @@
 #!/usr/bin/python2
 
-""" *********************************** calls to ped *****************************************
+'''
 This script converts calls file to ped file
 
 The input is expected to be phased. So each sample except REF is presented by two sequences distinguished by _1 and _2.
 
-The input file should look like this:
+# input file:
 
 Chr	pos	REF  indA_1	indA_2	indB_1	indB_2	indC_1	 indC_2
 chr_1	1	A	G	G	A	T	G	G
 chr_1	2	G	C	G	C	C	C	T
 
-The pedInfo file should look like this:
+# pedInfo file:
 
 ref REF 0 0 0 0
 gr1 indA 0 0 0 0
 gr2 indB 0 0 0 0
 gr2 indC 0 0 0 0
 
-The output will look like this:
+# output file:
 
-ref REF 0 0 0 0	A A	G G
+ref REF 0 0 0 0 A A	G G
 gr1 indA 0 0 0 0	G G	C G
 gr2 indB 0 0 0 0	A T	C C
 gr2 indC 0 0 0 0	G G	C T
 
-command:
+# command:
+
 $ python2 calls_to_ped.py -i <input> -o <output> -p <ped_info>
 
-contact Dmytro Kryvokhyzha dmytro.kryvokhyzha@evobio.eu
+# contact:
 
-"""
+Dmytro Kryvokhyzha dmytro.kryvokhyzha@evobio.eu
+
+'''
+
+############################# modules #############################
 
 import sys, argparse
 
@@ -102,3 +107,9 @@ with open(args.input) as datafile:
     
   # print last string that is stored in the memory
   print_GT(z1, g1, g2)
+  
+datafile.close()
+outFile.close()
+ped.close()
+
+print('Done!')

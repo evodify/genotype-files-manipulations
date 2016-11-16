@@ -86,4 +86,5 @@ with open(args.input) as datafile:
 
 datafile.close()
 fileoutput.close()
+
 print('Done!')
