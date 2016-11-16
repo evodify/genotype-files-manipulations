@@ -49,7 +49,7 @@ import calls # my custom module
 parser = calls.MyParser()
 parser.add_argument('-i', '--input', help = 'name of the input file', type=str, required=True)
 parser.add_argument('-o', '--output', help = 'name of the output file', type=str, required=True)
-parser.add_argument('-s', '--samples', help = 'column names of the samples to process', type=str, required=False)
+parser.add_argument('-s', '--samples', help = 'column names of the samples to process (optional)', type=str, required=False)
 parser.add_argument('-w', '--window', help = 'sliding window size', type=int, required=True)
 args = parser.parse_args()
 

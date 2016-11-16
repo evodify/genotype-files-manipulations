@@ -52,7 +52,7 @@ parser.add_argument('-i', '--input', help = 'name of the input file', type=str, 
 parser.add_argument('-t', '--tab', help = 'tab delimited genotype file', type=str, required=True)
 parser.add_argument('-o', '--output', help = 'name of the output file', type=str, required=True)
 parser.add_argument('-f', '--fields', help = 'annotation fields to extract. Possible options: REF_ALLELE, ALT_ALLELE, TRANSCRIPT_ID, GENE_ID, GENE_NAME, REGION, VARIANT_TYPE, REF_AA, ALT_AA, AA_POS, SIFT_SCORE, SIFT_MEDIAN, NUM_SEQs, dbSNP, PREDICTION', type=str, required=True)
-parser.add_argument('-s', '--samples', help = 'column names of the samples to process', type=str, required=False)
+parser.add_argument('-s', '--samples', help = 'column names of the samples to process (optional)', type=str, required=False)
 args = parser.parse_args()
 
 # check if samples names are given and if all sample names are present in a header
