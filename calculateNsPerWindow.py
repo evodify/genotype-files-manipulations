@@ -49,9 +49,12 @@ import calls # my custom module
 parser = calls.MyParser()
 parser.add_argument('-i', '--input', help = 'name of the input file', type=str, required=True)
 parser.add_argument('-o', '--output', help = 'name of the output file', type=str, required=True)
-parser.add_argument('-s', '--samples', help = 'column names of the samples to process', type=str, required=True)
+parser.add_argument('-s', '--samples', help = 'column names of the samples to process', type=str, required=False)
 parser.add_argument('-w', '--window', help = 'sliding window size', type=int, required=True)
 args = parser.parse_args()
+
+# check if samples names are given and if all sample names are present in a header
+sampleNames = calls.checkSampleNames(args.samples, args.input)
 
 ############################ functions ###########################
 
@@ -72,7 +75,7 @@ with open(args.input) as datafile:
   header_words = header_line.split()
 
   # index samples
-  sampCol = calls.indexSamples(args.samples, header_words)
+  sampCol = calls.indexSamples(sampleNames, header_words)
 
   # make output header
   print('Creating the output file...')

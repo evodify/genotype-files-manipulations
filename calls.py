@@ -48,6 +48,7 @@ Note! Chromosome number must be separated by _.
 For example, chr_1 - correct, chr1 - incorrect.
 
 '''
+
 ############################# modules #############################
 
 import argparse, sys # for input options
@@ -63,11 +64,23 @@ class MyParser(argparse.ArgumentParser):
 
 ############################# functions ###########################
 
-def add_argument():
-  parser = MyParser()
 
-def parse_args():
-  args = parser.parse_args()
+def checkSampleNames(sampleNames, inputFileName):
+  '''check if samples names are given and if all sample names are present in a header'''
+  inputFile = open(inputFileName, 'r')
+  inputFile_header = inputFile.readline().split()
+  # if no samples specified, use all:
+  if sampleNames:  
+    sampNames = sampleNames.split(',')
+    # check if all samples are present in a header
+    for sample in sampNames:
+      if sample not in inputFile_header:
+        raise IOError('Sample name "%s" is not found in the header %s' % (sample, inputFile_header))
+  else:
+    sampNames = inputFile_header[2:]
+    print 'No sample names is specified, all will be used ...'
+  inputFile.close()
+  return sampNames
 
 
 def indexSamples(sampNames, header_words):

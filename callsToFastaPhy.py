@@ -74,12 +74,13 @@ import calls # my custom module
 parser = calls.MyParser()
 parser.add_argument('-i', '--input', help = 'name of the input file', type=str, required=True)
 parser.add_argument('-o', '--output', help = 'name of the output file', type=str, required=True)
-parser.add_argument('-s', '--samples', help = 'column names of the samples to process', type=str, required=True)
+parser.add_argument('-s', '--samples', help = 'column names of the samples to process', type=str, required=False)
 args = parser.parse_args()
 
-############################# program #############################
+# check if samples names are given and if all sample names are present in a header
+sampleNames = calls.checkSampleNames(args.samples, args.input)
 
-sampleNames = args.samples.split(',')
+############################# program #############################
 
 # count number of samples and positions for .phy header
 NumberPos = calls.countPositions(args.input)
