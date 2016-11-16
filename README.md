@@ -6,6 +6,7 @@ All python scripts contain description of input and output data format in a head
 To see possible options, run python script with --help option:
 `python script.py --help`
 
+Most of these scripts require the custom python module `calls`, so make sure that you also download and put in the same directory the file `calls.py`.
 
 Examples of a tab-delimited genotype calls file (hereafter, tab file).
 
@@ -77,3 +78,5 @@ chr_3   5   G   -   N   N   G   G   G   C   G
 ##
 
 [vcf_to_SIFT4G.py](vcf_to_SIFT4G.py) converts a VCF file to SIFT4G input.
+
+##
