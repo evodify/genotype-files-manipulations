@@ -105,7 +105,7 @@ for sample in sampleNames:
     header_words = datafile.readline().split()
 
     # index a sample
-    sampCol = calls.indexSamples(sample, header_words)
+    sampCol = calls.indexSamples([sample], header_words)
 
     for line in datafile:
       words = line.split()
