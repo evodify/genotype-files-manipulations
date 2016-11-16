@@ -6,7 +6,7 @@ All python scripts contain description of input and output data format in a head
 To see possible options, run python script with --help option:
 `python script.py --help`
 
-Most of these scripts require the custom python module `calls`, so make sure that you also download and put in the same directory the file `calls.py`.
+Most of these scripts require the custom python module `calls`, so make sure that you also download and put the file `calls.py` in the same directory where your scripts are.
 
 Examples of a tab-delimited genotype calls file (hereafter, tab file).
 
