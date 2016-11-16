@@ -1,7 +1,7 @@
 #!/usr/bin/env python2
 
 """
-This script subsample a genotype calls file by sample names. It also can be used to rearrange samples in a calls file.
+This script subsamples a genotype calls file by sample names. It also can be used to rearrange samples in a calls file.
 
 # input file:
 
