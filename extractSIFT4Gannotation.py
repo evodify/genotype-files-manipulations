@@ -1,7 +1,7 @@
 #! /usr/bin/env python
 
 '''
-This script extract the SIFT4G annotation for a given set of samples according to their genotypes.
+This script extracts the SIFT4G annotation for a given set of samples according to their genotypes.
 
 # tab file:
 

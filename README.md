@@ -80,3 +80,5 @@ chr_3   5   G   -   N   N   G   G   G   C   G
 [vcf_to_SIFT4G.py](vcf_to_SIFT4G.py) converts a VCF file to SIFT4G input.
 
 ##
+
+[extractSIFT4Gannotation.py](extractSIFT4Gannotation.py) extracts the SIFT4G annotation for a given set of samples according to their genotypes.
