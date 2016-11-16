@@ -86,7 +86,7 @@ def checkSampleNames(sampleNames, inputFileName):
 def indexSamples(sampNames, header_words):
   ''' extract the index of a given list of sample names'''
   sampIndex = []
-  for i in sampNames.split(','):
+  for i in sampNames:
     indnumber = header_words.index(i)
     sampIndex.append(indnumber)
   return sampIndex
