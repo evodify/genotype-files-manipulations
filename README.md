@@ -9,7 +9,7 @@ To see possible options, run python script with --help option:
 
 Examples of a tab-delimited genotype calls file (hereafter, tab file).
 
-Two-character coded table:
+Two-character coded table (e.g. produced with [VariantsToTable](https://software.broadinstitute.org/gatk/gatkdocs/org_broadinstitute_gatk_tools_walkers_variantutils_VariantsToTable.php) from the GATK) :
 
 ```
 CHROM   POS REF sample1 sample2 sample3 sample4 sample5 sample6 sample7 sample8
@@ -52,7 +52,7 @@ chr_3   5   G   -   N   N   G   G   G   C   G
 
 ##
 
-[vcfTab_to_callsTab.py](vcfTab_to_callsTab.py) converts two-character coded genotype table (e.g. produced with [VariantsToTable](https://software.broadinstitute.org/gatk/gatkdocs/org_broadinstitute_gatk_tools_walkers_variantutils_VariantsToTable.php) from the GATK) to one-character coded genotype table (calls format).
+[vcfTab_to_callsTab.py](vcfTab_to_callsTab.py) converts two-character coded genotype table to one-character coded genotype table (calls format).
 
 ##
 
