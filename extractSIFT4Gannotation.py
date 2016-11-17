@@ -128,7 +128,7 @@ with open(args.tab) as datafile:
         tab_annot.append('NA')
 
     # output annotation
-    if any(x != 'NA' for x in tab_annot):
+    if any(x != 'NA' for x in tab_annot): # skip all NA lines
       tab_annotP = '\t'.join(str(el) for el in tab_annot)
       chr_posP = '\t'.join(str(el) for el in words[0:2])
       output.write('%s\t%s\n' % (chr_posP, tab_annotP))
