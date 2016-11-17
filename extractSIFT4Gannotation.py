@@ -128,9 +128,10 @@ with open(args.tab) as datafile:
         tab_annot.append('NA')
 
     # output annotation
-    tab_annotP = '\t'.join(str(el) for el in tab_annot)
-    chr_posP = '\t'.join(str(el) for el in words[0:2])
-    output.write('%s\t%s\n' % (chr_posP, tab_annotP))
+    if any(x != 'NA' for x in tab_annot):
+      tab_annotP = '\t'.join(str(el) for el in tab_annot)
+      chr_posP = '\t'.join(str(el) for el in words[0:2])
+      output.write('%s\t%s\n' % (chr_posP, tab_annotP))
 
     # track progress
     counter += 1
