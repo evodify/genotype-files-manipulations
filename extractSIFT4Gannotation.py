@@ -51,24 +51,23 @@ parser = calls.MyParser()
 parser.add_argument('-i', '--input', help = 'name of the input file', type=str, required=True)
 parser.add_argument('-t', '--tab', help = 'tab delimited genotype file', type=str, required=True)
 parser.add_argument('-o', '--output', help = 'name of the output file', type=str, required=True)
-parser.add_argument('-f', '--fields', help = 'annotation fields to extract. Possible options: REF_ALLELE, ALT_ALLELE, TRANSCRIPT_ID, GENE_ID, GENE_NAME, REGION, VARIANT_TYPE, REF_AA, ALT_AA, AA_POS, SIFT_SCORE, SIFT_MEDIAN, NUM_SEQs, dbSNP, PREDICTION', type=str, required=True)
+parser.add_argument('-f', '--fields', help = 'annotation fields to extract. Possible options: CHROM, POS, REF_ALLELE, ALT_ALLELE, TRANSCRIPT_ID, GENE_ID, GENE_NAME, REGION, VARIANT_TYPE, REF_AMINO, ALT_AMINO, AMINO_POS, SIFT_SCORE, SIFT_MEDIAN, NUM_SEQS, dbSNP, SIFT_PREDICTION', type=str, required=True)
 parser.add_argument('-s', '--samples', help = 'column names of the samples to process (optional)', type=str, required=False)
 args = parser.parse_args()
 
 # check if samples names are given and if all sample names are present in a header
-sampleNames = calls.checkSampleNames(args.samples, args.input)
+sampleNames = calls.checkSampleNames(args.samples, args.tab)
 
 ############################# program #############################
 
 print('Opening the file...')
 
 counter = 0
-annotOptions = ['CHROM', 'POSITION', 'REF_ALLELE','ALT_ALLELE','TRANSCRIPT_ID','GENE_ID','GENE_NAME','REGION','VARIANT_TYPE','REF_AA','ALT_AA','AA_POS','SIFT_SCORE','SIFT_MEDIAN','NUM_SEQs','dbSNP','PREDICTION']
-
-fieldsIndex = sampCol = calls.indexSamples(args.fields, annotOptions)
-#fieldsIndex = [3,6,8,13,16] # sift fields to extract
 
 siftFile = open(args.input, 'r')
+annotOptions = siftFile.readline().split()
+fieldsIndex = calls.indexSamples([args.fields], annotOptions)
+
 sift_words = siftFile.readline().split()
 sift_chr = int(sift_words[0].split('_')[1])
 sift_pos = int(sift_words[1])

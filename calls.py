@@ -78,7 +78,7 @@ def checkSampleNames(sampleNames, inputFileName):
         raise IOError('Sample name "%s" is not found in the header' % (sample))
   else:
     sampNames = inputFile_header[2:]
-    print 'No sample names is specified, all will be used ...'
+    print 'Sample names are not specified, all will be used ...'
   inputFile.close()
   return sampNames
 
