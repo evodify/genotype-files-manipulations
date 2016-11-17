@@ -75,7 +75,7 @@ def checkSampleNames(sampleNames, inputFileName):
     # check if all samples are present in a header
     for sample in sampNames:
       if sample not in inputFile_header:
-        raise IOError('Sample name "%s" is not found in the header %s' % (sample, inputFile_header))
+        raise IOError('Sample name "%s" is not found in the header' % (sample))
   else:
     sampNames = inputFile_header[2:]
     print 'No sample names is specified, all will be used ...'
