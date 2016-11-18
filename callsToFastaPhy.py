@@ -94,7 +94,7 @@ outputPhy.write(' %s %s\n' % (NumberSamp, NumberPos))
 
 # process one sample per time to reduce RAM usage
 for sample in sampleNames:
-  
+
   # write sample name into file
   outputFasta.write(">%s\n" % sample)
   outputPhy.write("%s " % sample)
