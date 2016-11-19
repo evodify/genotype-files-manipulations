@@ -122,7 +122,7 @@ for sample in sampleNames:
 
       # to split sequence in multi-line fasta
       fastaLim += 1
-      if fastaLim == 81:
+      if fastaLim == 100:
         outputFasta.write("\n")
         fastaLim = 0
 
