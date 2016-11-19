@@ -91,3 +91,7 @@ chr_3   5   G   -   N   N   G   G   G   C   G
 
 [selectSamples.py](selectSamples.py) subsamples a genotype calls file by sample names. It also can be used to rearrange samples in a calls file.
 
+##
+
+[FastaToPhylip.py](FastaToPhylip.py) converts FASTA to PHYLIP.
+
