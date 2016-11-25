@@ -73,7 +73,7 @@ with open(args.input) as datafile:
     # count Ns
     valueN = calls.countPerPosition(genotypes, 'N')
 
-    if valueN < args.missing:
+    if valueN <= args.missing:
       fileoutput.write(line)
 
     counter += 1
