@@ -66,7 +66,8 @@ counter = 0
 
 siftFile = open(args.input, 'r')
 annotOptions = siftFile.readline().split()
-fieldsIndex = calls.indexSamples([args.fields], annotOptions)
+fieldsNames = args.fields.split(',')
+fieldsIndex = calls.indexSamples(fieldsNames, annotOptions)
 
 sift_words = siftFile.readline().split()
 sift_chr = int(sift_words[0].split('_')[1])
