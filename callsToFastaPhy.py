@@ -1,4 +1,4 @@
-#!/usr/bin/env python2
+#!/usr/bin/python2
 
 """
 This script converts genotype calls file to FASTA and PHYLIP.
@@ -97,7 +97,7 @@ for sample in sampleNames:
 
   # write sample name into file
   outputFasta.write(">%s\n" % sample)
-  outputPhy.write("%s " % sample)
+  outputPhy.write("%s  " % sample)
 
   fastaLim = 0 # counter to split sequence in multi-line fasta
 
