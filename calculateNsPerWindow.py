@@ -25,10 +25,8 @@ chr_3   5   G   -   N   N   G   G   G   C   G
 
 CHROM   POS Ns
 chr_1   2.5 3.0
-chr_1   6.0 2.0
 chr_2   3.0 2.0
-chr_3   3.0 4.2
-chr_4   1.5 2.0
+chr_3   3.0 3.4
 
 #command:
 
@@ -58,16 +56,16 @@ sampleNames = calls.checkSampleNames(args.samples, args.input)
 
 ############################ functions ###########################
 
-def processWindow(Chr, FirstPos, LastPos, Ns, outputFile):
-  posP = float(FirstPos)+((float(LastPos)-float(FirstPos))/2.0)
-  NsInWindow = sum(Ns)/len(Ns)
-  outputFile.write("%s\t%s\t%s\n" % (Chr, posP, NsInWindow))
+def meanInWindow(ListOfValues, NumberOfSamples):
+  ''' returns mean value of Ns per window '''
+  return sum(ListOfValues)/float(len(ListOfValues)*NumberOfSamples)
 
 ############################# program #############################
 
 print('Opening the file...')
 
 windSize = args.window
+windPosEnd = windSize
 counter = 0
 
 with open(args.input) as datafile:
@@ -77,8 +75,10 @@ with open(args.input) as datafile:
   # index samples
   sampCol = calls.indexSamples(sampleNames, header_words)
 
+  # count number of sample
+  nSample = len(sampleNames)
+
   # make output header
-  print('Creating the output file...')
   NsFr_output = open(args.output, 'w')
   NsFr_output.write("CHROM\tPOS\tNs\n")
 
@@ -86,19 +86,18 @@ with open(args.input) as datafile:
 
   print('Counting Ns ...')
 
-  sites = 0
   Nwindow = []
-  Chr2 = ''
+  ChrPrevious = ''
   posS = ''
   posE = ''
   for line in datafile:
     words = line.split()
-    Chr1 = words[0]
-    pos = words[1]
+    Chr = words[0]
+    pos = int(words[1])
 
     # to store the values of a previous line
-    if not Chr2:
-      Chr2 = Chr1
+    if not ChrPrevious:
+      ChrPrevious = Chr
     if not posS:
       posS = pos
     if not posE:
@@ -108,18 +107,22 @@ with open(args.input) as datafile:
     sample_charaters = calls.selectSamples(sampCol, words)
 
     # if window size is reached output the results
-    sites += 1
-    if Chr1 != Chr2:
-      processWindow(Chr2, posS, posE, Nwindow, NsFr_output)
-      sites = 0
+    if Chr > ChrPrevious:
+      NsInWindow = meanInWindow(Nwindow, nSample)
+      calls.processWindow(ChrPrevious, posS, posE, NsInWindow, NsFr_output)
+      windPosEnd = windSize
       Nwindow = []
       posS = pos
-    elif sites == windSize:
-      processWindow(Chr1, posS, posE, Nwindow, NsFr_output)
-      sites = 0
+    elif pos > windPosEnd:
+      NsInWindow = meanInWindow(Nwindow, nSample)
+      calls.processWindow(Chr, posS, posE, NsInWindow, NsFr_output)
+      windPosEnd = windPosEnd+windSize
       Nwindow = []
       posS = pos
-    Chr2 = Chr1
+      while pos > windPosEnd:  # if the gap in positions is larger than window size
+        windPosEnd = windPosEnd+windSize
+
+    ChrPrevious = Chr
     posE = pos
 
     # count Ns
@@ -132,7 +135,8 @@ with open(args.input) as datafile:
       print str(counter), "lines processed"
 
 # process the last window
-processWindow(Chr1, posS, posE, Nwindow, NsFr_output)
+NsInWindow = meanInWindow(Nwindow, nSample)
+calls.processWindow(Chr, posS, posE, NsInWindow, NsFr_output)
 
 datafile.close()
 NsFr_output.close()
