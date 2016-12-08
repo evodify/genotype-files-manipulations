@@ -101,12 +101,23 @@ def selectSamples(sampIndex, words):
 
 
 def countPerPosition(sampWords, characterToCount):
-  '''Counts Ns (missing data) in each position along the genome '''
-  characterCount = []
+  '''Counts given allele in each position along the genome '''
   count = collections.Counter(sampWords)
   characterCount = count[characterToCount]
   return characterCount
 
+
+def countHeteroPerPosition(sampWords):
+  '''Counts heterozygosty in each position along the genome in unphased data '''
+  Hcount = 0.0
+  for gt in sampWords:
+    if gt in "RYSWKM":
+      Hcount += 1.0
+    elif gt in "ACGTN-":
+      continue
+    else:
+       print('Warning: character "%s" is not recognized' % gt)
+  return Hcount
 
 def countPerSample(sampWords, countList, characterToCount):
   '''Counts Ns (missing data) in each sample'''
@@ -165,3 +176,10 @@ def countPositions(fileName):
       for i, l in enumerate(f):
           pass
   return i
+
+
+def processWindow(Chr, FirstPos, LastPos, WindowVal, outputFile):
+  ''' Outputs middle point of a window and a value of this window in a file  '''
+  #print FirstPos, LastPos
+  posP = float(FirstPos)+((float(LastPos)-float(FirstPos))/2.0)
+  outputFile.write("%s\t%s\t%s\n" % (Chr, posP, WindowVal))
