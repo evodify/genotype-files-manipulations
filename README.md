@@ -95,3 +95,6 @@ chr_3   5   G   -   N   N   G   G   G   C   G
 
 [FastaToPhylip.py](FastaToPhylip.py) converts FASTA to PHYLIP.
 
+##
+
+[mergeChrPos.py](mergeChrPos.py) merges all chromosomes into continious genomic coordinates.
