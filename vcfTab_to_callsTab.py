@@ -1,7 +1,7 @@
 #! /usr/bin/env python2
 
 '''
-This script converts the table produced with VariantsToTable (GATK) to one-character coded genotype table (calls format).
+This script converts the table produced with VariantsToTable (GATK) to the one-character coded genotype table (calls format).
 
 #Example input:
 

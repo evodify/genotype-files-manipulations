@@ -64,6 +64,9 @@ class MyParser(argparse.ArgumentParser):
 
 ############################# functions ###########################
 
+def all_missing(genotypes):
+  '''check if all genotypes are missing'''
+  return all(gt == 'N' for gt in genotypes)
 
 def checkSampleNames(sampleNames, inputFileName):
   '''check if samples names are given and if all sample names are present in a header'''
