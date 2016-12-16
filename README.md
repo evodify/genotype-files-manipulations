@@ -53,48 +53,32 @@ chr_3   5   G   -   N   N   G   G   G   C   G
 
 ##
 
-[vcfTab_to_callsTab.py](vcfTab_to_callsTab.py) converts two-character coded genotype table to one-character coded genotype table (calls format).
-
-##
-
-[mergeTabFiles.py](mergeTabFiles.py) merges two tab files by their overlapping positions.
-
-##
-
-[filterByNs.py](filterByNs.py) removes all sites that consists of more than a given amount of missing data (Ns).
-
-##
+[FastaToPhylip.py](FastaToPhylip.py) converts FASTA to PHYLIP.
 
 [assessNs.py](assessNs.py) calculates missing data (Ns) per position/sample and visualize the results.
 
-##
-
 [calculateNsPerWindow.py](calculateNsPerWindow.py) calculates number of positions with missing data (Ns) using the sliding window approach.
 
-##
-
-[removeMonomorphic.py](removeMonomorphic.py) removes monomorphic positions, i.e. keeps only SNPs.
-
-##
-
-[vcf_to_SIFT4G.py](vcf_to_SIFT4G.py) converts a VCF file to SIFT4G input.
-
-##
-
-[extractSIFT4Gannotation.py](extractSIFT4Gannotation.py) extracts the [SIFT4G annotation](http://sift.bii.a-star.edu.sg/sift4g/AnnotateVariants.html) for a given set of samples according to their genotypes.
-
-##
+[calls.py](calls.py) is a custom python module. It is a dependecy for the most of the scripts listed here.
 
 [callsToFastaPhy.py](callsToFastaPhy.py) converts genotype calls file to FASTA and PHYLIP.
 
-##
+[extractSIFT4Gannotation.py](extractSIFT4Gannotation.py) extracts the [SIFT4G annotation](http://sift.bii.a-star.edu.sg/sift4g/AnnotateVariants.html) for a given set of samples according to their genotypes.
+
+[filterByNs.py](filterByNs.py) removes all sites that consists of more than a given amount of missing data (Ns).
+
+[mergeChrPos.py](mergeChrPos.py) merges all chromosomes into continious genomic coordinates.
+
+[vcfTab_to_callsTab.py](vcfTab_to_callsTab.py) converts two-character coded genotype table to one-character coded genotype table (calls format).
+
+[mergeTabFiles.py](mergeTabFiles.py) merges two tab files by their overlapping positions.
+
+[polarizeGT.py](polarizeGT.py) polarizes the genotype data by keeping only derived alleles relative to an outgroup/ancestral sequence.
+
+[removeMonomorphic.py](removeMonomorphic.py) removes monomorphic positions, i.e. keeps only SNPs.
 
 [selectSamples.py](selectSamples.py) subsamples a genotype calls file by sample names. It also can be used to rearrange samples in a calls file.
 
-##
+[vcf_to_SIFT4G.py](vcf_to_SIFT4G.py) converts a VCF file to SIFT4G input.
 
-[FastaToPhylip.py](FastaToPhylip.py) converts FASTA to PHYLIP.
-
-##
-
-[mergeChrPos.py](mergeChrPos.py) merges all chromosomes into continious genomic coordinates.
+[vcfTab_to_callsTab.py](vcfTab_to_callsTab.py) converts the two-character coded table produced with VariantsToTable (GATK) to the one-character coded genotype table (calls format).
