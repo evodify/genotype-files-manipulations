@@ -1,7 +1,7 @@
 #! /usr/bin/env python
 
 """
-This script merges polarize the genotype data by keeping only derived alleles relative at to an outgroup/ancestral sequence.
+This script polarizes the genotype data by keeping only derived alleles relative to an outgroup/ancestral sequence.
 
 Note! Chromosome number in the first column must be separated by _.
 For example, chr_1 - correct, chr1 - incorrect.
