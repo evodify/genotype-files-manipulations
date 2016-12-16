@@ -81,11 +81,15 @@ print('Opening the file...')
 with open(args.input) as datafile:
   header_line = datafile.readline()
   header_words = header_line.split()
-  print('Creating the output file...')
-  output.write(header_line)
 
   # index samples
   sampCol = calls.indexSamples(sampleNames, header_words)
+
+  # make a header of the output file
+  print('Creating the output file...')
+  samples_head = calls.selectSamples(sampCol, header_words)
+  samples_headP = '\t'.join(str(e) for e in header_words[0:2]+samples_head)
+  output.write('%s\n' % samples_headP)
 
   # read the second line of the ancestral file
   ances_words = ances.readline().split()
