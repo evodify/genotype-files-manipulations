@@ -83,7 +83,7 @@ with open(args.input) as datafile:
   header_words = header_line.split()
   print('Creating the output file...')
   output.write(header_line)
-  
+
   # index samples
   sampCol = calls.indexSamples(sampleNames, header_words)
 
@@ -94,6 +94,11 @@ with open(args.input) as datafile:
   ances_gt = ances_words[2]
 
   for line in datafile:
+    # track progress
+    counter += 1
+    if counter % 1000000 == 0:
+      print str(counter), "lines processed"
+
     words = line.split()
     ch = int(words[0].split('_')[1])
     pos = int(words[1])
@@ -125,10 +130,7 @@ with open(args.input) as datafile:
     # write output
     output.write('%s\n' % wordsP)
 
-    # track progress
-    counter += 1
-    if counter % 1000000 == 0:
-      print str(counter), "lines processed"
+
 
 datafile.close()
 ances.close()
