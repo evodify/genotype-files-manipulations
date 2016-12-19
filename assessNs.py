@@ -85,7 +85,8 @@ datafile.close()
 # Plot the results 
 print('Printing graphics ...')
 
-bins = np.arange(len(sampCol)) - 0.5
+binsPos = np.arange(len(sampCol)+2) - 0.5
+binsSamp = np.arange(len(sampCol)) - 0.5
 heightF = 6
 
 # increase figure width if the number of samples is too large
@@ -96,9 +97,9 @@ else:
 
 # Plot the histogram of Ns per position
 plt.figure(figsize=(widthF, heightF))
-plt.hist(Ns, color="grey", bins=bins)
+plt.hist(Ns, color="grey", bins=binsPos)
 plt.xlim(-1.5, len(sampCol)+1.5)
-plt.xticks(range(0,len(sampCol)+1, 2))
+plt.xticks(range(0,len(sampCol)+1, 1))
 plt.xlabel("Number of Ns")
 plt.ylabel("Number of sites")
 plt.title("Ns per site", size = 18)
@@ -108,8 +109,8 @@ plt.close()
 
 # Plot the barplot of Ns per sample
 plt.figure(figsize=(widthF, heightF))
-plt.bar(bins, sampNs, width = 1, color = "grey", align = 'center')
-plt.xticks(bins, sampColnames, rotation=90)
+plt.bar(binsSamp, sampNs, width = 1, color = "grey", align = 'center')
+plt.xticks(binsSamp, sampColnames, rotation=90)
 plt.xlim([-2,len(sampColnames)])
 plt.tick_params(axis='both', labelsize=8)
 plt.ylabel("Number of Ns")
