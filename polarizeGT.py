@@ -59,7 +59,7 @@ import calls # my custom module
 
 parser = calls.MyParser()
 parser.add_argument('-i', '--input', help = 'name of the reference input file', type=str, required=True)
-parser.add_argument('-a', '--ancestral_input', help = 'name of the larger input file', type=str, required=True)
+parser.add_argument('-a', '--ancestral', help = 'name of the outgroup/ancestral sequence file', type=str, required=True)
 parser.add_argument('-o', '--output', help = 'name of the output file', type=str, required=True)
 parser.add_argument('-s', '--samples', help = 'column names of the samples to process (optional)', type=str, required=False)
 args = parser.parse_args()
@@ -72,7 +72,7 @@ sampleNames = calls.checkSampleNames(args.samples, args.input)
 counter = 0
 
 # read the header
-ances = open(args.ancestral_input, 'r')
+ances = open(args.ancestral, 'r')
 ances_words = ances.readline()
 
 output = open(args.output, 'w')
