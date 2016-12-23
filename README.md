@@ -67,6 +67,10 @@ chr_3   5   G   -   N   N   G   G   G   C   G
 
 [filterByNs.py](filterByNs.py) removes all sites that consists of more than a given amount of missing data (Ns).
 
+[keep_biallelic.py](keep_biallelic.py) removes sites with more than two alleles.
+
+[makeSweepFinderInput.py](makeSweepFinderInput.py) makes an input file for [SweepFinder](http://people.binf.ku.dk/rasmus/webpage/sf.html).
+
 [mergeChrPos.py](mergeChrPos.py) merges all chromosomes into continious genomic coordinates.
 
 [vcfTab_to_callsTab.py](vcfTab_to_callsTab.py) converts two-character coded genotype table to one-character coded genotype table (calls format).
