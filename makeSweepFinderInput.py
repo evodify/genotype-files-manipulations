@@ -40,11 +40,15 @@ chr_3      15060676        34152886        80      81
 
 # output:
 
-
+position    x   n   folded
+117 3   3   0
+137 1   3   0
+148 2   3   0
+170 1   3   0
 
 # command:
 
-$ python makeSweepFinderInput.py -i inputfile -o outputfile -f file.fai -r ancestral.tab -N 1
+$ python makeSweepFinderInput.py -i inputfile -o outputfile -f file.fai -a ancestral.tab -N 1
 
 # contact:
 
