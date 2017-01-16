@@ -71,6 +71,10 @@ chr_3   5   G   -   N   N   G   G   G   C   G
 
 [makeSweepFinderInput.py](makeSweepFinderInput.py) makes an input file for [SweepFinder](http://people.binf.ku.dk/rasmus/webpage/sf.html).
 
+[make_input_stairway_plot_v1_BS.py](make_input_stairway_plot_v1_BS.py) makes input files including bootstrap replicates for [Stairway](https://sites.google.com/site/jpopgen/stairway-plot) version 1.
+
+[make_input_stairway_plot_v2.py](make_input_stairway_plot_v2.py) makes an input file for [Stairway](https://sites.google.com/site/jpopgen/stairway-plot) version 2.
+
 [mergeChrPos.py](mergeChrPos.py) merges all chromosomes into continious genomic coordinates.
 
 [vcfTab_to_callsTab.py](vcfTab_to_callsTab.py) converts two-character coded genotype table to one-character coded genotype table (calls format).
