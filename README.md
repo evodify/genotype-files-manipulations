@@ -69,6 +69,8 @@ chr_3   5   G   -   N   N   G   G   G   C   G
 
 [keep_biallelic.py](keep_biallelic.py) removes sites with more than two alleles.
 
+[make_input_MSMC.py](make_input_MSMC.py) makes input for [MSMC](https://github.com/stschiff/msmc).
+
 [makeSweepFinderInput.py](makeSweepFinderInput.py) makes an input file for [SweepFinder](http://people.binf.ku.dk/rasmus/webpage/sf.html).
 
 [make_input_stairway_plot_v1_BS.py](make_input_stairway_plot_v1_BS.py) makes input files including bootstrap replicates for [Stairway](https://sites.google.com/site/jpopgen/stairway-plot) version 1.
