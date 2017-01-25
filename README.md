@@ -79,8 +79,6 @@ chr_3   5   G   -   N   N   G   G   G   C   G
 
 [mergeChrPos.py](mergeChrPos.py) merges all chromosomes into continious genomic coordinates.
 
-[vcfTab_to_callsTab.py](vcfTab_to_callsTab.py) converts two-character coded genotype table to one-character coded genotype table (calls format).
-
 [mergeTabFiles.py](mergeTabFiles.py) merges two tab files by their overlapping positions.
 
 [polarizeGT.py](polarizeGT.py) polarizes the genotype data by keeping only derived alleles relative to an outgroup/ancestral sequence.
