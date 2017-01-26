@@ -83,6 +83,8 @@ chr_3   5   G   -   N   N   G   G   G   C   G
 
 [polarizeGT.py](polarizeGT.py) polarizes the genotype data by keeping only derived alleles relative to an outgroup/ancestral sequence.
 
+[pseudoPhasingHetero.py](pseudoPhasingHetero.py) phases the sequences by random split of heterozygous sites.
+
 [removeMonomorphic.py](removeMonomorphic.py) removes monomorphic positions, i.e. keeps only SNPs.
 
 [selectSamples.py](selectSamples.py) subsamples a genotype calls file by sample names. It also can be used to rearrange samples in a calls file.
