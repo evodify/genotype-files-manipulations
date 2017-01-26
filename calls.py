@@ -53,6 +53,7 @@ For example, chr_1 - correct, chr1 - incorrect.
 
 import argparse, sys # for input options
 import collections # to perform counting
+import random # for randomization
 
 ############################# classes  ############################
 
@@ -67,6 +68,12 @@ class MyParser(argparse.ArgumentParser):
 def all_missing(genotypes):
   '''check if all genotypes are missing'''
   return all(gt == 'N' for gt in genotypes)
+
+
+def any_missing(genotypes):
+  '''check if any genotype is missing'''
+  return any(gt == 'N' for gt in genotypes)
+
 
 def checkSampleNames(sampleNames, inputFileName):
   '''check if samples names are given and if all sample names are present in a header'''
@@ -102,6 +109,12 @@ def selectSamples(sampIndex, words):
     sampWords.append(words[el])
   return sampWords
 
+def if_all_gt_correct(gt, line):
+  '''Check if there is any unrecognised genotype '''
+  allowed_states = 'AGCTRYMKSWN-*'
+  if any(j not in allowed_states for j in gt):
+    print('WARNING: unrecognised character in the line -> %s' % line)
+
 
 def countPerPosition(sampWords, characterToCount):
   '''Counts given allele in each position along the genome '''
@@ -119,14 +132,16 @@ def countHeteroPerPosition(sampWords):
     elif gt in "ACGTN-":
       continue
     else:
-       print('Warning: character "%s" is not recognized' % gt)
+       print('WARNING: character "%s" is not recognized' % gt)
   return Hcount
+
 
 def countPerSample(sampWords, countList, characterToCount):
   '''Counts Ns (missing data) in each sample'''
   for i in range(len(sampWords)):
     if sampWords[i] == characterToCount:
       countList[i] += 1
+
 
 def is_polymorphic(sampWords):
   ''' check if the set of genotypes is polymorphic '''
@@ -186,3 +201,42 @@ def processWindow(Chr, FirstPos, LastPos, WindowVal, outputFile):
   #print FirstPos, LastPos
   posP = float(FirstPos)+((float(LastPos)-float(FirstPos))/2.0)
   outputFile.write("%s\t%s\t%s\n" % (Chr, posP, WindowVal))
+
+
+def pseufoPhase(gt):
+  ''' Randomly splits heterozygouts '''
+  # heterozygouts:
+  ambR = ['A\tG', 'G\tA']
+  ambY = ['T\tC', 'C\tT']
+  ambM = ['A\tC', 'C\tA']
+  ambK = ['G\tT', 'T\tG']
+  ambS = ['G\tC', 'C\tG']
+  ambW = ['A\tT', 'T\tA']
+  phasedAlles = []
+  for i in gt:
+    if i == 'N':
+      i = 'N\tN'
+    elif i == 'A':
+      i = 'A\tA'
+    elif i == 'G':
+      i = 'G\tG'
+    elif i == 'C':
+      i = 'C\tC'
+    elif i == 'T':
+      i = 'T\tT'
+    elif i == '-' or i == '*':
+      i = '-\t-'
+    elif i == 'R':
+      i = random.choice(ambR)
+    elif i == 'Y':
+      i = random.choice(ambY)
+    elif i == 'M':
+      i = random.choice(ambM)
+    elif i == 'K':
+      i = random.choice(ambK)
+    elif i == 'S':
+      i = random.choice(ambS)
+    elif i == 'W':
+      i = random.choice(ambW)
+    phasedAlles.append(i)
+  return phasedAlles
