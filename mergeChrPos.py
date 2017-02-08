@@ -3,7 +3,7 @@
 '''
 This script calculates number of positions with missing data (Ns) using sliding window approach.
 
-#Example input:
+Example input:
 
 CHROM   POS SomeValues
 chr_1   1   2456
@@ -21,13 +21,13 @@ chr_3   3   36
 chr_3   4   6
 chr_3   5   6
 
-#Example fastaa.fai:
+Example fasta.fai:
 
 chr_1      19624517
 chr_2      14106692
 chr_3      15060676
 
-#Example output:
+Example output:
 
 position    SomeValues
 1   2456
@@ -45,11 +45,11 @@ position    SomeValues
 33731213    6
 33731214    6
 
-#command:
+command:
 
 $ python mergeChrPos.py -i input.tab -F fasta.fai -o output.file
 
-#contact:
+contact:
 
 Dmytro Kryvokhyzha dmytro.kryvokhyzha@evobio.eu
 

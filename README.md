@@ -87,6 +87,8 @@ chr_3   5   G   -   N   N   G   G   G   C   G
 
 [removeMonomorphic.py](removeMonomorphic.py) removes monomorphic positions, i.e. keeps only SNPs.
 
+[select_intervals.py](select_intervals.py) extracts lines from a calls file according to scaffold name, start and end positions.
+
 [selectSamples.py](selectSamples.py) subsamples a genotype calls file by sample names. It also can be used to rearrange samples in a calls file.
 
 [vcf_to_SIFT4G.py](vcf_to_SIFT4G.py) converts a VCF file to SIFT4G input.
