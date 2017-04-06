@@ -67,6 +67,8 @@ chr_3   5   G   -   N   N   G   G   G   C   G
 
 [filterByNs.py](filterByNs.py) removes all sites that consists of more than a given amount of missing data (Ns).
 
+[find_popSpesificAlleles.py](find_popSpesificAlleles.py) outputs only unique allele of one population relative to another.
+
 [keep_biallelic.py](keep_biallelic.py) removes sites with more than two alleles.
 
 [make_input_MSMC.py](make_input_MSMC.py) makes input for [MSMC](https://github.com/stschiff/msmc).
