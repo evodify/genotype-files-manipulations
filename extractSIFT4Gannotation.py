@@ -33,7 +33,7 @@ For example, chr_1 - correct, chr1 - incorrect.
 
 # command:
 
-$ python extractSIFT4Gannotation.py -i test.sift4g -t test.tab -o test.output -s "sample1,sample2,sample3,sample4" -f "SIFT_SCORE,PREDICTION"
+$ python extractSIFT4Gannotation.py -a test.sift4g -t test.tab -o test.output -s "sample1,sample2,sample3,sample4" -f "SIFT_SCORE,PREDICTION"
 
 #contact:
 
@@ -48,7 +48,7 @@ import calls # my custom module
 ############################# options #############################
 
 parser = calls.MyParser()
-parser.add_argument('-i', '--input', help = 'name of the input file', type=str, required=True)
+parser.add_argument('-a', '--annotation', help = 'name of the SIFT annotation file', type=str, required=True)
 parser.add_argument('-t', '--tab', help = 'tab delimited genotype file', type=str, required=True)
 parser.add_argument('-o', '--output', help = 'name of the output file', type=str, required=True)
 parser.add_argument('-f', '--fields', help = 'annotation fields to extract. Possible options: CHROM, POS, REF_ALLELE, ALT_ALLELE, TRANSCRIPT_ID, GENE_ID, GENE_NAME, REGION, VARIANT_TYPE, REF_AMINO, ALT_AMINO, AMINO_POS, SIFT_SCORE, SIFT_MEDIAN, NUM_SEQS, dbSNP, SIFT_PREDICTION', type=str, required=True)
@@ -64,7 +64,7 @@ print('Opening the file...')
 
 counter = 0
 
-siftFile = open(args.input, 'r')
+siftFile = open(args.annotation, 'r')
 annotOptions = siftFile.readline().split()
 fieldsNames = args.fields.split(',')
 fieldsIndex = calls.indexSamples(fieldsNames, annotOptions)
