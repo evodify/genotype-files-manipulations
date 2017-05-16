@@ -63,6 +63,8 @@ chr_3   5   G   -   N   N   G   G   G   C   G
 
 [callsToFastaPhy.py](callsToFastaPhy.py) converts genotype calls file to FASTA and PHYLIP.
 
+[combine_overlapping_intervals.py](combine_overlapping_intervals.py) combines overlapping genetic intervals in the BED format.
+
 [extractSIFT4Gannotation.py](extractSIFT4Gannotation.py) extracts the [SIFT4G annotation](http://sift.bii.a-star.edu.sg/sift4g/AnnotateVariants.html) for a given set of samples according to their genotypes.
 
 [filterByNs.py](filterByNs.py) removes all sites that consists of more than a given amount of missing data (Ns).
