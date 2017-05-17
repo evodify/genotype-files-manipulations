@@ -112,7 +112,7 @@ with open(args.input) as datafile:
         if output_type == "separate":
           interval_count+=1
           output.close()
-          utput = open(args.output+str(interval_count), 'w')
+          output = open(args.output+str(interval_count), 'w')
           output.write("%s" % header)
         IntervalScaf = int(IntervalWords[0].split('_')[1])
         IntervalStart = int(IntervalWords[1])
