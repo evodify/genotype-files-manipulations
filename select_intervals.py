@@ -86,16 +86,12 @@ IntervalScaf = int(IntervalWords[0].split('_')[1])
 IntervalStart = int(IntervalWords[1])
 IntervalEnd = int(IntervalWords[2])
 
-if '.' not in args.output:
-  raise IOError('Output file extension is required. E.g. "output.tab"')
-output_name_words = args.output.split('.')
-output_extension = output_name_words.pop()
-output_name = output_name_words[-1]
 if output_type == "separate":
   interval_count = 0
 else:
   interval_count = ""
-output = open(output_name+"."+str(interval_count)+"."+output_extension, 'w')
+
+output = open(args.output+str(interval_count), 'w')
 
 counter = 0
 
@@ -116,7 +112,7 @@ with open(args.input) as datafile:
         if output_type == "separate":
           interval_count+=1
           output.close()
-          output = open(output_name+"."+str(interval_count)+"."+output_extension, 'w')
+          utput = open(args.output+str(interval_count), 'w')
           output.write("%s" % header)
         IntervalScaf = int(IntervalWords[0].split('_')[1])
         IntervalStart = int(IntervalWords[1])
