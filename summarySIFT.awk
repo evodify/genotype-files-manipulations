@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/awk
 
 # The categories are hard-coded. You may need to replace them.
 
