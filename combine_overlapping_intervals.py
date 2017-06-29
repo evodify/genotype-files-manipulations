@@ -50,13 +50,14 @@ args = parser.parse_args()
 
 if not args.overhang:
   overhang = 0
-else: 
+else:
   overhang = args.overhang
 
 output = open(args.output, 'w')
 
 counter = 0
 
+chromPrevious = "scaffold_1"
 startPrevious = 0
 endPrevious = 0
 
@@ -66,26 +67,31 @@ with open(args.input) as datafile:
 
   for line in datafile:
     words = line.split()
-    chrom = words[0]
+    chromNext = words[0]
     startNext = int(words[1])
     endNext = int(words[2])
 
-    if (startNext-overhang) <= (endPrevious+overhang):
+    if (startNext-overhang) <= (endPrevious+overhang) and (chromPrevious == chromNext):
       endPrevious = endNext
     elif startPrevious == 0:
       startPrevious = startNext
       endPrevious = endNext
+      chromPrevious = chromNext
     else:
-      output.write("%s\t%s\t%s\n" % (chrom, startPrevious-overhang, endPrevious+overhang))
+      if startPrevious < overhang:
+        output.write("%s\t%s\t%s\n" % (chromPrevious, startPrevious, endPrevious+overhang))
+      else:
+        output.write("%s\t%s\t%s\n" % (chromPrevious, startPrevious-overhang, endPrevious+overhang))
       startPrevious = startNext
       endPrevious = endNext
+      chromPrevious = chromNext
 
     counter += 1
     if counter % 1000000 == 0:
       print str(counter), "lines processed"
-      
-  output.write("%s\t%s\t%s\n" % (chrom, startPrevious, endPrevious))
-  
+
+  output.write("%s\t%s\t%s\n" % (chromPrevious, startPrevious, endPrevious))
+
 datafile.close()
 output.close()
 print('Done!')
