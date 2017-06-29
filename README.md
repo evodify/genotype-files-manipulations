@@ -65,8 +65,6 @@ chr_3   5   G   -   N   N   G   G   G   C   G
 
 [combine_overlapping_intervals.py](combine_overlapping_intervals.py) combines overlapping genetic intervals in the BED format.
 
-[countNs.awk](countNs.awk) counts number of genotypes and missing data (N) in every sample (column).
-
 [extractSIFT4Gannotation.py](extractSIFT4Gannotation.py) extracts the [SIFT4G annotation](http://sift.bii.a-star.edu.sg/sift4g/AnnotateVariants.html) for a given set of samples according to their genotypes.
 
 [filterByNs.py](filterByNs.py) removes all sites that consists of more than a given amount of missing data (Ns).
@@ -98,6 +96,8 @@ chr_3   5   G   -   N   N   G   G   G   C   G
 [selectSamples.py](selectSamples.py) subsamples a genotype calls file by sample names. It also can be used to rearrange samples in a calls file.
 
 [summarySIFT.awk](summarySIFT.awk) summarizes the extracted SIFT4G annotation (output of [extractSIFT4Gannotation.py](extractSIFT4Gannotation.py))
+
+[summarizeTAB.awk](summarizeTAB.awk) summirized the genotyope file by counting homozygot, heterozygot, missing etc.
 
 [vcf_to_SIFT4G.py](vcf_to_SIFT4G.py) converts a VCF file to SIFT4G input.
 
