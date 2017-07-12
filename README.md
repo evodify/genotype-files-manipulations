@@ -55,6 +55,8 @@ chr_3   5   G   -   N   N   G   G   G   C   G
 
 [FastaToPhylip.py](FastaToPhylip.py) converts FASTA to PHYLIP.
 
+[FastaToTab.py](FastaToTab.py)  converts FASTA to tab-delimited file with columns: Chr, Pos, REF.
+
 [assessNs.py](assessNs.py) calculates missing data (Ns) per position/sample and visualize the results.
 
 [calculateNsPerWindow.py](calculateNsPerWindow.py) calculates number of positions with missing data (Ns) using the sliding window approach.
