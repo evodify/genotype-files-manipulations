@@ -2,3 +2,4 @@
 *test*
 *.pyc
 *out*
+*.bed
