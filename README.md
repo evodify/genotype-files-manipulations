@@ -101,6 +101,10 @@ chr_3   5   G   -   N   N   G   G   G   C   G
 
 [selectSamples.py](selectSamples.py) subsamples a genotype calls file by sample names. It also can be used to rearrange samples in a calls file.
 
+[skip_intervals.py](skip_intervals.py) extracts lines from a calls file according to scaffold name, start and end positions.
+
+[slidingWindowSNPs.py](slidingWindowSNPs.py) cuts genotype calls file with the given window size and outputs FASTA files for every window.
+
 [summarySIFT.awk](summarySIFT.awk) summarizes the extracted SIFT4G annotation (output of [extractSIFT4Gannotation.py](extractSIFT4Gannotation.py))
 
 [summarizeTAB.awk](summarizeTAB.awk) summirized the genotyope file by counting homozygot, heterozygot, missing etc.
