@@ -23,7 +23,7 @@ scaffold_1  174 A   A   A   N
 
 #CHROM  POS Co_ancestor
 scaffold_1  113 G
-scaffold_1  117 T
+scaffold_1  117 N
 scaffold_1  122 C
 scaffold_1  137 A
 scaffold_1  139 T
@@ -35,7 +35,6 @@ scaffold_1  174 A
 # output:
 
 #CHROM  POS sample1 sample2 sample3 sample4
-scaffold_1  117 C   C   N   C
 scaffold_1  137 N   N   T   N
 scaffold_1  148 A   A   N   N
 scaffold_1  170 N   T   N   N
@@ -124,7 +123,7 @@ with open(args.input) as datafile:
       # select samples
       samples_gt = calls.selectSamples(sampCol, words)
       for i in range(len(samples_gt)):
-        if samples_gt[i] == ances_gt:  # replace ancestral alleles with Ns, keep derived
+        if samples_gt[i] == ances_gt or ances_gt == "N":  # replace ancestral alleles with Ns, keep derived, or skip if ancestral state is N.
           samples_gt[i] = 'N'
       if calls.all_missing(samples_gt): # skip all missing data lines
         continue
