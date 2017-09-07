@@ -71,9 +71,9 @@ with open(args.input) as datafile:
     startNext = int(words[1])
     endNext = int(words[2])
 
-    if (startNext-overhang) <= (endPrevious+overhang) and (chromPrevious == chromNext):
+    if (startNext-overhang) <= (endPrevious+overhang) and (chromPrevious == chromNext):  # if overlap in the interval
       endPrevious = endNext
-    elif startPrevious == 0:
+    elif startPrevious == endPrevious: # in case if the beginning is 0.
       startPrevious = startNext
       endPrevious = endNext
       chromPrevious = chromNext
