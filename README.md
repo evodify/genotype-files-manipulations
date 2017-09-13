@@ -63,6 +63,8 @@ chr_3   5   G   -   N   N   G   G   G   C   G
 
 [calls.py](calls.py) is a custom python module. It is a dependecy for the most of the scripts listed here.
 
+[calls_to_treeMix_input.py](calls_to_treeMix_input.py) outputs alleles counts file that is required as input for [TreeMix](https://bitbucket.org/nygcresearch/treemix/wiki/Home).
+
 [callsToFastaPhy.py](callsToFastaPhy.py) converts genotype calls file to FASTA and PHYLIP.
 
 [combine_overlapping_intervals.py](combine_overlapping_intervals.py) combines overlapping genetic intervals in the BED format.
