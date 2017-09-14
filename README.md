@@ -85,6 +85,8 @@ chr_3   5   G   -   N   N   G   G   G   C   G
 
 [make_input_stairway_plot_v2.py](make_input_stairway_plot_v2.py) makes an input file for [Stairway](https://sites.google.com/site/jpopgen/stairway-plot) version 2.
 
+[merge_SNP_wholeGenome_TabFiles.py](merge_SNP_wholeGenome_TabFiles.py) merges whole genome and SNPs tab files. This is needed because non-polymorphic sites and SNPs are filtered differently with [GATK](https://software.broadinstitute.org/gatk/documentation/tooldocs/current/org_broadinstitute_gatk_tools_walkers_filters_VariantFiltration.php).
+
 [mergeChrPos.py](mergeChrPos.py) merges all chromosomes into continious genomic coordinates.
 
 [mergeTabFiles.py](mergeTabFiles.py) merges two tab files by their overlapping positions.
