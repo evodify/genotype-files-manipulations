@@ -1,7 +1,7 @@
  
 #! /usr/bin/env python
 '''
-Transforms MAF to table format. All gaps will be skipped
+Transforms the MAF file to tab file. All gaps will be skipped
 
 # input:
 
