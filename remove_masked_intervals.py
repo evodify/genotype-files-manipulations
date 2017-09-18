@@ -49,7 +49,7 @@ parser.add_argument('-m', '--masked_intervals', help = 'file containing list of 
 parser.add_argument('-f', '--filter', help = 'allowed proportion of masked sites', type=float, required=False)
 args = parser.parse_args()
 
-if args.filter == []: # if filter is not specified, skip all overlaps
+if args.filter == None: # if filter is not specified, skip all overlaps
   filter = 0.0
 elif  args.filter >= 0.0 and args.filter <= 1.0:
   filter = args.filter
