@@ -26,28 +26,27 @@ chr_4   2   G   -   N   N   G   G   G   C   G
 
 # output:
 
-CHROM   POS REF_1   REF_2   sample1_1   sample1_2   sample2_1   sample2_2   sample3_1   sample3_2   sample4_1   sample4_2   sample5_1   sample5_2   sample6_1   sample6_2   sample7_1   sample7_2   sample8_1   sample8_2 
-chr_1   1   A   A   A   T   N   N   N   N   A   A   N   N   N   N   N   N   N   N
-chr_1   2   C   C   C   T   T   C   N   N   C   C   C   C   N   N   C   C   N   N
-chr_1   3   C   C   N   N   -   -   N   N   C   C   C   C   C   C   C   C   C   C
-chr_1   4   T   T   T   T   T   T   N   N   T   T   T   T   T   T   T   T   T   T
-chr_1   6   C   C   N   N   C   C   N   N   C   C   C   C   C   C   C   C   C   C
-chr_2   1   A   A   A   A   A   A   N   N   A   A   A   A   A   A   A   A   A   A
-chr_2   2   C   C   C   C   C   C   N   N   C   C   C   C   C   C   C   C   C   C
-chr_2   3   C   C   N   N   N   N   N   N   N   N   N   N   N   N   N   N   N   N
-chr_2   4   C   C   C   C   T   T   C   C   C   C   C   C   C   C   C   C   C   C
-chr_2   5   T   T   T   T   C   C   T   T   T   C   T   T   C   T   T   T   T   T
-chr_3   1   G   G   G   G   N   N   N   N   G   G   N   N   N   N   N   N   N   N
-chr_3   2   C   C   C   G   C   C   N   N   C   C   C   C   N   N   C   C   N   N
-chr_3   3   N   N   N   N   N   N   N   N   N   N   N   N   N   N   N   N   N   N
-chr_3   4   N   N   T   T   T   T   N   N   T   T   T   T   T   T   T   T   N   N
-chr_3   5   G   G   -   -   N   N   N   N   G   G   G   G   G   G   C   C   G   G
-chr_4   1   G   G   -   -   N   N   N   N   G   G   G   G   G   G   C   C   G   G
-chr_4   2   G   G   -   -   N   N   N   N   G   G   G   G   G   G   C   C   G   G
-
+CHROM   POS sample2_1   sample2_2   sample7_1   sample7_2 
+chr_1   1   N   N   N   N
+chr_1   2   T   C   C   C
+chr_1   3   -   -   C   C
+chr_1   4   T   T   T   T
+chr_1   6   C   C   C   C
+chr_2   1   A   A   A   A
+chr_2   2   C   C   C   C
+chr_2   3   N   N   N   N
+chr_2   4   T   T   C   C
+chr_2   5   C   C   T   T
+chr_3   1   N   N   N   N
+chr_3   2   C   C   C   C
+chr_3   3   N   N   N   N
+chr_3   4   T   T   T   T
+chr_3   5   N   N   C   C
+chr_4   1   N   N   C   C
+chr_4   2   N   N   C   C
 # command:
 
-$ python pseudoPhasingHetero.py -i inputfile -o outputfile
+$ python pseudoPhasingHetero.py -i inputfile -o outputfile -s "sample2,sample7"
 
 # contact:
 
@@ -64,7 +63,11 @@ import calls # my custom module
 parser = calls.MyParser()
 parser.add_argument('-i', '--input', help = 'name of the input file', type=str, required=True)
 parser.add_argument('-o', '--output', help = 'name of the output file', type=str, required=True)
+parser.add_argument('-s', '--samples', help = 'column names of the samples to process (optional)', type=str, required=False)
 args = parser.parse_args()
+
+# check if samples names are given and if all sample names are present in a header
+sampleNames = calls.checkSampleNames(args.samples, args.input)
 
 ############################# program #############################
 
@@ -76,27 +79,34 @@ print('Opening the file...\n')
 with open(args.input) as datafile:
   header_words = datafile.readline().split()
 
-  attrib = header_words[0:2]
-  colbeg = '\t'.join(str(e) for e in attrib)
+  ChrPos = header_words[0:2]
+  ChrPosP = '\t'.join(str(e) for e in ChrPos)
+
+  # index samples
+  sampCol = calls.indexSamples(sampleNames, header_words)
+
+  # create lists for output
+  sampColnames = calls.selectSamples(sampCol, header_words)
 
   # create slitted column names
-  ids = header_words[2:]
   idsheader = []
-  for i in ids:
+  for i in sampColnames:
     idsheader.append("%s_1\t%s_2 " % (i, i))
   header = '\t'.join(str(e) for e in idsheader)
 
   print('Creating the output file...\n')
   outname = '%s' % args.output
   outfile = open(outname, 'w')
-  outfile.write('%s\t%s\n' % (colbeg, header))  
+  outfile.write('%s\t%s\n' % (ChrPosP, header))  
 
   print('Randomizing alleles in heterozygous genotypes ...\n')
 
   for line in datafile:
     words = line.split()
     chr_pos = words[0:2]
-    alleles = words[2:]
+
+    # create lists for output
+    alleles = calls.selectSamples(sampCol, words)
 
     # check if all genotypes are correct
     calls.if_all_gt_correct(alleles, line)
