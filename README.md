@@ -81,6 +81,8 @@ chr_3   5   G   -   N   N   G   G   G   C   G
 
 [makeSweepFinderInput.py](makeSweepFinderInput.py) makes an input file for [SweepFinder](http://people.binf.ku.dk/rasmus/webpage/sf.html).
 
+[mask_tab.py](mask_tab.py) removes the masked sites from a tab file. The masked sites are provided in a BED file.
+
 [make_input_stairway_plot_v1_BS.py](make_input_stairway_plot_v1_BS.py) makes input files including bootstrap replicates for [Stairway](https://sites.google.com/site/jpopgen/stairway-plot) version 1.
 
 [make_input_stairway_plot_v2.py](make_input_stairway_plot_v2.py) makes an input file for [Stairway](https://sites.google.com/site/jpopgen/stairway-plot) version 2.
