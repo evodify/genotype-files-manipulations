@@ -115,7 +115,7 @@ with open(args.input) as datafile:
   for line in datafile:
     words = line.split()
     CHR = words[0]
-    POS = words[1]
+    POS = int(words[1])
 
     # find chromosome border
     if CHRprev != CHR:
@@ -141,7 +141,7 @@ with open(args.input) as datafile:
         print windows_count, "windows processed"
       # filter for missing data
       if all(i <= allowedN for i in genN):
-        Midpos = POS- int(windows_size/2)
+        Midpos = POS - int(windows_size/2)
         CHR = CHR
         outputNames.write('%s\t%s\n' % (CHR , Midpos))
         output = open(args.output+str(windows_count)+'.fasta', 'w') 
