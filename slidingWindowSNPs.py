@@ -114,14 +114,16 @@ with open(args.input) as datafile:
 
   for line in datafile:
     words = line.split()
+    CHR = words[0]
+    POS = words[1]
 
     # find chromosome border
-    if CHRprev != words[0]:
+    if CHRprev != CHR:
       genotype = []
       gend = defaultdict(list)
       windows_size = 0
       genN = [0]*len(sampleNames)
-    CHRprev = words[0]
+    CHRprev = CHR
     windows_size += 1
 
     # append genotypes to samples dict
@@ -139,8 +141,8 @@ with open(args.input) as datafile:
         print windows_count, "windows processed"
       # filter for missing data
       if all(i <= allowedN for i in genN):
-        Midpos = int(words[1])- int(windows_size/2)
-        CHR = words[0]
+        Midpos = POS- int(windows_size/2)
+        CHR = CHR
         outputNames.write('%s\t%s\n' % (CHR , Midpos))
         output = open(args.output+str(windows_count)+'.fasta', 'w') 
         for k, val in gend.iteritems():
@@ -151,11 +153,7 @@ with open(args.input) as datafile:
       gend = defaultdict(list)
       windows_size = 0
       genN = [0]*len(sampleNames)
-    
 
-    
-    
-      
 # write last window if it meets the criteria
 if windows_size >= args.window:
   windows_count += 1
