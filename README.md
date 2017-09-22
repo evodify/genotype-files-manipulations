@@ -99,6 +99,8 @@ chr_3   5   G   -   N   N   G   G   G   C   G
 
 [MAFtoTAB.py](MAFtoTAB.py) transforms the [MAF](https://genome.ucsc.edu/FAQ/FAQformat.html#format5) file to tab file
 
+[remove_Isertions.py](remove_Isertions.py) removes insertions of longer than 1 bp and replaces deletions of 1 bp marked as "*" with "-".
+
 [remove_masked_intervals.py](remove_masked_intervals.py) compares a BED interval file with the BED file of masked regions and removes them.
 
 [removeMonomorphic.py](removeMonomorphic.py) removes monomorphic positions, i.e. keeps only SNPs.
