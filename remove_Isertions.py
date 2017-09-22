@@ -15,7 +15,7 @@ chr_1   3   C   N   *
 CHROM   POS REF sample1 sample2 sample3
 chr_1   1   A   G   N
 chr_1   2   N   A   C
-chr_1   3   C   N   *
+chr_1   3   C   N   -
 
 
 # command:
@@ -61,6 +61,8 @@ with open(args.input) as datafile:
     for i in range(0,len(GT)):
       if len(GT[i])!= 1:
         GT[i] = "N"
+      elif GT[i]=="*":
+        GT[i] = "-"
     ChrPosP = '\t'.join(str(e) for e in ChrPos)
     GTP = '\t'.join(str(e) for e in GT)
 
