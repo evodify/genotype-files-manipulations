@@ -49,7 +49,7 @@ import calls # my custom module
 
 ############################# options #############################
 
-parser = calls.MyParser()
+parser = calls.CommandLineParser()
 parser.add_argument('-i', '--input', help = 'name of the input BED file', type=str, required=True)
 parser.add_argument('-o', '--output', help = 'name of the output file', type=str, required=True)
 parser.add_argument('-m', '--masked_intervals', help = 'file containing list of coordinates of masked regions in the BED format', type=str, required=True)

@@ -81,7 +81,7 @@ import calls # my custom module
 ############################# options #############################
 
 
-parser = calls.MyParser()
+parser = calls.CommandLineParser()
 parser.add_argument('-r', '--reference_input', help = 'name of the reference input file', type=str, required=True)
 parser.add_argument('-i', '--large_input', help = 'name of the file to merge', type=str, required=True)
 parser.add_argument('-o', '--output', help = 'name of the output file', type=str, required=True)

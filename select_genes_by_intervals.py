@@ -28,7 +28,7 @@ import calls # my custom module
 
 ############################# options #############################
 
-parser = calls.MyParser()
+parser = calls.CommandLineParser()
 parser.add_argument('-i', '--interval_file', help = 'name of the file with genome intervals', type=str, required=True)
 parser.add_argument('-o', '--output', help = 'name of the output file', type=str, required=True)
 parser.add_argument('-b', '--bed_file', help = 'file containing list of genes with scaffolds and position information', type=str, required=True)

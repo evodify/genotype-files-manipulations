@@ -64,7 +64,7 @@ import random
 
 ############################# options #############################
 
-parser = calls.MyParser()
+parser = calls.CommandLineParser()
 parser.add_argument('-i', '--input', help = 'name of the input file', type=str, required=True)
 parser.add_argument('-a', '--ancestor', help = 'name of the outgroup/ancestral sequence file', type=str, required=True)
 parser.add_argument('-f', '--fai', help = 'name of the fasta.fai file', type=str, required=True)

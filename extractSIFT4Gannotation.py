@@ -47,7 +47,7 @@ import calls # my custom module
 
 ############################# options #############################
 
-parser = calls.MyParser()
+parser = calls.CommandLineParser()
 parser.add_argument('-a', '--annotation', help = 'name of the SIFT annotation file', type=str, required=True)
 parser.add_argument('-t', '--tab', help = 'tab delimited genotype file', type=str, required=True)
 parser.add_argument('-o', '--output', help = 'name of the output file', type=str, required=True)

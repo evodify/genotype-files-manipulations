@@ -48,7 +48,7 @@ import calls # my custom module
 ############################# options #############################
 
 
-parser = calls.MyParser()
+parser = calls.CommandLineParser()
 parser.add_argument('-g', '--whole_genome_input', help = 'name of the whole genome input file', type=str, required=True)
 parser.add_argument('-s', '--SNPs_input', help = 'name of the SNPs file', type=str, required=True)
 parser.add_argument('-o', '--output', help = 'name of the output file', type=str, required=True)

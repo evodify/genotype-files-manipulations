@@ -56,7 +56,7 @@ import calls # my custom module
 ############################# options #############################
 
 
-parser = calls.MyParser()
+parser = calls.CommandLineParser()
 parser.add_argument('-i', '--input', help = 'name of the reference input file', type=str, required=True)
 parser.add_argument('-a', '--ancestral', help = 'name of the outgroup/ancestral sequence file', type=str, required=True)
 parser.add_argument('-o', '--output', help = 'name of the output file', type=str, required=True)
