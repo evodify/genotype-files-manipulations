@@ -89,7 +89,7 @@ chr_3   5   G   -   N   N   G   G   G   C   G
 
 [merge_SNP_wholeGenome_TabFiles.py](merge_SNP_wholeGenome_TabFiles.py) merges whole genome and SNPs tab files. This is needed because non-polymorphic sites and SNPs are filtered differently with [GATK](https://software.broadinstitute.org/gatk/documentation/tooldocs/current/org_broadinstitute_gatk_tools_walkers_filters_VariantFiltration.php).
 
-[mergeChrPos.py](mergeChrPos.py) merges all chromosomes into continious genomic coordinates.
+[mergeChrPos.py](mergeChrPos.py) merges all chromosomes into continuous genomic coordinates.
 
 [mergeTabFiles.py](mergeTabFiles.py) merges two tab files by their overlapping positions.
 

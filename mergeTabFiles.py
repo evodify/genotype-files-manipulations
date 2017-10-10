@@ -2,7 +2,7 @@
 
 """
 This script merges two tab files by the overlapping positions.
-All the positions of the input2 file that do not exist in the reference input will not be output. While position that exist in the reference but do not exist in the input2 will be represented by Ns.
+All the positions of the input2 file that do not exist in the reference input will not be output. While positions that exist in the reference but do not exist in the input2 will be represented by Ns.
 
 Note! Chromosome number in the first column must be separated by _.
 For example, chr_1 - correct, chr1 - incorrect.
