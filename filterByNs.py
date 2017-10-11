@@ -39,7 +39,7 @@ import calls # my custom module
 parser = calls.CommandLineParser()
 parser.add_argument('-i', '--input', help = 'name of the input file', type=str, required=True)
 parser.add_argument('-o', '--output', help = 'name of the output file', type=str, required=True)
-parser.add_argument('-m', '--missing', help = 'missing data threshold to remove sites', type=int, required=True)
+parser.add_argument('-m', '--missing', help = 'number of allowed missing genotypes per position', type=int, required=True)
 parser.add_argument('-s', '--samples', help = 'column names of the samples to process (optional)', type=str, required=False)
 args = parser.parse_args()
 
