@@ -1,7 +1,7 @@
 #!/usr/bin/python2
 
 """
-This script calculates missing data (Ns) per position
+This script calculates missing data (Ns) per position/sample and visualize the results.
 
 # input:
 
