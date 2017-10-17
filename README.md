@@ -63,6 +63,8 @@ chr_3   5   G   -   N   N   G   G   G   C   G
 
 [calls.py](calls.py) is a custom python module. It is a dependecy for the most of the scripts listed here.
 
+[calls_to_ped_map.py](calls_to_ped_map.py) converts genotype calls file to ped and map files suitable for [PLINK](http://zzz.bwh.harvard.edu/plink/).
+
 [calls_to_treeMix_input.py](calls_to_treeMix_input.py) outputs alleles counts file that is required as input for [TreeMix](https://bitbucket.org/nygcresearch/treemix/wiki/Home).
 
 [callsToFastaPhy.py](callsToFastaPhy.py) converts genotype calls file to FASTA and PHYLIP.
