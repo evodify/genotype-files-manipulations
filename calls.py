@@ -203,7 +203,7 @@ def processWindow(Chr, FirstPos, LastPos, WindowVal, outputFile):
   outputFile.write("%s\t%s\t%s\n" % (Chr, posP, WindowVal))
 
 
-def pseufoPhase(gt):
+def pseudoPhase(gt):
   ''' Randomly splits heterozygouts '''
   # heterozygouts:
   ambR = ['A\tG', 'G\tA']
@@ -212,6 +212,10 @@ def pseufoPhase(gt):
   ambK = ['G\tT', 'T\tG']
   ambS = ['G\tC', 'C\tG']
   ambW = ['A\tT', 'T\tA']
+  delA = ['A\t-', '-\tA']
+  delT = ['T\t-', '-\tT']
+  delG = ['G\t-', '-\tG']
+  delC = ['C\t-', '-\tC']
   phasedAlles = []
   for i in gt:
     if i == 'N':
@@ -224,19 +228,29 @@ def pseufoPhase(gt):
       i = 'C\tC'
     elif i == 'T':
       i = 'T\tT'
-    elif i == '-' or i == '*':
+    elif i == '-' or i == '*' or i == "*/*":
       i = '-\t-'
-    elif i == 'R':
+    elif i == 'R' or i == 'A/G' or i == 'G/A':
       i = random.choice(ambR)
-    elif i == 'Y':
+    elif i == 'Y' or i == 'T/C' or i == 'C/T':
       i = random.choice(ambY)
-    elif i == 'M':
+    elif i == 'M' or i == 'A/C' or i == 'C/A':
       i = random.choice(ambM)
-    elif i == 'K':
+    elif i == 'K' or i == 'G/T' or i == 'T/G':
       i = random.choice(ambK)
-    elif i == 'S':
+    elif i == 'S' or i == 'G/C' or i == 'C/G':
       i = random.choice(ambS)
-    elif i == 'W':
+    elif i == 'W' or i == 'A/T' or i == 'T/A':
       i = random.choice(ambW)
+    elif i == 'A/*' or i == '*/A':
+      i = random.choice(delA)
+    elif i == 'T/*' or i == '*/T':
+      i = rTndom.choice(delT)
+    elif i == 'G/*' or i == '*/G':
+      i = rGndom.choice(delG)
+    elif i == 'C/*' or i == '*/C':
+      i = rCndom.choice(delC)
+    else:
+      i = 'N\tN'
     phasedAlles.append(i)
   return phasedAlles
