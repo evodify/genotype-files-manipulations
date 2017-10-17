@@ -112,7 +112,7 @@ with open(args.input) as datafile:
     calls.if_all_gt_correct(alleles, line)
 
     # phase
-    assignAlles = calls.pseufoPhase(alleles)
+    assignAlles = calls.pseudoPhase(alleles)
  
     chromPosP = '\t'.join(str(e) for e in chr_pos)
     assignAllesP = '\t'.join(str(e) for e in assignAlles)

@@ -36,7 +36,7 @@ from  collections import Counter
 parser = calls.CommandLineParser()
 parser.add_argument('-i', '--input', help = 'name of the input file', type=str, required=True)
 parser.add_argument('-o', '--output', help = 'name of the output file', type=str, required=True)
-parser.add_argument('-p', '--pop', help = 'Specify the populations in the format "pop1[sample1,sample2,];pop2[sample5,sample6]"', type=str, required=True)
+parser.add_argument('-p', '--pop', help = 'Specify the populations in the format "pop1[sample1,sample2];pop2[sample5,sample6]"', type=str, required=True)
 #parser.add_argument('-p', '--parental', help = 'Specify a parental groups', type=str, required=True)
 
 args = parser.parse_args()
