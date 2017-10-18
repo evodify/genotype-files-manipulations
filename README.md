@@ -67,6 +67,8 @@ chr_3   5   G   -   N   N   G   G   G   C   G
 
 [calls_to_treeMix_input.py](calls_to_treeMix_input.py) outputs alleles counts file that is required as input for [TreeMix](https://bitbucket.org/nygcresearch/treemix/wiki/Home).
 
+[callsToBED.py](callsToBED.py) converts a tab-delimited file to a bed file.
+
 [callsToFastaPhy.py](callsToFastaPhy.py) converts genotype calls file to FASTA and PHYLIP.
 
 [combine_overlapping_intervals.py](combine_overlapping_intervals.py) combines overlapping genetic intervals in the BED format.
@@ -75,7 +77,7 @@ chr_3   5   G   -   N   N   G   G   G   C   G
 
 [filterByNs.py](filterByNs.py) removes all sites that consists of more than a given amount of missing data (Ns).
 
-[find_popSpesificAlleles.py](find_popSpesificAlleles.py) outputs only unique allele of one population relative to another.
+[find_popSpecificAlleles.py](find_popSpecificAlleles.py) outputs only unique allele of one population relative to another.
 
 [keep_biallelic.py](keep_biallelic.py) removes sites with more than two alleles.
 
@@ -120,8 +122,6 @@ chr_3   5   G   -   N   N   G   G   G   C   G
 [summarySIFT.awk](summarySIFT.awk) summarizes the extracted SIFT4G annotation (output of [extractSIFT4Gannotation.py](extractSIFT4Gannotation.py))
 
 [summarizeTAB.awk](summarizeTAB.awk) summirized the genotyope file by counting homozygot, heterozygot, missing etc.
-
-[tabToBED.py](tabToBED.py) converts a tab-delimited file to a bed file.
 
 [vcf_to_SIFT4G.py](vcf_to_SIFT4G.py) converts a VCF file to SIFT4G input.
 
