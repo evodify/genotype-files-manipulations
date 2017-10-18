@@ -63,6 +63,48 @@ class CommandLineParser(argparse.ArgumentParser):
       self.print_help()
       sys.exit(2)
 
+class callsParser(object):
+  """ Parse calls table with genotypes to an object to access chromosomes/positions/sequences easily"""
+  def __init__(self, filename, samples):
+    self.filename = filename
+    self.samples = samples
+    self.names = []
+    self.chrmosomes = []
+    self.positions = []
+
+    # read file
+    callsFile = open(self.filename, 'r')
+
+    # save samples' names
+    header_line = callsFile.readline().split()
+    indexS = indexSamples(self.samples, header_line)
+    self.names = selectSamples(indexS, header_line)
+
+    # make sequence list
+    self.sequences = [ [] for i in range(len(self.names)) ]
+     
+    # append sequences
+    for line in callsFile:
+      words = line.split()
+      self.chrmosomes.append(int(words[0].split('_')[1]))
+      self.positions.append(words[1])
+      GT = selectSamples(indexS, words)
+      for i in range(len(self.sequences)):
+        self.sequences[i].append(GT[i])
+    callsFile.close()
+
+  def __getitem__(self, i):
+    """ Enables iteration through chromosomes/positions/sequences by index and sample names"""
+    if isinstance(i, int):  # if index
+      if i > len(self.names) or i < 0:
+        raise IndexError("Index is out of range")
+      return self.sequences[i]
+    else:   # if name
+      if i not in self.names:
+        raise KeyError("No sequence with name %s", i)
+      seqIndex = self.names.index(i)
+      return self.sequences[seqIndex]
+
 ############################# functions ###########################
 
 def all_missing(genotypes):
