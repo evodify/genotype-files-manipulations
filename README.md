@@ -69,7 +69,9 @@ chr_3   5   G   -   N   N   G   G   G   C   G
 
 [callsToBED.py](callsToBED.py) converts a tab-delimited file to a bed file.
 
-[callsToFastaPhy.py](callsToFastaPhy.py) converts genotype calls file to FASTA and PHYLIP.
+[callsToFastaPhy_RAM.py](callsToFastaPhy_RAM.py) converts genotype calls file to FASTA and PHYLIP with little RAM consumption.
+
+[callsToFastaPhy_speed.py](callsToFastaPhy_speed.py) converts genotype calls file to FASTA and PHYLIP fast but consumes a lot of RAM.
 
 [combine_overlapping_intervals.py](combine_overlapping_intervals.py) combines overlapping genetic intervals in the BED format.
 
