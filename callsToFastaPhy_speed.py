@@ -1,7 +1,7 @@
 #!/usr/bin/python2
 
 """
-This script converts genotype calls file to FASTA and PHYLIP.
+This script converts genotype calls file to FASTA and PHYLIP fast but consumes a lot of RAM. To convert calls to fasta/phy with low RAM consumption use callsToFastaPhy_RAM.py
 
 # input file:
 
@@ -57,7 +57,7 @@ sample8 NNCTCACNCTNNNNGGG
 
 # command:
 
-$ python2 callsToFastaPhy.py -i input.tab -o output -s "sample1,sample2,sample3,sample4,sample5,sample6,sample7,sample8"
+$ python2 callsToFastaPhy_speed.py -i input.tab -o output -s "sample1,sample2,sample3,sample4,sample5,sample6,sample7,sample8"
 
 # contact:
 
@@ -73,63 +73,66 @@ import calls # my custom module
 
 parser = calls.CommandLineParser()
 parser.add_argument('-i', '--input', help = 'name of the input file', type=str, required=True)
-parser.add_argument('-o', '--output', help = 'name of the output file', type=str, required=True)
+parser.add_argument('-f', '--fasta', help = 'name of the fasta output file', type=str, required=False)
+parser.add_argument('-p', '--phylip', help = 'name of the phylip output file', type=str, required=False)
 parser.add_argument('-s', '--samples', help = 'column names of the samples to process (optional)', type=str, required=False)
 args = parser.parse_args()
+
+# check if any option was specified:
+if not (args.fasta or args.phylip):
+  raise IOError('Either -f or -p options need to be specified.')
 
 # check if samples names are given and if all sample names are present in a header
 sampleNames = calls.checkSampleNames(args.samples, args.input)
 
 ############################# program #############################
 
-# count number of samples and positions for .phy header
-NumberPos = calls.countPositions(args.input)
-NumberSamp = len(sampleNames)
+callsDF = calls.callsParser(args.input, sampleNames)
 
-outputFasta = open(args.output+'.fasta', 'w')
-outputPhy = open(args.output+'.phy', 'w')
+if args.fasta and args.phylip:
+  outputFasta = open(args.fasta, 'w')
+  outputPhy = open(args.phylip, 'w')
 
-# make .phy header 
-outputPhy.write(' %s %s\n' % (NumberSamp, NumberPos))
-
-# process one sample per time to reduce RAM usage
-for sample in sampleNames:
+  NumberPos = len(callsDF.positions)
+  NumberSamp = len(sampleNames)
+  outputPhy.write(' %s %s\n' % (NumberSamp, NumberPos)) # make .phy header
 
   # write sample name into file
-  outputFasta.write(">%s\n" % sample)
-  outputPhy.write("%s  " % sample)
+  for s in callsDF.names:
+    outputFasta.write(">%s\n" % s)
+    outputPhy.write("%s  " % s)
+    
+    seqCh = calls.chunks(callsDF[s], 100) # split sequence in multi-line fasta
+    for c in seqCh:  # write sequence chunks
+      cP = ''.join(str(i) for i in c)
+      outputFasta.write("%s\n" % cP)
+      outputPhy.write(cP)
+    outputPhy.write("\n")
+  
+  outputFasta.close()
+  outputPhy.close()
+  
+elif args.fasta:
+  outputFasta = open(args.fasta, 'w')
+  for s in callsDF.names:
+    outputFasta.write(">%s\n" % s) # write sample name into file
+    
+    seqCh = calls.chunks(callsDF[s], 100) # split sequence in multi-line fasta
+    for c in seqCh: # write sequence chunks
+      cP = ''.join(str(i) for i in c)
+      outputFasta.write("%s\n" % cP)
+      
+  outputFasta.close()
+  
+elif args.phylip:
+  outputPhy = open(args.phylip, 'w')
+  NumberPos = len(callsDF.positions)
+  NumberSamp = len(sampleNames)
+  outputPhy.write(' %s %s\n' % (NumberSamp, NumberPos))  # make .phy header
+  
+  for s in callsDF.names:
+    outputPhy.write("%s  " % s)
+    seqP = ''.join(str(i) for i in callsDF[s])
+    outputPhy.write("%s\n" % seqP)
 
-  fastaLim = 0 # counter to split sequence in multi-line fasta
-
-  with open(args.input) as datafile:
-    header_words = datafile.readline().split()
-
-    # index a sample
-    sampCol = calls.indexSamples([sample], header_words)
-
-    for line in datafile:
-      words = line.split()
-
-      genotype = calls.selectSamples(sampCol, words)
-
-      # output only single nucleotide genotypes, insertions are replaced with N.
-      if len(genotype) == 1:
-        outputFasta.write(genotype[0])
-        outputPhy.write(genotype[0])
-      else:
-        outputFasta.write('N')
-        outputPhy.write('N')
-
-      # to split sequence in multi-line fasta
-      fastaLim += 1
-      if fastaLim == 100:
-        outputFasta.write("\n")
-        fastaLim = 0
-
-  outputFasta.write("\n")
-  outputPhy.write("\n")
-  print sample, 'processed'
-
-datafile.close()
-outputFasta.close()
-outputPhy.close()
+  outputPhy.close()
