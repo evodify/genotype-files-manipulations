@@ -89,7 +89,7 @@ with open(args.input) as datafile:
 
     # skip if masked
     if inScaff == maskScaf and maskStart <= inPos and inPos <= maskEnd:
-      continue
+      pass
     else:
       output.write(line)
 
