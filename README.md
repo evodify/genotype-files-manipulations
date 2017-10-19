@@ -10,7 +10,7 @@ Most of these scripts require the custom python module `calls`, so make sure tha
 
 Examples of a tab-delimited genotype calls file (hereafter, tab file).
 
-Two-character coded table (e.g. produced with [VariantsToTable](https://software.broadinstitute.org/gatk/gatkdocs/org_broadinstitute_gatk_tools_walkers_variantutils_VariantsToTable.php) from the GATK) :
+Two-character coded table (e.g. produced with [VariantsToTable](https://software.broadinstitute.org/gatk/documentation/tooldocs/current/org_broadinstitute_gatk_tools_walkers_variantutils_VariantsToTable.php) from the GATK) :
 
 ```
 CHROM   POS REF sample1 sample2 sample3 sample4 sample5 sample6 sample7 sample8
@@ -77,7 +77,7 @@ chr_3   5   G   -   N   N   G   G   G   C   G
 
 [FastaToTab.py](FastaToTab.py)  converts FASTA to tab-delimited file with columns: Chr, Pos, REF.
 
-[filterByNs.py](filterByNs.py) removes all sites that consists of more than a given amount of missing data (Ns).
+[filterByNs_callsTab.py](filterByNs_callsTab.py) removes all sites that consists of more than a given amount of missing data (Ns).
 
 [find_popSpecificAlleles_in_callsTab.py](find_popSpecificAlleles_in_callsTab.py) outputs only unique allele of one population relative to another.
 
