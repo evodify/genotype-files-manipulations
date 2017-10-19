@@ -3,5 +3,5 @@
 *.pyc
 *out*
 *.bed
-.tab
+*.tab
 
