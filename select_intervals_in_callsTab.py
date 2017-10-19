@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 '''
 This script extracts lines from a calls file according to scaffold name, start and end positions.
-Every interval is output as an separate file.
+Every interval can be output into an separate file (see the option -t).
 
 calls.file:
 
@@ -25,7 +25,7 @@ scaffold_2  111 C   C   C   T
 scaffold_2  140 C   T   C   N
 scaffold_2  178 A   A   A   N 
 
-list.file:
+list.bed:
 
 #CHROM  start end
 scaffold_1 130  150
@@ -49,7 +49,7 @@ scaffold_2  38 A   A   T   T
 
 command:
 
-python select_intervals.py -i calls.file -l list.file -o output.file
+python select_intervals.py -i calls.file -l list.bed -o output.file -t separate
 
 
 contact:
