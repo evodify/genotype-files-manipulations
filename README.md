@@ -53,15 +53,11 @@ chr_3   5   G   -   N   N   G   G   G   C   G
 
 ##
 
-[FastaToPhylip.py](FastaToPhylip.py) converts FASTA to PHYLIP.
-
-[FastaToTab.py](FastaToTab.py)  converts FASTA to tab-delimited file with columns: Chr, Pos, REF.
-
-[assessNs.py](assessNs.py) calculates missing data (Ns) per position/sample and visualize the results.
+[assessNs_in_callsTab.py](assessNs_in_callsTab.py) calculates missing data (Ns) per position/sample and visualize the results.
 
 [calculateNsPerWindow.py](calculateNsPerWindow.py) calculates number of positions with missing data (Ns) using the sliding window approach.
 
-[calls.py](calls.py) is a custom python module. It is a dependecy for the most of the scripts listed here.
+[calls.py](calls.py) is a custom python module. It is a dependency for the most of the scripts listed here.
 
 [calls_to_ped_map.py](calls_to_ped_map.py) converts genotype calls file to ped and map files suitable for [PLINK](http://zzz.bwh.harvard.edu/plink/).
 
@@ -73,21 +69,23 @@ chr_3   5   G   -   N   N   G   G   G   C   G
 
 [callsToFastaPhy_speed.py](callsToFastaPhy_speed.py) converts genotype calls file to FASTA and PHYLIP fast but consumes a lot of RAM.
 
-[combine_overlapping_intervals.py](combine_overlapping_intervals.py) combines overlapping genetic intervals in the BED format.
+[combine_overlapping_BEDintervals.py](combine_overlapping_BEDintervals.py) combines overlapping genetic intervals in the BED format.
 
 [extractSIFT4Gannotation.py](extractSIFT4Gannotation.py) extracts the [SIFT4G annotation](http://sift.bii.a-star.edu.sg/sift4g/AnnotateVariants.html) for a given set of samples according to their genotypes.
 
+[FastaToPhylip.py](FastaToPhylip.py) converts FASTA to PHYLIP.
+
+[FastaToTab.py](FastaToTab.py)  converts FASTA to tab-delimited file with columns: Chr, Pos, REF.
+
 [filterByNs.py](filterByNs.py) removes all sites that consists of more than a given amount of missing data (Ns).
 
-[find_popSpecificAlleles.py](find_popSpecificAlleles.py) outputs only unique allele of one population relative to another.
+[find_popSpecificAlleles_in_callsTab.py](find_popSpecificAlleles_in_callsTab.py) outputs only unique allele of one population relative to another.
 
-[keep_biallelic.py](keep_biallelic.py) removes sites with more than two alleles.
+[keep_biallelic_in_callsTab.py](keep_biallelic_in_callsTab.py) removes sites with more than two alleles.
 
-[make_input_MSMC.py](make_input_MSMC.py) makes input for [MSMC](https://github.com/stschiff/msmc).
+[make_input_MSMC_from_callsTab.py](make_input_MSMC_from_callsTab.py) makes input for [MSMC](https://github.com/stschiff/msmc).
 
-[makeSweepFinderInput.py](makeSweepFinderInput.py) makes an input file for [SweepFinder](http://people.binf.ku.dk/rasmus/webpage/sf.html).
-
-[mask_tab.py](mask_tab.py) removes the masked sites from a tab file. The masked sites are provided in a BED file.
+[makeSweepFinderInput_from_callsTab.py](makeSweepFinderInput_from_callsTab.py) makes an input file for [SweepFinder](http://people.binf.ku.dk/rasmus/webpage/sf.html).
 
 [make_input_stairway_plot_v1_BS.py](make_input_stairway_plot_v1_BS.py) makes input files including bootstrap replicates for [Stairway](https://sites.google.com/site/jpopgen/stairway-plot) version 1.
 
@@ -95,35 +93,35 @@ chr_3   5   G   -   N   N   G   G   G   C   G
 
 [merge_SNP_wholeGenome_TabFiles.py](merge_SNP_wholeGenome_TabFiles.py) merges whole genome and SNPs tab files. This is needed because non-polymorphic sites and SNPs are filtered differently with [GATK](https://software.broadinstitute.org/gatk/documentation/tooldocs/current/org_broadinstitute_gatk_tools_walkers_filters_VariantFiltration.php).
 
-[mergeChrPos.py](mergeChrPos.py) merges all chromosomes into continuous genomic coordinates.
+[mergeChrPos_in_callsTab.py](mergeChrPos_in_callsTab.py) merges all chromosomes into continuous genomic coordinates.
 
 [mergeTabFiles.py](mergeTabFiles.py) merges two tab files by their overlapping positions.
 
-[polarizeGT.py](polarizeGT.py) polarizes the genotype data by keeping only derived alleles relative to an outgroup/ancestral sequence.
+[polarizeGT_in_callsTab.py](polarizeGT_in_callsTab.py) polarizes the genotype data by keeping only derived alleles relative to an outgroup/ancestral sequence.
 
-[pseudoPhasingHetero.py](pseudoPhasingHetero.py) phases the sequences by random split of heterozygous sites.
+[pseudoPhasingHetero_in_callsTab.py](pseudoPhasingHetero_in_callsTab.py) phases the sequences by random split of heterozygous sites.
 
 [MAFtoTAB.py](MAFtoTAB.py) transforms the [MAF](https://genome.ucsc.edu/FAQ/FAQformat.html#format5) file to tab file
 
-[remove_Isertions.py](remove_Isertions.py) removes insertions of longer than 1 bp and replaces deletions of 1 bp marked as "*" with "-".
+[remove_Insertions_from_callsTab.py](remove_Insertions_from_callsTab.py) removes insertions of longer than 1 bp and replaces deletions of 1 bp marked as "*" with "-".
 
-[remove_masked_intervals.py](remove_masked_intervals.py) compares a BED interval file with the BED file of masked regions and removes them.
+[remove_masked_intervals_from_callsTab.py](remove_masked_intervals_from_callsTab.py) removes the masked sites from a tab file. The masked sites are provided in a BED file.
 
-[removeMonomorphic.py](removeMonomorphic.py) removes monomorphic positions, i.e. keeps only SNPs.
+[remove_masked_intervals_fromBED.py](remove_masked_intervals_fromBED.py) compares a BED interval file with the BED file of masked regions and removes them.
+
+[removeMonomorphic_in_callsTab.py](removeMonomorphic_in_callsTab.py) removes monomorphic positions, i.e. keeps only SNPs.
 
 [select_genes_by_intervals.py](select_genes_by_intervals.py) extracts gene names from a bed file by provided coordinates.
 
-[select_intervals.py](select_intervals.py) extracts lines from a calls file according to scaffold name, start and end positions.
+[select_intervals_in_callsTab.py](select_intervals_in_callsTab.py) extracts lines from a calls file according to scaffold name, start and end positions.
 
-[selectSamples.py](selectSamples.py) subsamples a genotype calls file by sample names. It also can be used to rearrange samples in a calls file.
-
-[skip_intervals.py](skip_intervals.py) extracts lines from a calls file according to scaffold name, start and end positions.
+[selectSamples_in_callsTab.py](selectSamples_in_callsTab.py) subsamples a genotype calls file by sample names. It also can be used to rearrange samples in a calls file.
 
 [slidingWindowSNPs.py](slidingWindowSNPs.py) cuts genotype calls file with the given window size and outputs FASTA files for every window.
 
 [summarySIFT.awk](summarySIFT.awk) summarizes the extracted SIFT4G annotation (output of [extractSIFT4Gannotation.py](extractSIFT4Gannotation.py))
 
-[summarizeTAB.awk](summarizeTAB.awk) summirized the genotyope file by counting homozygot, heterozygot, missing etc.
+[summarizeTAB.awk](summarizeTAB.awk) summarizes the genotyope file by counting homozygot, heterozygot, missing etc.
 
 [vcf_to_SIFT4G.py](vcf_to_SIFT4G.py) converts a VCF file to SIFT4G input.
 
