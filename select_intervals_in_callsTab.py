@@ -67,7 +67,7 @@ import calls # my custom module
 parser = calls.CommandLineParser()
 parser.add_argument('-i', '--input', help = 'name of the input file', type=str, required=True)
 parser.add_argument('-o', '--output', help = 'name of the output file', type=str, required=True)
-parser.add_argument('-l', '--list_names', help = 'file containing list of scaffolds and position', type=str, required=True)
+parser.add_argument('-l', '--list_names', help = 'file containing list of scaffolds and start-end positions', type=str, required=True)
 parser.add_argument('-t', '--output_type', help = 'whether output should be in one file (one) or separate output for every interval (separate)', type=str, required=False)
 args = parser.parse_args()
 
