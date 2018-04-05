@@ -177,6 +177,20 @@ def countHeteroPerPosition(sampWords):
        print('WARNING: character "%s" is not recognized' % gt)
   return Hcount
 
+def if_FixedHetero(sampWords):
+  '''Returns True if it is a fixed heterozygout (exist in hybrids) and False if not.'''
+  sampWordsNoNs = []
+  for gt in sampWords: # filter out the missing data
+    if gt in "ACGT-RYSWKM":
+      sampWordsNoNs.append(gt)
+    elif gt == "N":
+      continue
+    else:
+       print('WARNING: character "%s" is not recognized' % gt)
+  if all(gt in 'RYMKSW' and gt == sampWordsNoNs[0] for gt in sampWordsNoNs): # check if fixed
+    return True 
+  else:
+    return False
 
 def countPerSample(sampWords, countList, characterToCount):
   '''Counts Ns (missing data) in each sample'''
