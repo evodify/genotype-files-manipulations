@@ -67,7 +67,7 @@ chr_3   5   G   -   C   G
 
 # command:
 
-$ python mergeTabFiles.py -s reference_input -l input2 -o output
+$ python mergeTabFiles.py -r reference_input -i input2 -o output
 
 # contact:
 
