@@ -75,6 +75,9 @@ with open(args.input) as datafile:
     words = line.split()
     GT = words[2:]
 
+    if '/' in GT[1]:
+      GT = calls.twoToOne(GT)
+
     # output the line if it is polymorphic
     if calls.is_polymorphic(GT):
       fileoutput.write(line)
