@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 '''
-This script print common and rare alleles in a give set of  samples.
+This script outputs common and rare alleles in a given set of samples.
 
 input file:
 
