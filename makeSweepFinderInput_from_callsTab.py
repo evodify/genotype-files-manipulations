@@ -122,6 +122,11 @@ with open(args.input) as datafile:
     # select alleles
     alleles = calls.selectSamples(sampCol, words)
 
+    # check if one- or two-character code
+    if any(["/" in gt for gt in alleles]):
+      alleles = calls.twoToOne(alleles)
+
+
     # count missing data
     numAlN = collections.Counter(alleles)
     valueN = numAlN['N']
