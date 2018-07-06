@@ -81,6 +81,8 @@ chr_3   5   G   -   N   N   G   G   G   C   G
 
 [find_popSpecificAlleles_in_callsTab.py](find_popSpecificAlleles_in_callsTab.py) outputs only unique allele of one population relative to another.
 
+[findCommonAlleles.py](findCommonAlleles.py) outputs common and rare alleles in a given set of samples.
+
 [keep_biallelic_in_callsTab.py](keep_biallelic_in_callsTab.py) removes sites with more than two alleles.
 
 [make_input_MSMC_from_callsTab.py](make_input_MSMC_from_callsTab.py) makes input for [MSMC](https://github.com/stschiff/msmc).
@@ -120,6 +122,8 @@ chr_3   5   G   -   N   N   G   G   G   C   G
 [selectSamples_in_callsTab.py](selectSamples_in_callsTab.py) subsamples a genotype calls file by sample names. It also can be used to rearrange samples in a calls file.
 
 [slidingWindowSNPs.py](slidingWindowSNPs.py) cuts genotype calls file with the given window size and outputs FASTA files for every window.
+
+[split_calls_by_chromosomes.py](split_calls_by_chromosomes.py) splits a calls file into several files by chromosomes.
 
 [summarySIFT.awk](summarySIFT.awk) summarizes the extracted SIFT4G annotation (output of [extractSIFT4Gannotation.py](extractSIFT4Gannotation.py))
 
