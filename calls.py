@@ -315,3 +315,13 @@ def chunks(l, n):
   """Yield successive n-sized chunks from l."""
   for i in xrange(0, len(l), n):
     yield l[i:i + n]
+
+
+def checkMissing(missingN):
+  """Checks if the missing data option is specified. Sets no-missing data allowed by default."""
+  if missingN:
+    allowedNs = missingN
+  else:
+    allowedNs = 0
+    print 'No missing data threshold is specified, only sites without any missing data will be processed ...'
+  return allowedNs

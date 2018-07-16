@@ -89,7 +89,7 @@ parser.add_argument('-i', '--input', help = 'name of the input file', type=str, 
 parser.add_argument('-o', '--output', help = 'name of the output file', type=str, required=True)
 parser.add_argument('-s', '--samples', help = 'column names of the samples to process (optional)', type=str, required=False)
 parser.add_argument('-w', '--window', help = 'window size', type=int, required=True)
-parser.add_argument('-N', '--missingness', help = 'allowed number of Ns', type=int, required=True)
+parser.add_argument('-N', '--missingness', help = 'allowed number of Ns per sample in a window', type=int, required=True)
 
 args = parser.parse_args()
 
