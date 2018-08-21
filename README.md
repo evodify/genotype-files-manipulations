@@ -31,7 +31,8 @@ chr_3   5   G   */* G/* ./. G/G G/G G/G C/C G/G
 
 ```
 
-One-character coded tab file (heterozygous genotypes are represented by ambiguous characters R, Y, M, K, S, W):
+One-character coded tab file where heterozygous genotypes are represented by ambiguous characters R, Y, M, K, S, W.
+(produced from a two-character coded table with [vcfTab_to_callsTab.py](vcfTab_to_callsTab.py)):
 
 ```
 CHROM   POS REF sample1 sample2 sample3 sample4 sample5 sample6 sample7 sample8
@@ -105,7 +106,9 @@ chr_3   5   G   -   N   N   G   G   G   C   G
 
 [pseudoPhasingHetero_in_callsTab.py](pseudoPhasingHetero_in_callsTab.py) phases the sequences by random split of heterozygous sites.
 
-[MAFtoTAB.py](MAFtoTAB.py) transforms the [MAF](https://genome.ucsc.edu/FAQ/FAQformat.html#format5) file to tab file
+[MAFtoTAB.py](MAFtoTAB.py) transforms the [MAF](https://genome.ucsc.edu/FAQ/FAQformat.html#format5) file to tab file. Indels are skipped.
+
+[MAF-TAB_reference.py](MAF-TAB_reference.py) transforms the MAF file to tab file with Chr Pos of both sequences. Indels are skipped.
 
 [remove_Insertions_from_callsTab.py](remove_Insertions_from_callsTab.py) removes insertions of longer than 1 bp and replaces deletions of 1 bp marked as "*" with "-".
 
