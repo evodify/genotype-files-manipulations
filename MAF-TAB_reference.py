@@ -10,9 +10,9 @@ a score=3680.000000
 s scaffold_1     772 292 + 19624517 TCTCTCTCTTCTCTCTTTCATATCCTTTAGAGAGAGAGTCGAACTTTG
 s scaffold_5 1072279 229 +  1988289 TCTCTCTCTTCTCTCTATCATATCCTTTAGAGAGAGA---AAGCATTT
 
-a score=3680.000000
-s scaffold_10     7720 24 + 19624517 TTTAGAGAGAGAGTCGAACTTTG
-s scaffold_50 10722790 21 -  1988289 TTTAGAGAGAGA---AAGCATTT
+a score=2859.000000
+s scaffold_1     166367 101 + 19624517 TTCAAATTTTAAAGATCAAATCTGCAGAAGA----TTTAAAGGTAA--------ATTAAATAAAGACCGTTGCTTT----TTCTTGTTTTCTTCTTCTTCTTCTTAAGTTACAATTT
+s MPGU01000319.1 350087 115 -   552602 TTAAAAACGTAAGGTTCAAattca-agaagaagcttttaaAGGTATCatcaattatcaaataaaGACCGttgctttgattttcttactttaacgttctt-ttcaaaatttaaagttt
 
 # output:
 
@@ -54,35 +54,129 @@ scaffold_1	806	G	G	scaffold_5	1072313
 scaffold_1	807	A	A	scaffold_5	1072314
 scaffold_1	808	G	G	scaffold_5	1072315
 scaffold_1	809	A	A	scaffold_5	1072316
-scaffold_1	813	G	A	scaffold_5	1072320
-scaffold_1	814	A	A	scaffold_5	1072321
-scaffold_1	815	A	G	scaffold_5	1072322
-scaffold_1	816	C	C	scaffold_5	1072323
-scaffold_1	817	T	A	scaffold_5	1072324
-scaffold_1	818	T	T	scaffold_5	1072325
-scaffold_1	819	T	T	scaffold_5	1072326
-scaffold_1	820	G	T	scaffold_5	1072327
-scaffold_10	7721	T	T	scaffold_50	10722789
-scaffold_10	7722	T	T	scaffold_50	10722788
-scaffold_10	7723	T	T	scaffold_50	10722787
-scaffold_10	7724	A	A	scaffold_50	10722786
-scaffold_10	7725	G	G	scaffold_50	10722785
-scaffold_10	7726	A	A	scaffold_50	10722784
-scaffold_10	7727	G	G	scaffold_50	10722783
-scaffold_10	7728	A	A	scaffold_50	10722782
-scaffold_10	7729	G	G	scaffold_50	10722781
-scaffold_10	7730	A	A	scaffold_50	10722780
-scaffold_10	7731	G	G	scaffold_50	10722779
-scaffold_10	7732	A	A	scaffold_50	10722778
-scaffold_10	7736	G	A	scaffold_50	10722774
-scaffold_10	7737	A	A	scaffold_50	10722773
-scaffold_10	7738	A	G	scaffold_50	10722772
-scaffold_10	7739	C	C	scaffold_50	10722771
-scaffold_10	7740	T	A	scaffold_50	10722770
-scaffold_10	7741	T	T	scaffold_50	10722769
-scaffold_10	7742	T	T	scaffold_50	10722768
-scaffold_10	7743	G	T	scaffold_50	10722767
-
+scaffold_1	813	G	A	scaffold_5	1072317
+scaffold_1	814	A	A	scaffold_5	1072318
+scaffold_1	815	A	G	scaffold_5	1072319
+scaffold_1	816	C	C	scaffold_5	1072320
+scaffold_1	817	T	A	scaffold_5	1072321
+scaffold_1	818	T	T	scaffold_5	1072322
+scaffold_1	819	T	T	scaffold_5	1072323
+scaffold_1	820	G	T	scaffold_5	1072324
+scaffold_1	166368	T	T	MPGU01000319.1	202515
+scaffold_1	166369	T	T	MPGU01000319.1	202514
+scaffold_1	166370	C	A	MPGU01000319.1	202513
+scaffold_1	166371	A	A	MPGU01000319.1	202512
+scaffold_1	166372	A	A	MPGU01000319.1	202511
+scaffold_1	166373	A	A	MPGU01000319.1	202510
+scaffold_1	166374	T	A	MPGU01000319.1	202509
+scaffold_1	166375	T	C	MPGU01000319.1	202508
+scaffold_1	166376	T	G	MPGU01000319.1	202507
+scaffold_1	166377	T	T	MPGU01000319.1	202506
+scaffold_1	166378	A	A	MPGU01000319.1	202505
+scaffold_1	166379	A	A	MPGU01000319.1	202504
+scaffold_1	166380	A	G	MPGU01000319.1	202503
+scaffold_1	166381	G	G	MPGU01000319.1	202502
+scaffold_1	166382	A	T	MPGU01000319.1	202501
+scaffold_1	166383	T	T	MPGU01000319.1	202500
+scaffold_1	166384	C	C	MPGU01000319.1	202499
+scaffold_1	166385	A	A	MPGU01000319.1	202498
+scaffold_1	166386	A	A	MPGU01000319.1	202497
+scaffold_1	166387	A	a	MPGU01000319.1	202496
+scaffold_1	166388	T	t	MPGU01000319.1	202495
+scaffold_1	166389	C	t	MPGU01000319.1	202494
+scaffold_1	166390	T	c	MPGU01000319.1	202493
+scaffold_1	166391	G	a	MPGU01000319.1	202492
+scaffold_1	166393	A	a	MPGU01000319.1	202491
+scaffold_1	166394	G	g	MPGU01000319.1	202490
+scaffold_1	166395	A	a	MPGU01000319.1	202489
+scaffold_1	166396	A	a	MPGU01000319.1	202488
+scaffold_1	166397	G	g	MPGU01000319.1	202487
+scaffold_1	166398	A	a	MPGU01000319.1	202486
+scaffold_1	166398	-	a	MPGU01000319.1	202485
+scaffold_1	166398	-	g	MPGU01000319.1	202484
+scaffold_1	166398	-	c	MPGU01000319.1	202483
+scaffold_1	166398	-	t	MPGU01000319.1	202482
+scaffold_1	166399	T	t	MPGU01000319.1	202481
+scaffold_1	166400	T	t	MPGU01000319.1	202480
+scaffold_1	166401	T	t	MPGU01000319.1	202479
+scaffold_1	166402	A	a	MPGU01000319.1	202478
+scaffold_1	166403	A	a	MPGU01000319.1	202477
+scaffold_1	166404	A	A	MPGU01000319.1	202476
+scaffold_1	166405	G	G	MPGU01000319.1	202475
+scaffold_1	166406	G	G	MPGU01000319.1	202474
+scaffold_1	166407	T	T	MPGU01000319.1	202473
+scaffold_1	166408	A	A	MPGU01000319.1	202472
+scaffold_1	166409	A	T	MPGU01000319.1	202471
+scaffold_1	166409	-	C	MPGU01000319.1	202470
+scaffold_1	166409	-	a	MPGU01000319.1	202469
+scaffold_1	166409	-	t	MPGU01000319.1	202468
+scaffold_1	166409	-	c	MPGU01000319.1	202467
+scaffold_1	166409	-	a	MPGU01000319.1	202466
+scaffold_1	166409	-	a	MPGU01000319.1	202465
+scaffold_1	166409	-	t	MPGU01000319.1	202464
+scaffold_1	166409	-	t	MPGU01000319.1	202463
+scaffold_1	166410	A	a	MPGU01000319.1	202462
+scaffold_1	166411	T	t	MPGU01000319.1	202461
+scaffold_1	166412	T	c	MPGU01000319.1	202460
+scaffold_1	166413	A	a	MPGU01000319.1	202459
+scaffold_1	166414	A	a	MPGU01000319.1	202458
+scaffold_1	166415	A	a	MPGU01000319.1	202457
+scaffold_1	166416	T	t	MPGU01000319.1	202456
+scaffold_1	166417	A	a	MPGU01000319.1	202455
+scaffold_1	166418	A	a	MPGU01000319.1	202454
+scaffold_1	166419	A	a	MPGU01000319.1	202453
+scaffold_1	166420	G	G	MPGU01000319.1	202452
+scaffold_1	166421	A	A	MPGU01000319.1	202451
+scaffold_1	166422	C	C	MPGU01000319.1	202450
+scaffold_1	166423	C	C	MPGU01000319.1	202449
+scaffold_1	166424	G	G	MPGU01000319.1	202448
+scaffold_1	166425	T	t	MPGU01000319.1	202447
+scaffold_1	166426	T	t	MPGU01000319.1	202446
+scaffold_1	166427	G	g	MPGU01000319.1	202445
+scaffold_1	166428	C	c	MPGU01000319.1	202444
+scaffold_1	166429	T	t	MPGU01000319.1	202443
+scaffold_1	166430	T	t	MPGU01000319.1	202442
+scaffold_1	166431	T	t	MPGU01000319.1	202441
+scaffold_1	166431	-	g	MPGU01000319.1	202440
+scaffold_1	166431	-	a	MPGU01000319.1	202439
+scaffold_1	166431	-	t	MPGU01000319.1	202438
+scaffold_1	166431	-	t	MPGU01000319.1	202437
+scaffold_1	166432	T	t	MPGU01000319.1	202436
+scaffold_1	166433	T	t	MPGU01000319.1	202435
+scaffold_1	166434	C	c	MPGU01000319.1	202434
+scaffold_1	166435	T	t	MPGU01000319.1	202433
+scaffold_1	166436	T	t	MPGU01000319.1	202432
+scaffold_1	166437	G	a	MPGU01000319.1	202431
+scaffold_1	166438	T	c	MPGU01000319.1	202430
+scaffold_1	166439	T	t	MPGU01000319.1	202429
+scaffold_1	166440	T	t	MPGU01000319.1	202428
+scaffold_1	166441	T	t	MPGU01000319.1	202427
+scaffold_1	166442	C	a	MPGU01000319.1	202426
+scaffold_1	166443	T	a	MPGU01000319.1	202425
+scaffold_1	166444	T	c	MPGU01000319.1	202424
+scaffold_1	166445	C	g	MPGU01000319.1	202423
+scaffold_1	166446	T	t	MPGU01000319.1	202422
+scaffold_1	166447	T	t	MPGU01000319.1	202421
+scaffold_1	166448	C	c	MPGU01000319.1	202420
+scaffold_1	166449	T	t	MPGU01000319.1	202419
+scaffold_1	166450	T	t	MPGU01000319.1	202418
+scaffold_1	166452	T	t	MPGU01000319.1	202417
+scaffold_1	166453	T	t	MPGU01000319.1	202416
+scaffold_1	166454	C	c	MPGU01000319.1	202415
+scaffold_1	166455	T	a	MPGU01000319.1	202414
+scaffold_1	166456	T	a	MPGU01000319.1	202413
+scaffold_1	166457	A	a	MPGU01000319.1	202412
+scaffold_1	166458	A	a	MPGU01000319.1	202411
+scaffold_1	166459	G	t	MPGU01000319.1	202410
+scaffold_1	166460	T	t	MPGU01000319.1	202409
+scaffold_1	166461	T	t	MPGU01000319.1	202408
+scaffold_1	166462	A	a	MPGU01000319.1	202407
+scaffold_1	166463	C	a	MPGU01000319.1	202406
+scaffold_1	166464	A	a	MPGU01000319.1	202405
+scaffold_1	166465	A	g	MPGU01000319.1	202404
+scaffold_1	166466	T	t	MPGU01000319.1	202403
+scaffold_1	166467	T	t	MPGU01000319.1	202402
+scaffold_1	166468	T	t	MPGU01000319.1	202401
 
 # contact Dmytro Kryvokhyzha dmytro.kryvokhyzha@evobio.eu
 
@@ -123,17 +217,20 @@ with open(args.input) as datafile:
         elif param == 's' and linenumber == 2:
           TARGchr = words[1]
           TARGpos = int(words[2])
+          TARGlen = int(words[5])
           TARGseq = [i for i in words[6]]
           TARGstrand = words[4]
+          if TARGstrand == "-":
+            TARGpos = TARGlen-TARGpos+1
           for i in range(len(REFseq)):
             if REFseq[i] != '-':
               REFpos += 1
-              if TARGstrand == "+":
-                TARGpos += 1
-              else:
-                TARGpos -= 1
-              if TARGseq[i] != '-':
-                fileoutput.write('%s\t%s\t%s\t%s\t%s\t%s\n' % (REFchr, REFpos, REFseq[i], TARGseq[i], TARGchr, TARGpos))
+            if TARGstrand == "+" and TARGseq[i] != '-':
+              TARGpos += 1
+            elif TARGstrand == "-" and TARGseq[i] != '-':
+              TARGpos -= 1
+            if TARGseq[i] != '-':
+              fileoutput.write('%s\t%s\t%s\t%s\t%s\t%s\n' % (REFchr, REFpos, REFseq[i], TARGseq[i], TARGchr, TARGpos))
         elif param == 'a':
           linenumber = 1
 
