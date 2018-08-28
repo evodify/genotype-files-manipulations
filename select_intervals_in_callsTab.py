@@ -104,7 +104,7 @@ with open(args.input) as datafile:
     scafCalls = int(words[0].split('_')[1])
     posCalls = int(words[1])
 
-    while  scafCalls > IntervalScaf or (scafCalls == IntervalScaf and posCalls > IntervalEnd):
+    while (scafCalls > IntervalScaf) or (scafCalls == IntervalScaf and posCalls > IntervalEnd):
       IntervalWords = scaflist.readline().split()
       if IntervalWords == []:
         break
