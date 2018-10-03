@@ -70,7 +70,12 @@ with open(args.input) as datafile:
         # select samples
         sGT = calls.selectSamples(sIndex, words)
 
-        alleles = sGT
+        # define two or one character code
+        if all(len(i) == 1 for i in  sGT):
+            alleles = calls.OneToTwo(sGT)
+        elif all("/" in i for i in  sGT):
+            alleles = sGT
+
         allelesSplit = [x.split('/') for x in alleles]
 
         AllallesN = [i for e in allelesSplit for i in e]
