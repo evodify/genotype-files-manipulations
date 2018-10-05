@@ -54,7 +54,7 @@ chr_3   5   G   -   N   N   G   G   G   C   G
 
 ##
 
-[assessNs_in_callsTab.py](assessNs_in_callsTab.py) calculates missing data (Ns) per position/sample and visualize the results.
+[assessNs_in_callsTab.py](assessNs_in_callsTab.py) calculates missing data (Ns) per position/sample and visualizes the results.
 
 [calculateNsPerWindow.py](calculateNsPerWindow.py) calculates number of positions with missing data (Ns) using the sliding window approach.
 
@@ -107,6 +107,8 @@ chr_3   5   G   -   N   N   G   G   G   C   G
 [pseudoPhasingHetero_in_callsTab.py](pseudoPhasingHetero_in_callsTab.py) phases the sequences by random split of heterozygous sites.
 
 [MAFtoTAB.py](MAFtoTAB.py) transforms the [MAF](https://genome.ucsc.edu/FAQ/FAQformat.html#format5) file to tab file. Indels are skipped.
+
+[MAF-Calls_alignment-complement.py](MAF-Calls_alignment-complement.py) processes the Calls-MAF aligned file to complement the reverse complemented sequences of MAF and outputs Tab file with the coordinates of new genome.
 
 [MAF-TAB_reference.py](MAF-TAB_reference.py) transforms the MAF file to tab file with Chr Pos of both sequences. Indels are skipped.
 
