@@ -1,7 +1,7 @@
 #!/usr/bin/python2
 
 """
-This script calculates missing data (Ns) per position/sample and visualize the results.
+This script calculates missing data (Ns) per position/sample and visualizes the results.
 
 # input:
 
@@ -27,6 +27,7 @@ import matplotlib
 matplotlib.use('Agg') # to avoid RuntimeError('Invalid DISPLAY variable'). Must be before importing matplotlib.pyplot!
 import matplotlib.pyplot as plt
 import numpy as np
+import collections
 import calls # my custom module
 
 ############################# options #############################
@@ -81,6 +82,22 @@ with open(args.input) as datafile:
       print str(counter), "lines processed"
 
 datafile.close()
+
+# write the counts to a fine
+outputTXTsite = open(args.output+"_Ns_per_site.csv", 'w')
+outputTXTsample = open(args.output+"_Ns_per_sample.csv", 'w')
+
+outputTXTsite.write("Number_of_Ns\tNumber_of_sites\n")
+outputTXTsample.write("Sample\tNumber_of_Ns\n")
+
+Ns.sort()
+counter=collections.Counter(Ns)
+
+for k,v in zip(counter.keys(), counter.values()):
+    outputTXTsite.write("%s\t%s\n" % (k, v))
+
+for s,n in zip(sampColnames, sampNs):
+    outputTXTsample.write("%s\t%s\n" % (s, n))
 
 # Plot the results 
 print('Printing graphics ...')
