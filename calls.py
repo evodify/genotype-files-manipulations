@@ -107,6 +107,14 @@ class callsParser(object):
 
 ############################# functions ###########################
 
+def flattenList(complexList):
+  '''Makes a flat list out of list of lists'''
+  flat_list = []
+  for sublist in complexList:
+    for i in sublist:
+      flat_list.append(i)
+  return flat_list
+
 def all_missing(genotypes):
   '''check if all genotypes are missing'''
   return all(gt == 'N' for gt in genotypes)
@@ -243,6 +251,42 @@ def twoToOne(GT):
     GTone.append(g)
   return GTone
 
+def OneToTwo(GT):
+  ''' converts two character coded genotypes to one character code '''
+  GTtwo = []
+  for g in GT:
+    if '/' not in g:  # if one character, e.g. the reference column (REF)
+      if len(g) != 1:  # if indel
+        g = './.'
+      # single character heterozygouts:
+      elif g == 'A':
+        g = 'A/A'
+      elif g == 'G':
+        g = 'G/G'
+      elif g =='C':
+        g = 'C/C'
+      elif g == 'T':
+        g = 'T/T'
+      elif g == 'R':
+        g = 'A/G'
+      elif g == 'Y':
+        g = 'C/T'
+      elif g == 'M':
+        g = 'C/A'
+      elif g ==  'K':
+        g = 'T/G'
+      elif g == 'S':
+        g = 'C/G'
+      elif g == 'W':
+        g = 'T/A'
+      elif g == 'N':
+        g = './.'
+      else:
+        print('WARNING: character "%s" is not recognized. It will be replaces with N' % g)
+        g = './.'
+    GTtwo.append(g)
+  return GTtwo
+
 
 def countPositions(fileName):
   '''count number of genomic position in a file'''
@@ -325,3 +369,18 @@ def checkMissing(missingN):
     allowedNs = 0
     print 'No missing data threshold is specified, only sites without any missing data will be processed ...'
   return allowedNs
+
+def complementSeq(sequence):
+  '''Return a complement sequence'''
+  complement = []
+  for i in sequence:
+    if i == 'A' or  i == 'a':
+      i = 'T'
+    elif i == 'T' or  i == 't':
+      i = 'A'
+    elif i == 'G' or  i == 'g':
+      i = 'C'
+    elif i == 'C' or  i == 'c':
+      i = 'G'
+    complement.append(i)
+  return complement
