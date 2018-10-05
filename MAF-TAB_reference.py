@@ -8,7 +8,7 @@ Transforms the MAF file to tab file with Chr Pos of both sequences. All gaps wil
 ##maf version=1 scoring=blastz
 a score=3680.000000
 s scaffold_1     772 292 + 19624517 TCTCTCTCTTCTCTCTTTCATATCCTTTAGAGAGAGAGTCGAACTTTG
-s scaffold_5 1072279 229 +  1988289 TCTCTCTCTTCTCTCTATCATATCCTTTAGAGAGAGA---AAGCATTT
+s MPGU01000319.1 1072279 229 +  1988289 TCTCTCTCTTCTCTCTATCATATCCTTTAGAGAGAGA---AAGCATTT
 
 a score=2859.000000
 s scaffold_1     166367 101 + 19624517 TTCAAATTTTAAAGATCAAATCTGCAGAAGA----TTTAAAGGTAA--------ATTAAATAAAGACCGTTGCTTT----TTCTTGTTTTCTTCTTCTTCTTCTTAAGTTACAATTT
@@ -17,51 +17,94 @@ s MPGU01000319.1 350087 115 -   552602 TTAAAAACGTAAGGTTCAAattca-agaagaagcttttaaA
 # output:
 
 Chr	Pos	REF	TARG	TARGchr	TARGpos
-scaffold_1	773	T	T	scaffold_5	1072280
-scaffold_1	774	C	C	scaffold_5	1072281
-scaffold_1	775	T	T	scaffold_5	1072282
-scaffold_1	776	C	C	scaffold_5	1072283
-scaffold_1	777	T	T	scaffold_5	1072284
-scaffold_1	778	C	C	scaffold_5	1072285
-scaffold_1	779	T	T	scaffold_5	1072286
-scaffold_1	780	C	C	scaffold_5	1072287
-scaffold_1	781	T	T	scaffold_5	1072288
-scaffold_1	782	T	T	scaffold_5	1072289
-scaffold_1	783	C	C	scaffold_5	1072290
-scaffold_1	784	T	T	scaffold_5	1072291
-scaffold_1	785	C	C	scaffold_5	1072292
-scaffold_1	786	T	T	scaffold_5	1072293
-scaffold_1	787	C	C	scaffold_5	1072294
-scaffold_1	788	T	T	scaffold_5	1072295
-scaffold_1	789	T	A	scaffold_5	1072296
-scaffold_1	790	T	T	scaffold_5	1072297
-scaffold_1	791	C	C	scaffold_5	1072298
-scaffold_1	792	A	A	scaffold_5	1072299
-scaffold_1	793	T	T	scaffold_5	1072300
-scaffold_1	794	A	A	scaffold_5	1072301
-scaffold_1	795	T	T	scaffold_5	1072302
-scaffold_1	796	C	C	scaffold_5	1072303
-scaffold_1	797	C	C	scaffold_5	1072304
-scaffold_1	798	T	T	scaffold_5	1072305
-scaffold_1	799	T	T	scaffold_5	1072306
-scaffold_1	800	T	T	scaffold_5	1072307
-scaffold_1	801	A	A	scaffold_5	1072308
-scaffold_1	802	G	G	scaffold_5	1072309
-scaffold_1	803	A	A	scaffold_5	1072310
-scaffold_1	804	G	G	scaffold_5	1072311
-scaffold_1	805	A	A	scaffold_5	1072312
-scaffold_1	806	G	G	scaffold_5	1072313
-scaffold_1	807	A	A	scaffold_5	1072314
-scaffold_1	808	G	G	scaffold_5	1072315
-scaffold_1	809	A	A	scaffold_5	1072316
-scaffold_1	813	G	A	scaffold_5	1072317
-scaffold_1	814	A	A	scaffold_5	1072318
-scaffold_1	815	A	G	scaffold_5	1072319
-scaffold_1	816	C	C	scaffold_5	1072320
-scaffold_1	817	T	A	scaffold_5	1072321
-scaffold_1	818	T	T	scaffold_5	1072322
-scaffold_1	819	T	T	scaffold_5	1072323
-scaffold_1	820	G	T	scaffold_5	1072324
+scaffold_1	5	A	A	MPGU01000658.1	8
+scaffold_1	6	A	A	MPGU01000658.1	9
+scaffold_1	7	C	C	MPGU01000658.1	10
+scaffold_1	8	C	T	MPGU01000658.1	11
+scaffold_1	9	C	C	MPGU01000658.1	12
+scaffold_1	10	T	C	MPGU01000658.1	13
+scaffold_1	11	A	T	MPGU01000658.1	14
+scaffold_1	12	A	A	MPGU01000658.1	15
+scaffold_1	13	A	A	MPGU01000658.1	16
+scaffold_1	14	C	C	MPGU01000658.1	17
+scaffold_1	15	C	C	MPGU01000658.1	18
+scaffold_1	16	C	C	MPGU01000658.1	19
+scaffold_1	17	T	T	MPGU01000658.1	20
+scaffold_1	18	A	T	MPGU01000658.1	21
+scaffold_1	19	A	A	MPGU01000658.1	22
+scaffold_1	20	A	A	MPGU01000658.1	23
+scaffold_1	21	C	C	MPGU01000658.1	24
+scaffold_1	22	C	C	MPGU01000658.1	25
+scaffold_1	23	C	C	MPGU01000658.1	26
+scaffold_1	24	T	T	MPGU01000658.1	27
+scaffold_1	25	A	A	MPGU01000658.1	28
+scaffold_1	26	A	A	MPGU01000658.1	29
+scaffold_1	27	A	A	MPGU01000658.1	30
+scaffold_1	28	C	C	MPGU01000658.1	31
+scaffold_1	29	C	C	MPGU01000658.1	32
+scaffold_1	30	C	C	MPGU01000658.1	33
+scaffold_1	31	T	C	MPGU01000658.1	34
+scaffold_1	32	A	G	MPGU01000658.1	35
+scaffold_1	33	A	A	MPGU01000658.1	36
+scaffold_1	34	A	A	MPGU01000658.1	37
+scaffold_1	38	T	T	MPGU01000658.1	38
+scaffold_1	39	A	A	MPGU01000658.1	39
+scaffold_1	40	A	A	MPGU01000658.1	40
+scaffold_1	41	A	A	MPGU01000658.1	41
+scaffold_1	42	C	C	MPGU01000658.1	42
+scaffold_1	43	C	A	MPGU01000658.1	43
+scaffold_1	44	C	G	MPGU01000658.1	44
+scaffold_1	45	T	T	MPGU01000658.1	45
+scaffold_1	46	A	A	MPGU01000658.1	46
+scaffold_1	47	A	A	MPGU01000658.1	47
+scaffold_1	49	C	C	MPGU01000658.1	48
+scaffold_1	50	C	C	MPGU01000658.1	49
+scaffold_1	51	C	C	MPGU01000658.1	50
+scaffold_1	52	T	T	MPGU01000658.1	51
+scaffold_1	53	A	A	MPGU01000658.1	52
+scaffold_1	54	A	A	MPGU01000658.1	53
+scaffold_1	55	A	A	MPGU01000658.1	54
+scaffold_1	56	C	C	MPGU01000658.1	55
+scaffold_1	57	C	C	MPGU01000658.1	56
+scaffold_1	58	C	C	MPGU01000658.1	57
+scaffold_1	59	T	T	MPGU01000658.1	58
+scaffold_1	60	A	T	MPGU01000658.1	59
+scaffold_1	61	A	A	MPGU01000658.1	60
+scaffold_1	62	A	A	MPGU01000658.1	61
+scaffold_1	63	C	T	MPGU01000658.1	62
+scaffold_1	64	C	C	MPGU01000658.1	66
+scaffold_1	65	C	C	MPGU01000658.1	67
+scaffold_1	66	T	g	MPGU01000658.1	68
+scaffold_1	67	A	t	MPGU01000658.1	69
+scaffold_1	68	A	a	MPGU01000658.1	70
+scaffold_1	69	A	a	MPGU01000658.1	71
+scaffold_1	70	C	c	MPGU01000658.1	72
+scaffold_1	71	C	c	MPGU01000658.1	73
+scaffold_1	72	C	c	MPGU01000658.1	74
+scaffold_1	73	T	t	MPGU01000658.1	75
+scaffold_1	74	A	a	MPGU01000658.1	76
+scaffold_1	75	A	a	MPGU01000658.1	77
+scaffold_1	76	A	a	MPGU01000658.1	78
+scaffold_1	77	C	c	MPGU01000658.1	79
+scaffold_1	78	C	c	MPGU01000658.1	80
+scaffold_1	79	C	c	MPGU01000658.1	81
+scaffold_1	80	T	t	MPGU01000658.1	82
+scaffold_1	81	A	a	MPGU01000658.1	83
+scaffold_1	82	A	a	MPGU01000658.1	84
+scaffold_1	83	A	a	MPGU01000658.1	85
+scaffold_1	84	C	C	MPGU01000658.1	96
+scaffold_1	85	C	C	MPGU01000658.1	97
+scaffold_1	86	C	C	MPGU01000658.1	98
+scaffold_1	87	T	T	MPGU01000658.1	99
+scaffold_1	88	A	A	MPGU01000658.1	100
+scaffold_1	89	A	A	MPGU01000658.1	101
+scaffold_1	90	A	A	MPGU01000658.1	102
+scaffold_1	91	C	T	MPGU01000658.1	103
+scaffold_1	92	C	A	MPGU01000658.1	104
+scaffold_1	93	C	G	MPGU01000658.1	105
+scaffold_1	94	T	T	MPGU01000658.1	106
+scaffold_1	95	A	A	MPGU01000658.1	107
+scaffold_1	96	A	A	MPGU01000658.1	108
 scaffold_1	166368	T	T	MPGU01000319.1	202515
 scaffold_1	166369	T	T	MPGU01000319.1	202514
 scaffold_1	166370	C	A	MPGU01000319.1	202513
@@ -92,10 +135,6 @@ scaffold_1	166395	A	a	MPGU01000319.1	202489
 scaffold_1	166396	A	a	MPGU01000319.1	202488
 scaffold_1	166397	G	g	MPGU01000319.1	202487
 scaffold_1	166398	A	a	MPGU01000319.1	202486
-scaffold_1	166398	-	a	MPGU01000319.1	202485
-scaffold_1	166398	-	g	MPGU01000319.1	202484
-scaffold_1	166398	-	c	MPGU01000319.1	202483
-scaffold_1	166398	-	t	MPGU01000319.1	202482
 scaffold_1	166399	T	t	MPGU01000319.1	202481
 scaffold_1	166400	T	t	MPGU01000319.1	202480
 scaffold_1	166401	T	t	MPGU01000319.1	202479
@@ -107,14 +146,6 @@ scaffold_1	166406	G	G	MPGU01000319.1	202474
 scaffold_1	166407	T	T	MPGU01000319.1	202473
 scaffold_1	166408	A	A	MPGU01000319.1	202472
 scaffold_1	166409	A	T	MPGU01000319.1	202471
-scaffold_1	166409	-	C	MPGU01000319.1	202470
-scaffold_1	166409	-	a	MPGU01000319.1	202469
-scaffold_1	166409	-	t	MPGU01000319.1	202468
-scaffold_1	166409	-	c	MPGU01000319.1	202467
-scaffold_1	166409	-	a	MPGU01000319.1	202466
-scaffold_1	166409	-	a	MPGU01000319.1	202465
-scaffold_1	166409	-	t	MPGU01000319.1	202464
-scaffold_1	166409	-	t	MPGU01000319.1	202463
 scaffold_1	166410	A	a	MPGU01000319.1	202462
 scaffold_1	166411	T	t	MPGU01000319.1	202461
 scaffold_1	166412	T	c	MPGU01000319.1	202460
@@ -137,10 +168,6 @@ scaffold_1	166428	C	c	MPGU01000319.1	202444
 scaffold_1	166429	T	t	MPGU01000319.1	202443
 scaffold_1	166430	T	t	MPGU01000319.1	202442
 scaffold_1	166431	T	t	MPGU01000319.1	202441
-scaffold_1	166431	-	g	MPGU01000319.1	202440
-scaffold_1	166431	-	a	MPGU01000319.1	202439
-scaffold_1	166431	-	t	MPGU01000319.1	202438
-scaffold_1	166431	-	t	MPGU01000319.1	202437
 scaffold_1	166432	T	t	MPGU01000319.1	202436
 scaffold_1	166433	T	t	MPGU01000319.1	202435
 scaffold_1	166434	C	c	MPGU01000319.1	202434
@@ -178,6 +205,7 @@ scaffold_1	166466	T	t	MPGU01000319.1	202403
 scaffold_1	166467	T	t	MPGU01000319.1	202402
 scaffold_1	166468	T	t	MPGU01000319.1	202401
 
+
 # contact Dmytro Kryvokhyzha dmytro.kryvokhyzha@evobio.eu
 
 # command:
@@ -199,7 +227,7 @@ args = parser.parse_args()
 ############################# program #############################
 
 fileoutput = open(args.output, 'w')
-fileoutput.write('Chr\tPos\tREF\tTARG\tTARGchr\tTARGpos\n')
+fileoutput.write('Chr\tPos\tREF\tTARG\tTARGchr\tTARGpos\tstrand\n')
 
 print('Transforming ...')
 with open(args.input) as datafile:
@@ -229,8 +257,9 @@ with open(args.input) as datafile:
               TARGpos += 1
             elif TARGstrand == "-" and TARGseq[i] != '-':
               TARGpos -= 1
-            if TARGseq[i] != '-':
-              fileoutput.write('%s\t%s\t%s\t%s\t%s\t%s\n' % (REFchr, REFpos, REFseq[i], TARGseq[i], TARGchr, TARGpos))
+              TARGseq[i] = calls.complementSeq(TARGseq[i])[0]
+            if TARGseq[i] != '-' and REFseq[i] != '-':
+              fileoutput.write('%s\t%s\t%s\t%s\t%s\t%s\t%s\n' % (REFchr, REFpos, REFseq[i], TARGseq[i], TARGchr, TARGpos, TARGstrand))
         elif param == 'a':
           linenumber = 1
 
