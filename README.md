@@ -72,6 +72,8 @@ chr_3   5   G   -   N   N   G   G   G   C   G
 
 [combine_overlapping_BEDintervals.py](combine_overlapping_BEDintervals.py) combines overlapping genetic intervals in the BED format.
 
+[Ensembl.dat-to-topGO.db.py](Ensembl.dat-to-topGO.db.py) converts the Ensembl.dat file to the GO reference file used in the topGO R program.
+
 [extractSIFT4Gannotation.py](extractSIFT4Gannotation.py) extracts the [SIFT4G annotation](http://sift.bii.a-star.edu.sg/sift4g/AnnotateVariants.html) for a given set of samples according to their genotypes.
 
 [FastaToPhylip.py](FastaToPhylip.py) converts FASTA to PHYLIP.
