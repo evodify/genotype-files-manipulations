@@ -86,6 +86,8 @@ chr_3   5   G   -   N   N   G   G   G   C   G
 
 [findCommonAlleles.py](findCommonAlleles.py) outputs common and rare alleles in a given set of samples.
 
+[GFFextract.py](GFFextract.py) extracts various info from the gff3 file.
+
 [keep_biallelic_in_callsTab.py](keep_biallelic_in_callsTab.py) removes sites with more than two alleles.
 
 [make_input_MSMC_from_callsTab.py](make_input_MSMC_from_callsTab.py) makes input for [MSMC](https://github.com/stschiff/msmc).
