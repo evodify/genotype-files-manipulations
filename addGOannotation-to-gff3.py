@@ -116,7 +116,7 @@ This script extracts various info from the gff3 file.
 
 #command:
 
-$ python GFFextract.py -i text.gff3 -o text.gff3.out -t gene -a ID,Name -c 1,4,5
+$ python annotate_GO_withStatFromSlidingWindowsStats.py -i input.table -o output.tab -s Fst -t GOref.csv
 
 #contact:
 
@@ -157,17 +157,10 @@ with open(args.input) as datafile:
         for col in colExtract:
           columns.append(words[int(col)-1])
         attrWords = words[8].split(';')
-        attrList = []
         for att in args.attributes.split(','):
           for attrW in attrWords:
             if str(att)+'=' in str(attrW):
-                extrAttr = attrW
-                continue
-          if extrAttr:
-              columns.append(extrAttr)
-              extrAttr = ''
-          else:
-              columns.append(str(att) + '=none')
+              columns.append(attrW)
         columnsP = '\t'.join(str(e) for e in columns)
         output.write('%s\n' % columnsP)
         columns = []
