@@ -53,6 +53,7 @@ chr_3   5   G   -   N   N   G   G   G   C   G
 ```
 
 ##
+[addGOannotation-to-gff3.py](addGOannotation-to-gff3.py) adds GO annotation to the gff3 file.
 
 [assessNs_in_callsTab.py](assessNs_in_callsTab.py) calculates missing data (Ns) per position/sample and visualizes the results.
 
