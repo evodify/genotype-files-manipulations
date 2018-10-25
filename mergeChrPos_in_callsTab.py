@@ -21,7 +21,7 @@ chr_3   3   36
 chr_3   4   6
 chr_3   5   6
 
-Example fasta.fai:
+Example fasta.fai (sorted by coordinates):
 
 chr_1      19624517
 chr_2      14106692
@@ -29,25 +29,25 @@ chr_3      15060676
 
 Example output:
 
-position    SomeValues
-1   2456
-2   36
-3   346
-4   36
-19624518    36
-19624519    2461
-19624520    6
-19624521    70
-19624522    2464
-33731210    46
-33731211    2466
-33731212    36
-33731213    6
-33731214    6
+Genome_Pos	CHROM	POS	SomeValues
+1.0	chr_1	1	2456
+2.0	chr_1	2	36
+3.0	chr_1	3	346
+4.0	chr_1	4	36
+19624518.0	chr_2	1	36
+19624519.0	chr_2	2	2461
+19624520.0	chr_2	3	6
+19624521.0	chr_2	4	70
+19624522.0	chr_2	5	2464
+33731210.0	chr_3	1	46
+33731211.0	chr_3	2	2466
+33731212.0	chr_3	3	36
+33731213.0	chr_3	4	6
+33731214.0	chr_3	5	6
 
 command:
 
-$ python mergeChrPos.py -i input.tab -F fasta.fai -o output.file
+$ python mergeChrPos_in_callsTab.py -i input.tab -f fasta.fai -o output.file
 
 contact:
 
@@ -72,38 +72,36 @@ counter = 0
 
 print('Opening files...')
 
+# create chromosome whole genomes position coordinates
 fai = open(args.fai, 'r')
-fai_words = fai.readline().split()
-fai_ch = fai_words[0]
-fai_start1 = 0
-fai_start2 = int(fai_words[1])
+faiDict = {}
+gPosition = 0
+for line in fai:
+  fai_words = line.split()
+  faiDict[fai_words[0]] =  gPosition
+  gPosition += int(fai_words[1])
+fai.close()
 
 output = open(args.output, 'w')
 
 print('Opening the file...')
 with open(args.input) as datafile:
-  header_line = datafile.readline().split()
-  header = header_line[2:]
+  header = datafile.readline().split()
   headerP = '\t'.join(str(e) for e in header)
-  output.write("position\t%s\n" % headerP)
+  output.write("Genome_Pos\t%s\n" % headerP)
   for line in datafile:
     words = line.split()
     chr = words[0]
     pos = float(words[1])
-    values = words[2:]
-    valuesP = '\t'.join(str(e) for e in values)
+    wordsP = '\t'.join(str(e) for e in words)
 
-    while chr != fai_ch:
-      fai_words = fai.readline().split()
-      if not fai_words:  # end of fai file
-        raise Exception("%s is not found in %s.\nExecution stopped!" % (chr, args.fai))
-      else:
-        fai_ch = fai_words[0]
-        fai_start1 = fai_start1+fai_start2
-        fai_start2 = float(fai_words[1])
-    posP = pos+fai_start1
+    if chr not in faiDict.keys():  # end of fai file
+      raise Exception("%s is not found in %s.\nExecution stopped!" % (chr, args.fai))
+    else:
+      fai_start = faiDict[chr]
+    posP = pos+fai_start
 
-    output.write("%s\t%s\n" % (posP, valuesP))
+    output.write("%s\t%s\n" % (posP, wordsP))
 
     counter += 1
     if counter % 1000000 == 0:
