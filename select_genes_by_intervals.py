@@ -167,7 +167,13 @@ with open(args.interval_file) as intervalFile:
     intervalScaf = intervalWords[0]
     intervalStart = int(intervalWords[1])
     intervalEnd = int(intervalWords[2])
-    chrInterDict = InterDicts[intervalScaf]
+    try:
+      chrInterDict = InterDicts[intervalScaf]
+    except:
+      intervalWordsP = '\t'.join(str(e) for e in intervalWords)
+      output.write('%s\tNA\n' % (intervalWordsP))
+      continue
+
     for geneCoord in chrInterDict:
       geneStart = int(geneCoord[0])
       geneEnd = int(geneCoord[1])
