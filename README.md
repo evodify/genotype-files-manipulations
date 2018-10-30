@@ -55,6 +55,8 @@ chr_3   5   G   -   N   N   G   G   G   C   G
 ##
 [addGOannotation-to-gff3.py](addGOannotation-to-gff3.py) adds GO annotation to the gff3 file.
 
+[annotate_genes_withSlidingWindowsStats.py](annotate_genes_withSlidingWindowsStats.py) annotates genes from a sliding windows analysis with the stats per gene.
+
 [assessNs_in_callsTab.py](assessNs_in_callsTab.py) calculates missing data (Ns) per position/sample and visualizes the results.
 
 [calculateNsPerWindow.py](calculateNsPerWindow.py) calculates number of positions with missing data (Ns) using the sliding window approach.
