@@ -119,6 +119,8 @@ chr_3   5   G   -   N   N   G   G   G   C   G
 
 [MAF-TAB_reference.py](MAF-TAB_reference.py) transforms the MAF file to tab file with Chr Pos of both sequences. Indels are skipped.
 
+[RefSeqGene_extract_summary.py](RefSeqGene_extract_summary.py) extracts summary info from NCBI Gene annotation.
+
 [remove_Insertions_from_callsTab.py](remove_Insertions_from_callsTab.py) removes insertions of longer than 1 bp and replaces deletions of 1 bp marked as "*" with "-".
 
 [remove_masked_intervals_from_callsTab.py](remove_masked_intervals_from_callsTab.py) removes the masked sites from a tab file. The masked sites are provided in a BED file.
