@@ -15,7 +15,7 @@ chr_1  122 C   C   N   C
 chr_2  137 A   A   T   N
 chr_2  139 T   T   T   N
 chr_2  148 A   A   T   N
-chr_13  161 C   C   C   N
+chr_13  161 C   T   C   N
 chr_13  170 C   T   C   N
 chr_13  174 A   A   A   N
 chr_X  104 A   A   A   N
@@ -35,7 +35,7 @@ chr_1  122 C
 chr_2  137 A
 chr_2  139 T
 chr_2  148 T
-chr_13  161 C
+chr_13  161 S
 chr_13  170 C
 chr_13  174 A
 chr_X  104 A
@@ -60,9 +60,10 @@ chr_Un7  50000        901        80      81
 # output (There are also separate output files for each chromosome.):
 
 position	x	n	folded
-117	0	3	1
+117	3	3	1
 333	1	3	0
 344	2	3	0
+1767	1	3	0
 1776	1	3	0
 3310	3	3	0
 
@@ -204,6 +205,8 @@ with open(args.input) as datafile:
                         ancest_ch = ancest_ch
                 ancest_pos = int(ancest_chr_pos[1])
                 ancest = words2[2]
+                if ancest in 'RYMKSW':
+                    ancest = calls.OneToTwo(ancest)[0].split('/')
 
         # find overlap with fai file to define chromosome borders
         if ch <= mChr:  # major chromosomes that will be split
@@ -227,7 +230,6 @@ with open(args.input) as datafile:
         al1 = numAl[0][0]
         x1 = numAl[0][1]
         f = 0
-
         if len(numAl) > 2:  # skip non-biallelic
             continue
         elif chr_pos == ancest_chr_pos:  # folded
@@ -235,18 +237,20 @@ with open(args.input) as datafile:
                 if ancest == 'N':
                     f = 1
                     x = random.choice([x1, 0])
-                elif al1 == ancest:
+                elif al1 in ancest:
                     x = 0
                 else:
                     x = n
             elif len(numAl) == 2:  # biallelic
                 al2 = numAl[1][0]
                 x2 = numAl[1][1]
-                if al1 == ancest:
+                if (al1 in ancest) and (al2 not in ancest):
                     x = x2
-                elif al2 == ancest:
+                elif (al2 in ancest) and (al1 not in ancest):
+                    #print ancest, al2, al1
                     x = x1
                 else:
+
                     f = 1
                     x = random.choice([x1, x2])
         else:  # unfolded
@@ -257,6 +261,7 @@ with open(args.input) as datafile:
                 x2 = numAl[1][1]
                 f = 1
                 x = random.choice([x1, x2])
+        #print ancest, posP, numAl, x, n, f, line
 
         if x == 0 and f == 0: # skip sites with fixed ancestral alleles
              continue
