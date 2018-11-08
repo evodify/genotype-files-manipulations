@@ -115,6 +115,8 @@ chr_3   5   G   -   N   N   G   G   G   C   G
 
 [MAFtoTAB.py](MAFtoTAB.py) transforms the [MAF](https://genome.ucsc.edu/FAQ/FAQformat.html#format5) file to tab file. Indels are skipped.
 
+[make_custom_map.py](make_custom_map.py) creates a custom map file from a genotype tab/vcf file and a known map.
+
 [MAF-Calls_alignment-complement.py](MAF-Calls_alignment-complement.py) processes the Calls-MAF aligned file to complement the reverse complemented sequences of MAF and outputs Tab file with the coordinates of new genome.
 
 [MAF-TAB_reference.py](MAF-TAB_reference.py) transforms the MAF file to tab file with Chr Pos of both sequences. Indels are skipped.
