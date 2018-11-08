@@ -109,6 +109,8 @@ chr_3   5   G   -   N   N   G   G   G   C   G
 
 [mergeTabFiles.py](mergeTabFiles.py) merges two tab files by their overlapping positions.
 
+[polarize_beagleVCF.py](polarize_beagleVCF.py) polarizes BEAGLE phased genotypes relative to an outgroup/ancestral sequence.
+
 [polarizeGT_in_callsTab.py](polarizeGT_in_callsTab.py) polarizes the genotype data by keeping only derived alleles relative to an outgroup/ancestral sequence.
 
 [pseudoPhasingHetero_in_callsTab.py](pseudoPhasingHetero_in_callsTab.py) phases the sequences by random split of heterozygous sites.
