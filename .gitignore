@@ -1,7 +1,14 @@
 .directory
-*test*
 *.pyc
-*out*
+*.out
 *.bed
 *.tab
-
+*.fai
+*.fasta
+*.vcf
+*.txt
+*.map
+*.gff3
+*test*
+*.json
+*.csv
