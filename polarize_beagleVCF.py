@@ -1,7 +1,7 @@
 #! /usr/bin/env python
 
 """
-This script polarizes the BEAGLE phased genotype data relative to an outgroup/ancestral sequence.
+This script polarizes BEAGLE phased genotypes relative to an outgroup/ancestral sequence.
 
 After polarization:
 
@@ -59,12 +59,17 @@ import calls # my custom module
 
 ############################# options #############################
 
-
 parser = calls.CommandLineParser()
 parser.add_argument('-i', '--input', help = 'name of the reference input file', type=str, required=True)
 parser.add_argument('-a', '--ancestral', help = 'name of the outgroup/ancestral sequence file', type=str, required=True)
 parser.add_argument('-o', '--output', help = 'name of the output file', type=str, required=True)
+parser.add_argument('-c', '--skip_checking_if_input_sorted', help = 'skip checking if input files are naturally sorted in chr and pos columns (type anything)', type=bool, required=False)
+
 args = parser.parse_args()
+
+if not args.skip_checking_if_input_sorted:
+  calls.check_if_chr_pos_sorted(args.input)
+  calls.check_if_chr_pos_sorted(args.ancestral)
 
 ############################# program #############################
 

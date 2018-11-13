@@ -61,7 +61,7 @@ class CommandLineParser(argparse.ArgumentParser):
    def error(self, message):
       sys.stderr.write('error: %s\n' % message)
       self.print_help()
-      sys.exit(2)
+      sys.exit(2) # command line syntax errors
 
 class callsParser(object):
   """ Parse calls table with genotypes to an object to access chromosomes/positions/sequences easily"""
@@ -291,7 +291,7 @@ def OneToTwo(GT):
 def countPositions(fileName):
   '''count number of genomic position in a file'''
   with open(fileName) as f:
-      for i, l in enumerate(f):
+      for i in enumerate(f):
           pass
   return i
 
@@ -345,11 +345,11 @@ def pseudoPhase(gt):
     elif i == 'A/*' or i == '*/A':
       i = random.choice(delA)
     elif i == 'T/*' or i == '*/T':
-      i = rTndom.choice(delT)
+      i = random.choice(delT)
     elif i == 'G/*' or i == '*/G':
-      i = rGndom.choice(delG)
+      i = random.choice(delG)
     elif i == 'C/*' or i == '*/C':
-      i = rCndom.choice(delC)
+      i = random.choice(delC)
     else:
       i = 'N\tN'
     phasedAlles.append(i)
@@ -384,3 +384,34 @@ def complementSeq(sequence):
       i = 'G'
     complement.append(i)
   return complement
+
+def check_if_chr_pos_sorted(callsFile):
+  '''Check if chr and pos columns are naturally sorted in the genotype calls file.'''
+  from natsort import natsorted # to chech natural sorting
+  print("Checking if %s is naturally sorted..." % callsFile)
+  chr = []
+  chr_pos = {}
+  # load chr and position data
+  with open(callsFile, 'r') as f:
+      next(f)
+      for l in f:
+          words = l.rstrip().split()
+          chrL = words[0]
+          pos = words[1]
+          if chrL not in chr:
+              chr.append(chrL)
+              chr_pos[chrL] = [pos]
+          else:
+              chr_pos[chrL].append(pos)
+  f.close()
+
+  # check if sort order is correct
+  if natsorted(chr) != chr:
+      raise IOError("Chromosomes are not sorted correctly. "
+                    "Sort your input with:\nsort -V -k1,1 -k2,2 %s" % callsFile)
+  else:
+      for k in chr_pos:
+          if natsorted(chr_pos[k]) != chr_pos[k]:
+              raise IOError("Genomic positions are not sorted correctly in %s. "\
+              "Sort your input with:\nsort -V -k1,1 -k2,2 %s" % (k, callsFile))
+              break
