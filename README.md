@@ -59,13 +59,17 @@ chr_3   5   G   -   N   N   G   G   G   C   G
 
 [assessNs_in_callsTab.py](assessNs_in_callsTab.py) calculates missing data (Ns) per position/sample and visualizes the results.
 
+[beagleVCF_to_calls.py](beagleVCF_to_calls.py) converts a [Beagle](https://faculty.washington.edu/browning/beagle/beagle.html) phased VCF to a calls tab file.
+
 [calculateNsPerWindow.py](calculateNsPerWindow.py) calculates number of positions with missing data (Ns) using the sliding window approach.
 
-[calls.py](calls.py) is a custom python module. It is a dependency for the most of the scripts listed here.
+[calls_to_fastPHASE.py](calls_to_fastPHASE.py) converts genotype calls file to [PHASE/fastPHASE](http://stephenslab.uchicago.edu/software.html) input.
 
 [calls_to_ped_map.py](calls_to_ped_map.py) converts genotype calls file to ped and map files suitable for [PLINK](http://zzz.bwh.harvard.edu/plink/).
 
 [calls_to_treeMix_input.py](calls_to_treeMix_input.py) outputs alleles counts file that is required as input for [TreeMix](https://bitbucket.org/nygcresearch/treemix/wiki/Home).
+
+[calls.py](calls.py) is a custom python module. It is a dependency for the most of the scripts listed here.
 
 [callsToBED.py](callsToBED.py) converts a tab-delimited file to a bed file.
 
@@ -93,13 +97,23 @@ chr_3   5   G   -   N   N   G   G   G   C   G
 
 [keep_biallelic_in_callsTab.py](keep_biallelic_in_callsTab.py) removes sites with more than two alleles.
 
+[MAF-Calls_alignment-complement.py](MAF-Calls_alignment-complement.py) processes the Calls-MAF aligned file to complement the reverse complemented sequences of MAF and outputs Tab file with the coordinates of new genome.
+
+[MAF-TAB_reference.py](MAF-TAB_reference.py) transforms the MAF file to tab file with Chr Pos of both sequences. Indels are skipped.
+
+[MAFtoTAB.py](MAFtoTAB.py) transforms the [MAF](https://genome.ucsc.edu/FAQ/FAQformat.html#format5) file to tab file. Indels are skipped.
+
+[make_custom_map.py](make_custom_map.py) creates a custom map file from a genotype tab/vcf file and a known map.
+
 [make_input_MSMC_from_callsTab.py](make_input_MSMC_from_callsTab.py) makes input for [MSMC](https://github.com/stschiff/msmc).
 
-[makeSweepFinderInput_from_callsTab.py](makeSweepFinderInput_from_callsTab.py) makes an input file for [SweepFinder](http://people.binf.ku.dk/rasmus/webpage/sf.html).
 
 [make_input_stairway_plot_v1_BS.py](make_input_stairway_plot_v1_BS.py) makes input files including bootstrap replicates for [Stairway](https://sites.google.com/site/jpopgen/stairway-plot) version 1.
 
 [make_input_stairway_plot_v2.py](make_input_stairway_plot_v2.py) makes an input file for [Stairway](https://sites.google.com/site/jpopgen/stairway-plot) version 2.
+
+
+[makeSweepFinderInput_from_callsTab.py](makeSweepFinderInput_from_callsTab.py) makes an input file for [SweepFinder](http://people.binf.ku.dk/rasmus/webpage/sf.html).
 
 [merge_phased_callsTab.py](merge_phased_callsTab.py) merges phased sites into two-character coded genotype file.
 
@@ -115,14 +129,6 @@ chr_3   5   G   -   N   N   G   G   G   C   G
 
 [pseudoPhasingHetero_in_callsTab.py](pseudoPhasingHetero_in_callsTab.py) phases the sequences by random split of heterozygous sites.
 
-[MAFtoTAB.py](MAFtoTAB.py) transforms the [MAF](https://genome.ucsc.edu/FAQ/FAQformat.html#format5) file to tab file. Indels are skipped.
-
-[make_custom_map.py](make_custom_map.py) creates a custom map file from a genotype tab/vcf file and a known map.
-
-[MAF-Calls_alignment-complement.py](MAF-Calls_alignment-complement.py) processes the Calls-MAF aligned file to complement the reverse complemented sequences of MAF and outputs Tab file with the coordinates of new genome.
-
-[MAF-TAB_reference.py](MAF-TAB_reference.py) transforms the MAF file to tab file with Chr Pos of both sequences. Indels are skipped.
-
 [RefSeqGene_extract_summary.py](RefSeqGene_extract_summary.py) extracts summary info from NCBI Gene annotation.
 
 [remove_Insertions_from_callsTab.py](remove_Insertions_from_callsTab.py) removes insertions of longer than 1 bp and replaces deletions of 1 bp marked as "*" with "-".
@@ -135,6 +141,8 @@ chr_3   5   G   -   N   N   G   G   G   C   G
 
 [select_genes_by_intervals.py](select_genes_by_intervals.py) extracts gene names from a bed file by provided coordinates.
 
+[select_interval_info_for_genotypes.py](select_interval_info_for_genotypes.py) extracts info coded with intervals for any data with CHROM POS coordinates.
+
 [select_intervals_in_callsTab.py](select_intervals_in_callsTab.py) extracts lines from a calls file according to scaffold name, start and end positions.
 
 [selectSamples_in_callsTab.py](selectSamples_in_callsTab.py) subsamples a genotype calls file by sample names. It also can be used to rearrange samples in a calls file.
@@ -143,9 +151,9 @@ chr_3   5   G   -   N   N   G   G   G   C   G
 
 [split_calls_by_chromosomes.py](split_calls_by_chromosomes.py) splits a calls file into several files by chromosomes.
 
-[summarySIFT.awk](summarySIFT.awk) summarizes the extracted SIFT4G annotation (output of [extractSIFT4Gannotation.py](extractSIFT4Gannotation.py))
-
 [summarizeTAB.awk](summarizeTAB.awk) summarizes the genotyope file by counting homozygot, heterozygot, missing etc.
+
+[summarySIFT.awk](summarySIFT.awk) summarizes the extracted SIFT4G annotation (output of [extractSIFT4Gannotation.py](extractSIFT4Gannotation.py))
 
 [vcf_to_SIFT4G.py](vcf_to_SIFT4G.py) converts a VCF file to SIFT4G input.
 
