@@ -1,6 +1,7 @@
 #! /usr/bin/python
 '''
-This script converts genotype calls file to ped and map files suitable for PLINK (http://zzz.bwh.harvard.edu/plink/).
+This script converts genotype calls file to ped and map files 
+suitable for PLINK (http://zzz.bwh.harvard.edu/plink/).
 
 Note! If your file is large, this script may use a lot of RAM.
 
@@ -20,17 +21,16 @@ chr_3   1   G   G   N   N   G   N   N   N   N
 chr_3   2   C   S   C   N   C   C   N   C   N
 chr_3   3   N   N   N   N   N   N   N   N   N
 chr_3   4   N   T   T   N   T   T   T   T   N
-chr_3   5   G   -   N   N   G   G   G   C   G
-chr_4   1   G   -   N   N   G   G   G   C   G
-chr_4   2   G   -   N   N   G   G   G   C   G
 
 Diploid genotypes can be specified with /, e.g. A/T, T/C.
 
+If the data is phased, genotypes need to be separated by |, e.g C|C	A|C
+
 # output.ped
-family1 sample1 0 0 0 0 A T C T 0 0 T T 0 0 A A C C 0 0 C C T T G G G C 0 0 T T - - - - - -
-family1 sample2 0 0 0 0 0 0 T C - - T T C C A A C C 0 0 T T C C 0 0 C C 0 0 T T 0 0 0 0 0 0
-family2 sample5 0 0 0 0 0 0 C C C C T T C C A A C C 0 0 C C T T 0 0 C C 0 0 T T G G G G G G
-family2 sample6 0 0 0 0 0 0 0 0 C C T T C C A A C C 0 0 C C C T 0 0 0 0 0 0 T T G G G G G G
+family1 sample1 0 0 0 0 A T C T 0 0 T T 0 0 A A C C 0 0 C C T T G G G C 0 0 T T 
+family1 sample2 0 0 0 0 0 0 T C - - T T C C A A C C 0 0 T T C C 0 0 C C 0 0 T T
+family2 sample5 0 0 0 0 0 0 C C C C T T C C A A C C 0 0 C C T T 0 0 C C 0 0 T T
+family2 sample6 0 0 0 0 0 0 0 0 C C T T C C A A C C 0 0 C C C T 0 0 0 0 0 0 T T
 
 # output.map
 
@@ -48,13 +48,13 @@ family2 sample6 0 0 0 0 0 0 0 0 C C T T C C A A C C 0 0 C C C T 0 0 0 0 0 0 T T 
 3 3_2 0 2
 3 3_3 0 3
 3 3_4 0 4
-3 3_5 0 5
-4 4_1 0 1
-4 4_2 0 2
 
 # command
 
-$ python calls_to_ped_map.py -i input.tab -o output -f "family1[sample1,sample2];family2[sample5,sample6]"
+$ python calls_to_ped_map.py \
+-i input.tab \
+-o output \
+-f "family1[sample1,sample2];family2[sample5,sample6]"
 
 # An example command to convert to binary bed with PLINK:
 
@@ -74,7 +74,9 @@ import random # for randomization
 
 ############################# functions #############################
 def pseudoPhasePED(gt):
-  ''' Randomly splits heterozygouts '''
+  '''
+  Randomly splits heterozygouts
+  '''
   # heterozygouts:
   ambR = ['A G', 'G A']
   ambY = ['T C', 'C T']
@@ -115,14 +117,22 @@ def pseudoPhasePED(gt):
     elif i == 'A/*' or i == '*/A':
       i = random.choice(delA)
     elif i == 'T/*' or i == '*/T':
-      i = rTndom.choice(delT)
+      i = random.choice(delT)
     elif i == 'G/*' or i == '*/G':
-      i = rGndom.choice(delG)
+      i = random.choice(delG)
     elif i == 'C/*' or i == '*/C':
-      i = rCndom.choice(delC)
+      i = random.choice(delC)
     else:
       i = '0 0'
     phasedAlles.append(i)
+  return phasedAlles
+
+def phasePED(gt):
+  phasedAlles = []
+  for i in gt:
+    i = i.split("|")
+    iP = ' '.join(str(s) for s in i)
+    phasedAlles.append(iP)
   return phasedAlles
 
 def familySampleCheck(family_samples, hap_dip_samples):
@@ -133,9 +143,25 @@ def familySampleCheck(family_samples, hap_dip_samples):
 ############################# options #############################
 
 parser = calls.CommandLineParser()
-parser.add_argument('-i', '--input', help = 'name of the input file', type=str, required=True)
-parser.add_argument('-o', '--output', help = 'name of the output file', type=str, required=True)
-parser.add_argument('-f', '--family', help = 'Specify the family list in the format "family1[sample1,sample2];family2[sample5,sample6]"', type=str, required=True)
+parser.add_argument(
+  '-i',
+  '--input',
+  help = 'name of the input file',
+  type = str,
+  required = True)
+parser.add_argument(
+  '-o',
+  '--output',
+  help = 'name of the output file',
+  type = str,
+  required = True)
+parser.add_argument(
+  '-f',
+  '--family',
+  help = 'Specify the family list in the format \
+          "family1[sample1,sample2];family2[sample5,sample6]"',
+  type=str,
+  required=True)
 args = parser.parse_args()
 
 # check Family list
@@ -168,10 +194,12 @@ for i in range(len(callsDF.names)):
   for key, value in famDict.iteritems():
     if callsDF.names[i] in value:
        FamilyList.append(key)
-      #print callsDF.names[i], f, vars()[f + "samples"]
 
   # make ped file
-  seq = pseudoPhasePED(callsDF.sequences[i])
+  if all("|" in gt for gt in callsDF.sequences[i]):
+    seq = phasePED(callsDF.sequences[i])
+  else:
+    seq = pseudoPhasePED(callsDF.sequences[i])
   seqP = ' '.join(str(s) for s in seq)
 
   outputPED.write("%s %s 0 0 0 0 %s\n" % (FamilyList[i], callsDF.names[i], seqP))

@@ -86,7 +86,7 @@ class callsParser(object):
     # append sequences
     for line in callsFile:
       words = line.split()
-      self.chrmosomes.append(int(words[0].split('_')[1]))
+      self.chrmosomes.append(str(words[0]))
       self.positions.append(words[1])
       GT = selectSamples(indexS, words)
       for i in range(len(self.sequences)):
@@ -415,3 +415,12 @@ def check_if_chr_pos_sorted(callsFile):
               raise IOError("Genomic positions are not sorted correctly in %s. "\
               "Sort your input with:\nsort -V -k1,1 -k2,2 %s" % (k, callsFile))
               break
+
+def convert01toATGC(ref, alt, gt):
+    '''
+    Convert vcf genotypes (0,1) to nucleotide code (ATGC) 
+    '''
+    altList = alt.split(",")
+    reference = [ref] + altList
+    gtLetters = reference[int(gt)]
+    return gtLetters
