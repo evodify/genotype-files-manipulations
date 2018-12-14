@@ -72,74 +72,6 @@ import calls # my custom module
 import re # to split input
 import random # for randomization
 
-############################# functions #############################
-def pseudoPhasePED(gt):
-  '''
-  Randomly splits heterozygouts
-  '''
-  # heterozygouts:
-  ambR = ['A G', 'G A']
-  ambY = ['T C', 'C T']
-  ambM = ['A C', 'C A']
-  ambK = ['G T', 'T G']
-  ambS = ['G C', 'C G']
-  ambW = ['A T', 'T A']
-  delA = ['A -', '- A']
-  delT = ['T -', '- T']
-  delG = ['G -', '- G']
-  delC = ['C -', '- C']
-  phasedAlles = []
-  for i in gt:
-    if i == 'N':
-      i = '0 0'
-    elif i == 'A':
-      i = 'A A'
-    elif i == 'G':
-      i = 'G G'
-    elif i == 'C':
-      i = 'C C'
-    elif i == 'T':
-      i = 'T T'
-    elif i == '-' or i == '*' or i == "*/*":
-      i = '- -'
-    elif i == 'R' or i == 'A/G' or i == 'G/A':
-      i = random.choice(ambR)
-    elif i == 'Y' or i == 'T/C' or i == 'C/T':
-      i = random.choice(ambY)
-    elif i == 'M' or i == 'A/C' or i == 'C/A':
-      i = random.choice(ambM)
-    elif i == 'K' or i == 'G/T' or i == 'T/G':
-      i = random.choice(ambK)
-    elif i == 'S' or i == 'G/C' or i == 'C/G':
-      i = random.choice(ambS)
-    elif i == 'W' or i == 'A/T' or i == 'T/A':
-      i = random.choice(ambW)
-    elif i == 'A/*' or i == '*/A':
-      i = random.choice(delA)
-    elif i == 'T/*' or i == '*/T':
-      i = random.choice(delT)
-    elif i == 'G/*' or i == '*/G':
-      i = random.choice(delG)
-    elif i == 'C/*' or i == '*/C':
-      i = random.choice(delC)
-    else:
-      i = '0 0'
-    phasedAlles.append(i)
-  return phasedAlles
-
-def phasePED(gt):
-  phasedAlles = []
-  for i in gt:
-    i = i.split("|")
-    iP = ' '.join(str(s) for s in i)
-    phasedAlles.append(iP)
-  return phasedAlles
-
-def familySampleCheck(family_samples, hap_dip_samples):
-  ''' To check if samples specified in the options -f, -1n,-2n are the same'''
-  if not set(family_samples) == set(hap_dip_samples):
-    raise IOError('Sample names in -f differ from those specified in -1n, -2n')
-
 ############################# options #############################
 
 parser = calls.CommandLineParser()
@@ -173,7 +105,7 @@ for i in familyNames.strip("\"").split(";"):
   famSample = re.split("\[|\]|", i)[1]
   Fsamples.append(famSample.split(","))
   famDict[famName] = calls.checkSampleNames(famSample,args.input)
-Fsamples = [i for sl in Fsamples for i in sl] # flat list
+Fsamples = calls.flattenList(Fsamples)
 
 ############################# program #############################
 
@@ -197,9 +129,9 @@ for i in range(len(callsDF.names)):
 
   # make ped file
   if all("|" in gt for gt in callsDF.sequences[i]):
-    seq = phasePED(callsDF.sequences[i])
+    seq = calls.phasePED(callsDF.sequences[i])
   else:
-    seq = pseudoPhasePED(callsDF.sequences[i])
+    seq = calls.pseudoPhasePED(callsDF.sequences[i])
   seqP = ' '.join(str(s) for s in seq)
 
   outputPED.write("%s %s 0 0 0 0 %s\n" % (FamilyList[i], callsDF.names[i], seqP))

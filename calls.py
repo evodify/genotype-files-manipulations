@@ -76,6 +76,7 @@ class callsParser(object):
         self.names = []
         self.chrmosomes = []
         self.positions = []
+        self.snps = {}
 
         # read file
         callsFile = open(self.filename, 'r')
@@ -96,6 +97,7 @@ class callsParser(object):
             GT = selectSamples(indexS, words)
             for i in range(len(self.sequences)):
                 self.sequences[i].append(GT[i])
+            self.snps[words[0]+':'+words[1]] = GT
         callsFile.close()
 
     def __getitem__(self, i):
@@ -359,30 +361,30 @@ def pseudoPhase(gt):
     Randomly splits heterozygouts.
     '''
     # heterozygouts:
-    ambR = ['A\tG', 'G\tA']
-    ambY = ['T\tC', 'C\tT']
-    ambM = ['A\tC', 'C\tA']
-    ambK = ['G\tT', 'T\tG']
-    ambS = ['G\tC', 'C\tG']
-    ambW = ['A\tT', 'T\tA']
-    delA = ['A\t-', '-\tA']
-    delT = ['T\t-', '-\tT']
-    delG = ['G\t-', '-\tG']
-    delC = ['C\t-', '-\tC']
+    ambR = ['A/G', 'G/A']
+    ambY = ['T/C', 'C/T']
+    ambM = ['A/C', 'C/A']
+    ambK = ['G/T', 'T/G']
+    ambS = ['G/C', 'C/G']
+    ambW = ['A/T', 'T/A']
+    delA = ['A/-', '-/A']
+    delT = ['T/-', '-/T']
+    delG = ['G/-', '-/G']
+    delC = ['C/-', '-/C']
     phasedAlles = []
     for i in gt:
         if i == 'N':
-            i = 'N\tN'
+            i = 'N/N'
         elif i == 'A':
-            i = 'A\tA'
+            i = 'A/A'
         elif i == 'G':
-            i = 'G\tG'
+            i = 'G/G'
         elif i == 'C':
-            i = 'C\tC'
+            i = 'C/C'
         elif i == 'T':
-            i = 'T\tT'
+            i = 'T/T'
         elif i == '-' or i == '*' or i == "*/*":
-            i = '-\t-'
+            i = '-/-'
         elif i == 'R' or i == 'A/G' or i == 'G/A':
             i = random.choice(ambR)
         elif i == 'Y' or i == 'T/C' or i == 'C/T':
@@ -404,7 +406,7 @@ def pseudoPhase(gt):
         elif i == 'C/*' or i == '*/C':
             i = random.choice(delC)
         else:
-            i = 'N\tN'
+            i = 'N/N'
         phasedAlles.append(i)
     return phasedAlles
 
@@ -503,3 +505,112 @@ def lineCounter(LineNumber):
     if LineNumber % 100000 == 0:
       print str(LineNumber), "lines processed"
     return LineNumber
+
+def pseudoPhasePED(gt):
+  '''
+  Randomly splits heterozygouts
+  '''
+  # heterozygouts:
+  ambR = ['A G', 'G A']
+  ambY = ['T C', 'C T']
+  ambM = ['A C', 'C A']
+  ambK = ['G T', 'T G']
+  ambS = ['G C', 'C G']
+  ambW = ['A T', 'T A']
+  delA = ['A -', '- A']
+  delT = ['T -', '- T']
+  delG = ['G -', '- G']
+  delC = ['C -', '- C']
+  phasedAlles = []
+  for i in gt:
+    if i == 'N':
+      i = '0 0'
+    elif i == 'A':
+      i = 'A A'
+    elif i == 'G':
+      i = 'G G'
+    elif i == 'C':
+      i = 'C C'
+    elif i == 'T':
+      i = 'T T'
+    elif i == '-' or i == '*' or i == "*/*":
+      i = '- -'
+    elif i == 'R' or i == 'A/G' or i == 'G/A':
+      i = random.choice(ambR)
+    elif i == 'Y' or i == 'T/C' or i == 'C/T':
+      i = random.choice(ambY)
+    elif i == 'M' or i == 'A/C' or i == 'C/A':
+      i = random.choice(ambM)
+    elif i == 'K' or i == 'G/T' or i == 'T/G':
+      i = random.choice(ambK)
+    elif i == 'S' or i == 'G/C' or i == 'C/G':
+      i = random.choice(ambS)
+    elif i == 'W' or i == 'A/T' or i == 'T/A':
+      i = random.choice(ambW)
+    elif i == 'A/*' or i == '*/A':
+      i = random.choice(delA)
+    elif i == 'T/*' or i == '*/T':
+      i = random.choice(delT)
+    elif i == 'G/*' or i == '*/G':
+      i = random.choice(delG)
+    elif i == 'C/*' or i == '*/C':
+      i = random.choice(delC)
+    else:
+      i = '0 0'
+    phasedAlles.append(i)
+  return phasedAlles
+
+def phasePED(gt):
+  phasedAlles = []
+  for i in gt:
+    i = i.split("|")
+    iP = ' '.join(str(s) for s in i)
+    phasedAlles.append(iP)
+  return phasedAlles
+
+def familySampleCheck(family_samples, hap_dip_samples):
+  ''' To check if samples specified in the options -f, -1n,-2n are the same'''
+  if not set(family_samples) == set(hap_dip_samples):
+    raise IOError('Sample names in -f differ from those specified in -1n, -2n')
+
+def polarizeGT(genotypes, reference):
+    '''
+    Polarize a genotype relative to the reference.
+    '''
+    genotypesPolarized = []
+    for gt in genotypes:
+        if gt in 'N-.':
+            gt = 9
+        elif gt == reference:
+            gt = 0
+        else:
+            gt = 1
+        genotypesPolarized.append(gt)
+    return genotypesPolarized
+
+def is_biallelic(genotypes):
+    '''
+    Check if a site is biallelic.
+    '''
+    if all(len(gt) == 1 for gt in genotypes):
+        nonMissGT = filter(lambda a: a not in 'N*-.', genotypes)
+        GTset = set(nonMissGT)
+        if len(GTset) == 2 or any(g in 'RYMKSW' for g in GTset):
+            return True
+        else:
+            return False
+    elif all('/' in gt or '|' in gt for gt in genotypes):
+        GTsplit = []
+        for gt in genotypes:
+            GT = gt.replace('|', '/')
+            GT = GT.split('/')
+            GTsplit.append(GT)
+        GTsplitFlat = flattenList(GTsplit)
+        GTsplitFlatNoMiss = filter(lambda a: a not in 'N.', GTsplitFlat)
+        GTset = set(GTsplitFlatNoMiss)
+        if len(GTset) == 2:
+            return True
+        else:
+            return False
+    else:
+        raise IOError('Wrong input genotypes %s' % genotypes)

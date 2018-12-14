@@ -69,6 +69,8 @@ chr_3   5   G   -   N   N   G   G   G   C   G
 
 [calls_to_treeMix_input.py](calls_to_treeMix_input.py) outputs alleles counts file that is required as input for [TreeMix](https://bitbucket.org/nygcresearch/treemix/wiki/Home).
 
+[calls_to_XPCLR_input.py](calls_to_XPCLR_input.py) converts genotype calls file to .geno and .snps files suitable for [XPCLR](https://reich.hms.harvard.edu/software).
+
 [calls.py](calls.py) is a custom python module. It is a dependency for the most of the scripts listed here.
 
 [callsToBED.py](callsToBED.py) converts a tab-delimited file to a bed file.
@@ -125,7 +127,9 @@ chr_3   5   G   -   N   N   G   G   G   C   G
 
 [polarize_beagleVCF.py](polarize_beagleVCF.py) polarizes BEAGLE phased genotypes relative to an outgroup/ancestral sequence.
 
-[polarizeGT_in_callsTab.py](polarizeGT_in_callsTab.py) polarizes the genotype data by keeping only derived alleles relative to an outgroup/ancestral sequence.
+[polarize_callsTab.py](polarize_callsTab.py) polarizes the genotype data relative to an outgroup/ancestral sequence.
+
+[polarizeGT_in_callsTab_keepDerived.py](polarizeGT_in_callsTab_keepDerived.py) polarizes the genotype data by keeping only derived alleles relative to an outgroup/ancestral sequence.
 
 [pseudoPhasingHetero_in_callsTab.py](pseudoPhasingHetero_in_callsTab.py) phases the sequences by random split of heterozygous sites.
 
