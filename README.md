@@ -125,6 +125,8 @@ chr_3   5   G   -   N   N   G   G   G   C   G
 
 [mergeTabFiles.py](mergeTabFiles.py) merges two tab files by their overlapping positions.
 
+[numberSNPsPerWindows.py](numberSNPsPerWindows.py) assesses a number of SNPs with a sliding window approach.
+
 [polarize_beagleVCF.py](polarize_beagleVCF.py) polarizes BEAGLE phased genotypes relative to an outgroup/ancestral sequence.
 
 [polarize_callsTab.py](polarize_callsTab.py) polarizes the genotype data relative to an outgroup/ancestral sequence.
