@@ -593,9 +593,13 @@ def is_biallelic(genotypes):
     Check if a site is biallelic.
     '''
     if all(len(gt) == 1 for gt in genotypes):
-        nonMissGT = filter(lambda a: a not in 'N*-.', genotypes)
+        nonMiss = filter(lambda a: a not in 'N.', genotypes)
+        for i in range(len(nonMiss)):
+            if nonMiss[i] in 'RYMKSW':
+                nonMiss[i] = OneToTwo([nonMiss[i]])[0].split('/')
+        nonMissGT = flattenList(nonMiss)
         GTset = set(nonMissGT)
-        if len(GTset) == 2 or any(g in 'RYMKSW' for g in GTset):
+        if len(GTset) == 2:
             return True
         else:
             return False

@@ -34,20 +34,20 @@ family2 sample6 0 0 0 0 0 0 0 0 C C T T C C A A C C 0 0 C C C T 0 0 0 0 0 0 T T
 
 # output.map
 
-1 1_1 0 1
-1 1_2 0 2
-1 1_3 0 3
-1 1_4 0 4
-1 1_6 0 6
-2 2_1 0 1
-2 2_2 0 2
-2 2_3 0 3
-2 2_4 0 4
-2 2_5 0 5
-3 3_1 0 1
-3 3_2 0 2
-3 3_3 0 3
-3 3_4 0 4
+chr_1 chr_1_1 0 1
+chr_1 chr_1_2 0 2
+chr_1 chr_1_3 0 3
+chr_1 chr_1_4 0 4
+chr_1 chr_1_6 0 6
+chr_2 chr_2_1 0 1
+chr_2 chr_2_2 0 2
+chr_2 chr_2_3 0 3
+chr_2 chr_2_4 0 4
+chr_2 chr_2_5 0 5
+chr_3 chr_3_1 0 1
+chr_3 chr_3_2 0 2
+chr_3 chr_3_3 0 3
+chr_3 chr_3_4 0 4
 
 # command
 
@@ -104,7 +104,7 @@ for i in familyNames.strip("\"").split(";"):
   famName = i.split("[")[0]
   famSample = re.split("\[|\]|", i)[1]
   Fsamples.append(famSample.split(","))
-  famDict[famName] = calls.checkSampleNames(famSample,args.input)
+  famDict[famName] = calls.checkSampleNames(famSample, args.input)
 Fsamples = calls.flattenList(Fsamples)
 
 ############################# program #############################
@@ -114,10 +114,12 @@ callsDF = calls.callsParser(args.input, Fsamples)
 outputPED = open(args.output+'.ped', 'w')
 outputMAP = open(args.output+'.map', 'w')
 
-for i in range(len(callsDF[i])):
+for i in range(len(callsDF.positions)):
   # make map file
   snpsID = str(callsDF.chrmosomes[i]) + "_" + str(callsDF.positions[i])
-  outputMAP.write("%s %s 0 %s\n" % (callsDF.chrmosomes[i], snpsID, callsDF.positions[i]))
+  cM = float(callsDF.positions[i])*0.000001
+  outputMAP.write("%s %s %s %s\n" %
+                 (callsDF.chrmosomes[i], snpsID, cM,callsDF.positions[i]))
 outputMAP.close()
 
 FamilyList = []

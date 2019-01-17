@@ -1,28 +1,31 @@
 #! /usr/bin/python
 '''
-This script converts Beagle phased VCF to calls file.
+This script converts Beagle phased and polarized VCF to calls file.
+To polarize original beagle VCF use polarize_beagleVCF.py
+Alternatively, you can sumply remove the columns
+"ID, QUAL, FILTER, INFO, FORMAT", to create an input for this script.
 
 # beagle.vcf
 
-#CHROM  POS   ID   REF  ALT QUAL FILTER  INFO FORMAT sample1  sample2
-chr6    215    .    T    G    .    PASS    .    GT    1|0    1|0
-chr6    245    .    A    C    .    PASS    .    GT    0|0    0|0
-chr6    261    .    C    A    .    PASS    .    GT    0|0    0|0
-chr6    280    .    C    A    .    PASS    .    GT    0|0    1|0
-chr6    321    .    G    C    .    PASS    .    GT    0|0    0|0
-chr6    328    .    C    A    .    PASS    .    GT    0|0    0|0
-chr6    345    .    G    A    .    PASS    .    GT    0|0    0|0
-chr6    365    .    A    G    .    PASS    .    GT    0|0    0|0
-chr6    367    .    G    C    .    PASS    .    GT    0|0    0|0
-chr7    1215    .    T    G    .    PASS    .    GT    1|0    1|0
-chr7    1245    .    A    C    .    PASS    .    GT    0|0    0|0
-chr7    1261    .    C    A    .    PASS    .    GT    0|0    0|0
-chr7    1280    .    C    A    .    PASS    .    GT    0|0    1|0
-chr7    1321    .    G    C    .    PASS    .    GT    0|0    0|0
-chr7    1328    .    C    A    .    PASS    .    GT    0|0    0|0
-chr7    1345    .    G    A    .    PASS    .    GT    0|0    0|0
-chr7    1365    .    A    G    .    PASS    .    GT    0|0    0|0
-chr7    1367    .    G    C    .    PASS    .    GT    0|0    0|0
+#CHROM  POS   REF  DER sample1  sample2
+chr6    215    T    G    1|0    1|0
+chr6    245    A    C    0|0    0|0
+chr6    261    C    A    0|0    0|0
+chr6    280    C    A    0|0    1|0
+chr6    321    G    C    0|0    0|0
+chr6    328    C    A    0|0    0|0
+chr6    345    G    A    0|0    0|0
+chr6    365    A    G    0|0    0|0
+chr6    367    G    C    0|0    0|0
+chr7    1215    T    G    1|0    1|0
+chr7    1245    A    C    0|0    0|0
+chr7    1261    C    A    0|0    0|0
+chr7    1280    C    A    0|0    1|0
+chr7    1321    G    C    0|0    0|0
+chr7    1328    C    A    0|0    0|0
+chr7    1345    G    A    0|0    0|0
+chr7    1365    A    G    0|0    0|0
+chr7    1367    G    C    0|0    0|0
 
 # output.tab
 
@@ -89,7 +92,7 @@ counter = 0
 with open(args.input) as datafile:
 
     header = datafile.readline().split()
-    samplesNames = header[9:]
+    samplesNames = header[4:]
     samplesNamesP = '\t'.join(str(s) for s in samplesNames)  
     output.write("CHROM\tPOS\t%s\n" % samplesNamesP)
 
@@ -97,9 +100,9 @@ with open(args.input) as datafile:
         words = line.split()
         chr = words[0]
         pos = int(words[1])
-        ref = words[3]
-        alt = words[4]
-        gt = words[9:]
+        ref = words[2]
+        alt = words[3]
+        gt = words[4:]
 
         genotypes = []
         for g in gt:

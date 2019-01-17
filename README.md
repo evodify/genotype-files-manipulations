@@ -59,7 +59,7 @@ chr_3   5   G   -   N   N   G   G   G   C   G
 
 [assessNs_in_callsTab.py](assessNs_in_callsTab.py) calculates missing data (Ns) per position/sample and visualizes the results.
 
-[beagleVCF_to_calls.py](beagleVCF_to_calls.py) converts a [Beagle](https://faculty.washington.edu/browning/beagle/beagle.html) phased VCF to a calls tab file.
+[beagleVCF_to_calls.py](beagleVCF_to_calls.py) converts a [Beagle](https://faculty.washington.edu/browning/beagle/beagle.html) phased and polarized VCF to a calls tab file.
 
 [calculateNsPerWindow.py](calculateNsPerWindow.py) calculates number of positions with missing data (Ns) using the sliding window approach.
 
