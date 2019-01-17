@@ -146,7 +146,7 @@ for s in callsDF.names:
     haplo1 = []
     haplo2 = []
     for g in  callsDF[s]:
-        gTwo = calls.pseudoPhase(g)[0].split('\t')
+        gTwo = calls.pseudoPhase(g)[0].split('/')
         for i in range(len(gTwo)):
             if gTwo[i] in 'N-.':
                 gTwo[i] = '?'
