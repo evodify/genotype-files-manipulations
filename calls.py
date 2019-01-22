@@ -353,7 +353,7 @@ def processWindow(Chr, FirstPos, LastPos, WindowVal, outputFile):
     '''
     #print FirstPos, LastPos
     posP = float(FirstPos) + ((float(LastPos) - float(FirstPos)) / 2.0)
-    outputFile.write("%s\t%s\t%s\n" % (Chr, posP, WindowVal))
+    outputFile.write("%s\t%s\t%s\n" % (Chr, int(posP), WindowVal))
 
 
 def pseudoPhase(gt):
