@@ -153,6 +153,8 @@ with open(args.input) as datafile:
                 continue  # skip all missing data lines
             elif ances_gt == 'N':
                 continue  # skip missing ancestral positions
+            elif ances_gt != ref_gt and  ances_gt != alt_gt:
+                continue  # skip double mutations
             else:  # polarize
                 for i in range(len(samples_gt)):
                     gt_hapl = samples_gt[i].split('|')
