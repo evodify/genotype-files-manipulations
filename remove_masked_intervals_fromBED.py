@@ -66,7 +66,7 @@ def getOverlap(a, b):
 maskFile = open(args.masked_intervals, "r")
 header_scaf = maskFile.readline()
 maskWords = maskFile.readline().split()
-maskScaf = int(maskWords[0].split('_')[1])
+maskScaf = maskWords[0]
 maskCoord = maskWords[1:]
 maskStart = int(maskWords[1])
 maskEnd = int(maskWords[2])
@@ -81,25 +81,25 @@ with open(args.input) as datafile:
 
   for line in datafile:
     words = line.split()
-    inScaff = int(words[0].split('_')[1])
+    inScaff = words[0]
     inCoord = words[1:]
     inStart = int(words[1])
     inEnd = int(words[2])
     overlap = 0
 
     # read masked coordinates until an overlap
-    while  inScaff > maskScaf or (inScaff == maskScaf and inStart > maskEnd):
+    while  inScaff != maskScaf or (inScaff == maskScaf and inStart > maskEnd):
       maskWords = maskFile.readline().split()
       if maskWords == []:
         break
       else:
-        maskScaf = int(maskWords[0].split('_')[1])
+        maskScaf = maskWords[0]
         maskCoord = maskWords[1:]
         maskStart = int(maskWords[1])
         maskEnd = int(maskWords[2])
 
     # find overlap
-    if inScaff < maskScaf:
+    if inScaff != maskScaf:
       output.write(line)
       continue
     elif inScaff == maskScaf and maskStart >= inStart and inEnd <= maskEnd:
@@ -111,7 +111,7 @@ with open(args.input) as datafile:
           break
         else:
           overlap += getOverlap(inCoord, maskCoord)
-          maskScaf = int(maskWords[0].split('_')[1])
+          maskScaf = maskWords[0]
           maskCoord = maskWords[1:]
           maskStart = int(maskWords[1])
           maskEnd = int(maskWords[2])

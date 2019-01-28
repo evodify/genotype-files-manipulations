@@ -105,12 +105,12 @@ args = parser.parse_args()
 ############################# program #############################
 
 scoresFile = open(args.scores_file, "r")
-scoresheader = scoresFile.readline()
 scoresWords = scoresFile.readline().split()
-scoresScaf = int(scoresWords[0].split('_')[1])
+scoresScore = scoresWords[3:]
+scoresWords = scoresFile.readline().split()
+scoresScaf = scoresWords[0]
 scoresStart = int(scoresWords[1])
 scoresEnd = int(scoresWords[2])
-scoresScore = str(scoresWords[3])
 
 output = open(args.output, 'w')
 
@@ -120,29 +120,34 @@ with open(args.input) as input:
   header_line = input.readline()
   header_words = header_line.split()
   headerP = '\t'.join(str(e) for e in header_words)
+  scoresScoreP = '\t'.join(str(e) for e in scoresScore)
 
-  output.write("%s\tscore\n" % headerP)
+  output.write("%s\t%s\n" % (headerP, scoresScoreP))
 
   for line in input:
     inputWords = line.split()
-    inputScaf = int(inputWords[0].split('_')[1])
+    inputScaf = inputWords[0]
     inputPos = int(inputWords[1])
     inputVal = str(inputWords[2])
 
-    while ((inputScaf > scoresScaf) or (inputScaf == scoresScaf and inputPos > scoresEnd)):
+    while ((inputScaf != scoresScaf) or (inputScaf == scoresScaf and inputPos > scoresEnd)):
       scoresWords = scoresFile.readline().split()
       if not scoresWords:
         break
       else:
-        scoresScaf = int(scoresWords[0].split('_')[1])
+        scoresScaf = scoresWords[0]
         scoresStart = int(scoresWords[1])
         scoresEnd = int(scoresWords[2])
-        scoresScore = str(scoresWords[3])
+        scoresScore = scoresWords[3:]
 
 
     if (inputScaf == scoresScaf and inputPos >= scoresStart and inputPos <= scoresEnd):
       inputWordsP = '\t'.join(str(e) for e in inputWords)
-      output.write('%s\t%s\n' % (inputWordsP, scoresScore))
+      if len(scoresScore) > 1:
+        scoresScoreP = '\t'.join(str(e) for e in scoresScore)
+      else:
+        scoresScoreP = scoresScore
+      output.write('%s\t%s\n' % (inputWordsP, scoresScoreP))
 
     counter += 1
     if counter % 1000000 == 0:
