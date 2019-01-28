@@ -164,3 +164,5 @@ chr_3   5   G   -   N   N   G   G   G   C   G
 [vcf_to_SIFT4G.py](vcf_to_SIFT4G.py) converts a VCF file to SIFT4G input.
 
 [vcfTab_to_callsTab.py](vcfTab_to_callsTab.py) converts the two-character coded table produced with VariantsToTable (GATK) to the one-character coded genotype table (calls format).
+
+**DISCLAIMER:** USE THESE SCRIPTS AT YOUR OWN RISK. I MAKE NO WARRANTIES THAT THESE SCRIPTS ARE BUG-FREE, COMPLETE, AND UP-TO-DATE. I AM NOT LIABLE FOR ANY LOSSES IN CONNECTION WITH THE USE OF THESE SCRIPTS.
