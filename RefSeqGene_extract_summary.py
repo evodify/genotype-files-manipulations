@@ -118,7 +118,11 @@ with open(args.input) as f:
     elif in_comment:
       comment += line.split("            ")[1].replace("\n", " ")
   for locus in sorted(locus2comment):
-    genesP = ','.join(str(e) for e in idDict[locus])
+    try:
+      genesP = ','.join(str(e) for e in idDict[locus])
+    except:
+      print "WARNING: Locus %s was not fount in %s" % (locus, args.geneID)
+      genesP =  'locus:' + locus
     fout.write(genesP + '\t' + locus2comment[locus] + '\n')
 
 fout.close()
