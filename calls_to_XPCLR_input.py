@@ -80,7 +80,7 @@ parser.add_argument(
   required=True)
 args = parser.parse_args()
 
-print "Checking samples name ..."
+print "Checking sample names ..."
 familyNames = args.family
 Fsamples = []
 familySamples = {}
@@ -135,9 +135,9 @@ with open(args.input) as datafile:
             cM = float(POS)*0.000001
             outputSNPs.write('%s %s %s %s %s %s\n' %
                             (chr_pos, CHR, cM, POS, ANC, DER))
-        else:
-            print('WARNING: Site %s is not polymorphic or biallelic. '
-                    'Skipping it ...' % (chr_pos))
+        #else:
+        #    print('WARNING: Site %s is not polymorphic or biallelic. '
+        #            'Skipping it ...' % (chr_pos))
 
     for family in familySamples:
         outputGeno = open(family + '_' + args.output + '.geno', 'w')
