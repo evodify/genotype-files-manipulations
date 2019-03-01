@@ -117,6 +117,8 @@ chr_3   5   G   -   N   N   G   G   G   C   G
 
 [makeSweepFinderInput_from_callsTab.py](makeSweepFinderInput_from_callsTab.py) makes an input file for [SweepFinder](http://people.binf.ku.dk/rasmus/webpage/sf.html).
 
+[merge_overlaping_windows_replaceOverlap.py](merge_overlaping_windows_replaceOverlap.py) merges tab files by CHR and POS with replacement of the overlap by the input from the second input file.
+
 [merge_phased_callsTab.py](merge_phased_callsTab.py) merges phased sites into two-character coded genotype file.
 
 [merge_SNP_wholeGenome_TabFiles.py](merge_SNP_wholeGenome_TabFiles.py) merges whole genome and SNPs tab files. This is needed because non-polymorphic sites and SNPs are filtered differently with [GATK](https://software.broadinstitute.org/gatk/documentation/tooldocs/current/org_broadinstitute_gatk_tools_walkers_filters_VariantFiltration.php).
