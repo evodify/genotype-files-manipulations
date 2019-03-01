@@ -502,7 +502,7 @@ def convert01toATGC(ref, alt, gt):
 
 def lineCounter(LineNumber):
     LineNumber += 1
-    if LineNumber % 100000 == 0:
+    if LineNumber % 1000000 == 0:
       print str(LineNumber), "lines processed"
     return LineNumber
 
