@@ -94,7 +94,7 @@ counter = 0
 inputFile2 = open(args.input_to_merge, 'r')
 inputFile2_header = inputFile2.readline().split()
 inputFile2_words = inputFile2.readline().split()
-inputFile2_CHR = int(inputFile2_words[0].split('chr')[0])
+inputFile2_CHR = int(inputFile2_words[0].split('chr')[-1])
 inputFile2_POS = int(round(float(inputFile2_words[1]), -1))
 inputFile2_content = inputFile2_words[2:]
     
@@ -112,15 +112,15 @@ with open(args.reference_input) as datafile:
 
     for line in datafile:
         words = line.split()
-        ch = int(words[0].split('chr')[0])
+        ch = int(words[0].split('chr')[-1])
         pos = int(round(float(words[1]),-1))
         content = words[2:]
 
         # read the input 2 as necessary
         while ((ch == inputFile2_CHR and pos > inputFile2_POS) or \
-                (ch != inputFile2_CHR)) and (inputFile2_words != []):
+                (ch > inputFile2_CHR)) and (inputFile2_words != []):
                 inputFile2_words = inputFile2.readline().split()
-                inputFile2_CHR = int(inputFile2_words[0].split('chr')[0])
+                inputFile2_CHR = int(inputFile2_words[0].split('chr')[-1])
                 inputFile2_POS = int(round(float(inputFile2_words[1]), -1))
                 inputFile2_content = inputFile2_words[2:]
 
@@ -129,12 +129,12 @@ with open(args.reference_input) as datafile:
             content = inputFile2_content
             inputFile2_words = inputFile2.readline().split()
             if inputFile2_words != []:
-                inputFile2_CHR = int(inputFile2_words[0].split('chr')[0])
+                inputFile2_CHR = int(inputFile2_words[0].split('chr')[-1])
                 inputFile2_POS = int(round(float(inputFile2_words[1]), -1))
                 inputFile2_content = inputFile2_words[2:]          
   
         contentP =  '\t'.join(str(e) for e in content)
-        output.write('%s\t%s\t%s\n' % (ch, pos, contentP))
+        output.write('chr%s\t%s\t%s\n' % (ch, pos, contentP))
 
         counter = calls.lineCounter(counter)
 
