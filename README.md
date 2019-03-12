@@ -53,6 +53,9 @@ chr_3   5   G   -   N   N   G   G   G   C   G
 ```
 
 ##
+
+[add_noise_to_0.py](add_noise_to_0.py) replaces 0 with very small noise values.
+
 [addGOannotation-to-gff3.py](addGOannotation-to-gff3.py) adds GO annotation to the gff3 file.
 
 [annotate_genes_withSlidingWindowsStats.py](annotate_genes_withSlidingWindowsStats.py) annotates genes from a sliding windows analysis with the stats per gene.
