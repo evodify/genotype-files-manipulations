@@ -77,12 +77,14 @@ args = parser.parse_args()
 
 counter = 0
 
+roundNumber = -2
+
 scoresFile = open(args.scores, 'r')
 scoresFile_header = scoresFile.readline().split()
 scoresFile_headerP = '\t'.join(str(e) for e in scoresFile_header[2:])
 scoresFile_words = scoresFile.readline().split()
 scoresFile_CHR = int(scoresFile_words[0].split('chr')[-1])
-scoresFile_POS = int(round(float(scoresFile_words[1]), -1))
+scoresFile_POS = int(round(float(scoresFile_words[1]), roundNumber))
 scoresFile_content = scoresFile_words[2:]
 
 print('Opening the file...')
@@ -96,7 +98,10 @@ with open(args.input) as datafile:
         words = line.split()
         ch = int(words[0].split('chr')[-1])
         pos = int(words[1])
-        posR = int(round(float(words[1]),-1))
+        posR = int(round(float(words[1]), roundNumber))
+
+        pCHR = scoresFile_CHR
+        pPOS = scoresFile_POS
 
         # read the score file if necessary
         while ((ch == scoresFile_CHR and posR > scoresFile_POS) or \
@@ -104,7 +109,7 @@ with open(args.input) as datafile:
                 scoresFile_words = scoresFile.readline().split()
                 if scoresFile_words != []:    
                     scoresFile_CHR = int(scoresFile_words[0].split('chr')[-1])
-                    scoresFile_POS = int(round(float(scoresFile_words[1]), -1))
+                    scoresFile_POS = int(round(float(scoresFile_words[1]), roundNumber))
                     scoresFile_content = scoresFile_words[2:]
 
         # find overlap
@@ -113,6 +118,7 @@ with open(args.input) as datafile:
             output.write('chr%s\t%s\t%s\n' % (ch, pos, contentP))
         else:
             print "WARNING: No match found for chr%s %s"  %  (ch, pos)
+            print ch, pos, posR, ":",  scoresFile_CHR, scoresFile_POS, "=", pCHR, pPOS
   
         counter = calls.lineCounter(counter)
 
