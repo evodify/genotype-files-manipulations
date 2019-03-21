@@ -120,9 +120,12 @@ with open(args.reference_input) as datafile:
         while ((ch == inputFile2_CHR and pos > inputFile2_POS) or \
                 (ch > inputFile2_CHR)) and (inputFile2_words != []):
                 inputFile2_words = inputFile2.readline().split()
-                inputFile2_CHR = int(inputFile2_words[0].split('chr')[-1])
-                inputFile2_POS = int(round(float(inputFile2_words[1]), -1))
-                inputFile2_content = inputFile2_words[2:]
+                try:
+                    inputFile2_CHR = int(inputFile2_words[0].split('chr')[-1])
+                    inputFile2_POS = int(round(float(inputFile2_words[1]), -1))
+                    inputFile2_content = inputFile2_words[2:]
+                except:
+                    continue
 
         # find overlap
         if ch == inputFile2_CHR and pos == inputFile2_POS:
