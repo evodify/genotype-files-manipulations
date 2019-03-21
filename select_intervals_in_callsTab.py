@@ -82,7 +82,7 @@ else:
 scaflist = open(args.list_names, "r")
 header_scaf = scaflist.readline()
 IntervalWords = scaflist.readline().split()
-IntervalScaf = int(IntervalWords[0].split('_')[1])
+IntervalScaf = int(IntervalWords[0].split('chr')[-1])
 IntervalStart = int(IntervalWords[1])
 IntervalEnd = int(IntervalWords[2])
 
@@ -101,7 +101,7 @@ with open(args.input) as datafile:
 
   for line in datafile:
     words = line.split()
-    scafCalls = int(words[0].split('_')[1])
+    scafCalls = int(words[0].split('chr')[-1])
     posCalls = int(words[1])
 
     while (scafCalls > IntervalScaf) or (scafCalls == IntervalScaf and posCalls > IntervalEnd):
@@ -114,7 +114,7 @@ with open(args.input) as datafile:
           output.close()
           output = open(args.output+str(interval_count), 'w')
           output.write("%s" % header)
-        IntervalScaf = int(IntervalWords[0].split('_')[1])
+        IntervalScaf = int(IntervalWords[0].split('chr')[-1])
         IntervalStart = int(IntervalWords[1])
         IntervalEnd = int(IntervalWords[2])
 
