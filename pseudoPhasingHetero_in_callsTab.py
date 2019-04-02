@@ -112,11 +112,16 @@ with open(args.input) as datafile:
     calls.if_all_gt_correct(alleles, line)
 
     # phase
-    assignAlles = calls.pseudoPhase(alleles)
- 
+    phasedGT = calls.pseudoPhase(alleles)
+    phasedGTsplit = []
+    for gt in phasedGT:
+            GT = gt.split('/')
+            phasedGTsplit.append(GT[0])
+            phasedGTsplit.append(GT[1])
+
     chromPosP = '\t'.join(str(e) for e in chr_pos)
-    assignAllesP = '\t'.join(str(e) for e in assignAlles)
-    outfile.write("%s\t%s\n" % (chromPosP, assignAllesP))
+    phasedGTsplitP = '\t'.join(str(e) for e in phasedGTsplit)
+    outfile.write("%s\t%s\n" % (chromPosP, phasedGTsplitP))
     # track progress
     counter += 1
     if counter % 1000000 == 0:
