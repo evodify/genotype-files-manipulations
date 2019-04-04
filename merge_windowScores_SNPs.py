@@ -83,7 +83,7 @@ scoresFile = open(args.scores, 'r')
 scoresFile_header = scoresFile.readline().split()
 scoresFile_headerP = '\t'.join(str(e) for e in scoresFile_header[2:])
 scoresFile_words = scoresFile.readline().split()
-scoresFile_CHR = int(scoresFile_words[0].split('chr')[-1])
+scoresFile_CHR = scoresFile_words[0].split('chr')[-1]
 scoresFile_POS = int(round(float(scoresFile_words[1]), roundNumber))
 scoresFile_content = scoresFile_words[2:]
 
@@ -96,7 +96,7 @@ with open(args.input) as datafile:
 
     for line in datafile:
         words = line.split()
-        ch = int(words[0].split('chr')[-1])
+        ch = words[0].split('chr')[-1]
         pos = int(words[1])
         posR = int(round(float(words[1]), roundNumber))
 
@@ -108,7 +108,7 @@ with open(args.input) as datafile:
                 (ch > scoresFile_CHR)) and (scoresFile_words != []):
                 scoresFile_words = scoresFile.readline().split()
                 if scoresFile_words != []:    
-                    scoresFile_CHR = int(scoresFile_words[0].split('chr')[-1])
+                    scoresFile_CHR = scoresFile_words[0].split('chr')[-1]
                     scoresFile_POS = int(round(float(scoresFile_words[1]), roundNumber))
                     scoresFile_content = scoresFile_words[2:]
 
