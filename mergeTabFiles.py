@@ -109,22 +109,22 @@ with open(args.reference_input) as datafile:
 
   # read the second line of the larger file
   linput_words = linput.readline().split()
-  linput_ch = int(linput_words[0].split('_')[1])
+  linput_ch = str(linput_words[0])
   linput_pos = int(linput_words[1])
   linput_gt = linput_words[2:]
 
   for line in datafile:
     words = line.split()
-    ch = int(words[0].split('_')[1])
+    ch = str(words[0])
     pos = int(words[1])
 
     # find overlap
-    while (ch > linput_ch) or (ch == linput_ch and pos > linput_pos):
+    while (ch != linput_ch) or (ch == linput_ch and pos > linput_pos):
       linput_words = linput.readline().split()
       if linput_words == []:
         break
       else:
-        linput_ch = int(linput_words[0].split('_')[1])
+        linput_ch = str(linput_words[0])
         linput_pos = int(linput_words[1])
         linput_gt = linput_words[2:]
 
