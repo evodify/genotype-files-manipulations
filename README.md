@@ -120,6 +120,10 @@ chr_3   5   G   -   N   N   G   G   G   C   G
 
 [makeSweepFinderInput_from_callsTab.py](makeSweepFinderInput_from_callsTab.py) makes an input file for [SweepFinder](http://people.binf.ku.dk/rasmus/webpage/sf.html).
 
+[merge_CNVs_tabs.py](merge_CNVs_tabs.py) merges CNV tab file with the provided list of bins.
+
+[merge_intervals_phastCons.py](merge_intervals_phastCons.py) annotates given interval list with phastCons scrores.
+
 [merge_overlaping_windows_replaceOverlap.py](merge_overlaping_windows_replaceOverlap.py) merges tab files by CHR and POS with replacement of the overlap by the input from the second input file.
 
 [merge_phased_callsTab.py](merge_phased_callsTab.py) merges phased sites into two-character coded genotype file.
