@@ -99,6 +99,7 @@ annotsFile.close()
 
 lodList = []
 consList = []
+prevIntervalScaf = 'NA'
 
 with open(args.input) as intervalFile:
   header_words = intervalFile.readline()
@@ -111,24 +112,23 @@ with open(args.input) as intervalFile:
     intervalScaf = intervalWords[0]
     intervalStart = int(intervalWords[1])
     intervalEnd = int(intervalWords[2])
-    try:
-      chrInterDict = InterDicts[intervalScaf]
-    except:
-      intervalWordsP = '\t'.join(str(e) for e in intervalWords)
-      output.write('%s\tNA\n' % (intervalWordsP))
-      continue
+    if intervalScaf != prevIntervalScaf:
+      try:
+        chrInterDict = InterDicts[intervalScaf]
+      except:
+        intervalWordsP = '\t'.join(str(e) for e in intervalWords)
+        output.write('%s\tNA\n' % (intervalWordsP))
+        continue
+    prevIntervalScaf = intervalScaf
 
     for annotCoord in chrInterDict:
       annotStart = int(annotCoord[0])
       annotEnd = int(annotCoord[1])
-      annotLod = float(annotCoord[2].replace('lod=', ''))
-      annotCons = float(annotCoord[3])
-
       if (intervalStart <= annotStart and annotStart <= intervalEnd) or \
          (intervalStart <= annotEnd and  annotEnd <= intervalEnd) or \
          (annotStart <= intervalStart and intervalEnd <= annotEnd):
-        lodList.append(annotLod)
-        consList.append(annotCons)
+        lodList.append(float(annotCoord[2].replace('lod=', '')))
+        consList.append(float(annotCoord[3]))
 
     if intervalWords != []:
       intervalWordsP = '\t'.join(str(e) for e in intervalWords)
