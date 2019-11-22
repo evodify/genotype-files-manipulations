@@ -137,11 +137,17 @@ parser = calls.CommandLineParser()
 parser.add_argument('-i', '--interval_file', help = 'name of the file with genome intervals', type=str, required=True)
 parser.add_argument('-o', '--output', help = 'name of the output file', type=str, required=True)
 parser.add_argument('-b', '--bed_file', help = 'file containing list of genes with scaffolds and position information', type=str, required=True)
+parser.add_argument('-v', '--overhang', help = 'overhang size', type=int, required=False)
 args = parser.parse_args()
 
 ############################# program #############################
 
-
+if not args.overhang:
+  overhang = 0
+else:
+  assert isinstance(args.overhang, int), "-v (--overhang) is not an integer: %r" % args.overhang
+  overhang = args.overhang
+  
 with open(args.bed_file) as GenesFile:
   genesWords = GenesFile.readline().rstrip().split("\t")
   InterDicts = {genesWords[0]: [genesWords[1:]]}
@@ -165,8 +171,14 @@ with open(args.interval_file) as intervalFile:
   for line in intervalFile:
     intervalWords = line.split()
     intervalScaf = intervalWords[0]
-    intervalStart = int(intervalWords[1])
-    intervalEnd = int(intervalWords[2])
+    # revert coordinates if necessary
+    if int(intervalWords[1]) > int(intervalWords[2]):
+      intervalStart = int(intervalWords[2])-overhang
+      intervalEnd = int(intervalWords[1])+overhang
+    else:
+      intervalStart = int(intervalWords[1])-overhang
+      intervalEnd = int(intervalWords[2])+overhang
+        
     try:
       chrInterDict = InterDicts[intervalScaf]
     except:
@@ -178,6 +190,8 @@ with open(args.interval_file) as intervalFile:
       geneStart = int(geneCoord[0])
       geneEnd = int(geneCoord[1])
       geneName = geneCoord[2]
+    
+    
 
       # if a gene start or ends in the interval, or the interval is within a gene.
       if (intervalStart <= geneStart and geneStart <= intervalEnd) or \
