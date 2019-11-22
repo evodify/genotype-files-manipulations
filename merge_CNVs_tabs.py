@@ -153,7 +153,7 @@ counter = 0
 tabFile = open(args.input_to_merge, 'r')
 tab_header = tabFile.readline()
 tab_words = tabFile.readline().split()
-tab_CHR = int(tab_words[0].split('chr')[-1])
+tab_CHR = tab_words[0]
 tab_startPOS = int(tab_words[1])
 tab_endPOS = int(tab_words[2])
 tab_CN = tab_words[3]
@@ -167,16 +167,16 @@ with open(args.reference_input) as refFile:
 
     for line in refFile:
         words = line.split()
-        ch = int(words[0].split('chr')[-1])
+        ch = words[0]
         startPOS = int(words[1])
         endPOS = int(words[2])
 
         # read the tab file as necessary
         while ((ch == tab_CHR and startPOS > tab_endPOS) or \
-                (ch > tab_CHR)) and (tab_words != []):
+                (ch != tab_CHR)) and (tab_words != []):
                 tab_words = tabFile.readline().split()
                 try:
-                    tab_CHR = int(tab_words[0].split('chr')[-1])
+                    tab_CHR = tab_words[0]
                     tab_startPOS = int(tab_words[1])
                     tab_endPOS = int(tab_words[2])
                     tab_CN = tab_words[3]
@@ -186,9 +186,9 @@ with open(args.reference_input) as refFile:
         # find a match
         if ch == tab_CHR and startPOS >= tab_startPOS and endPOS <= tab_endPOS:
             if tab_words != []:
-                output.write('chr%s\t%s\t%s\t%s\n' % (ch, startPOS, endPOS, tab_CN))
+                output.write('%s\t%s\t%s\t%s\n' % (ch, startPOS, endPOS, tab_CN))
         else:
-            output.write('chr%s\t%s\t%s\tNA\n' % (ch, startPOS, endPOS))
+            output.write('%s\t%s\t%s\tNA\n' % (ch, startPOS, endPOS))
 
         counter = calls.lineCounter(counter)
 
