@@ -79,9 +79,9 @@ with open(args.input) as datafile:
       chromPrevious = chromNext
     else:
       if startPrevious < overhang:
-        output.write("%s\t%s\t%s\n" % (chromPrevious, startPrevious, endPrevious+overhang))
+        output.write("%s\t%s\t%s\n" % (chromPrevious, startPrevious, endPrevious))
       else:
-        output.write("%s\t%s\t%s\n" % (chromPrevious, startPrevious-overhang, endPrevious+overhang))
+        output.write("%s\t%s\t%s\n" % (chromPrevious, startPrevious, endPrevious))
       startPrevious = startNext
       endPrevious = endNext
       chromPrevious = chromNext
