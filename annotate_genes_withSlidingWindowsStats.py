@@ -69,7 +69,7 @@ outfile = open(args.output, 'w')
 with open(args.input) as datafile:
   header_words = datafile.readline().split()
   output = open(args.output, 'w')
-  output.write('genes\tmean_%s\tmax_%s\tmin_%s\n' % (header_words[0], header_words[0], header_words[0]))
+  output.write('gene\tmean_%s\tmax_%s\tmin_%s\n' % (header_words[0], header_words[0], header_words[0]))
   genesDics = {}
 
   for line in datafile:
@@ -90,7 +90,7 @@ with open(args.input) as datafile:
       output.write('%s\t%s\t%s\t%s\n' % (k, sum(v)/len(v), max(v), min(v)))
     except:
       print("WARNING: Stats for %s is not numeric. The output value will be NA" % k)
-      output.write('%s\tNA\tNA\n' % k)
+      output.write('%s\tNA\tNA\tNA\n' % k)
 
 datafile.close()
 outfile.close()
