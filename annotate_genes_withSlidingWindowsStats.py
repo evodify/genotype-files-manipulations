@@ -1,59 +1,60 @@
 #! /usr/bin/env python2
 
 '''
-This script annotates genes from a sliding windows analysis with the stats per gene.
+Annotates genes from a sliding windows analysis with the stats per gene.
 It handles overlapping intervals and genes spanning a few windows by outputting mean, max and min stats.
 
-#Example input:
 
-stats                   genes
-0.527270908085201       ENSCAFG00000000170,ENSCAFG00000000171,ENSCAFG00000000172,ENSCAFG00000029562,ENSCAFG00000029833
-0.364324009629718       ENSCAFG00000000171,ENSCAFG00000000172,ENSCAFG00000029562,ENSCAFG00000029833,ENSCAFG00000000173,ENSCAFG00000031536,ENSCAFG00000023012
-0.500663017366094       ENSCAFG00000000239
-0.405364585439997       ENSCAFG00000000239
-0.402080897939156       ENSCAFG00000031480,ENSCAFG00000000894,ENSCAFG00000000897,ENSCAFG00000000901,ENSCAFG00000000905,ENSCAFG00000000908,ENSCAFG00000000911
-0.443099011567851       ENSCAFG00000001026
-0.452831729053616       ENSCAFG00000001026
-0.430122661190792       ENSCAFG00000001026
-0.379507893057865       ENSCAFG00000030357
+input.txt:
 
+chr	start	end	stats1	stats2	genes
+chr1	1	10	0.527	5.3	ENSCAFG00000000170,ENSCAFG00000000171,ENSCAFG00000000172,ENSCAFG00000029562,ENSCAFG00000029833
+chr1	2	20	0.364	3.6	ENSCAFG00000000171,ENSCAFG00000000172,ENSCAFG00000029562,ENSCAFG00000029833,ENSCAFG00000000173,ENSCAFG00000031536,ENSCAFG00000023012
+chr1	3	30	0.501	5	ENSCAFG00000000239
+chr1	4	40	0.405	4.1	ENSCAFG00000000239
+chr2	10	20	0.402	4	ENSCAFG00000031480,ENSCAFG00000000894,ENSCAFG00000000897,ENSCAFG00000000901,ENSCAFG00000000905,ENSCAFG00000000908,ENSCAFG00000000911
+chr2	20	30	0.443	4.4	ENSCAFG00000001026
+chr2	30	40	0.453	4.5	ENSCAFG00000001026
+chr2	40	50	0.43	4.3	ENSCAFG00000001026
+chr2	50	60	0.38	3.8	ENSCAFG00000030357
 
-#Example output:
+output.txt:
 
-genes	mean_stats	max_stats	min_stats
-ENSCAFG00000029562	0.445797458857	0.527270908085	0.36432400963
-ENSCAFG00000000911	0.402080897939	0.402080897939	0.402080897939
-ENSCAFG00000000897	0.402080897939	0.402080897939	0.402080897939
-ENSCAFG00000000894	0.402080897939	0.402080897939	0.402080897939
-ENSCAFG00000029833	0.445797458857	0.527270908085	0.36432400963
-ENSCAFG00000023012	0.36432400963	0.36432400963	0.36432400963
-ENSCAFG00000030357	0.379507893058	0.379507893058	0.379507893058
-ENSCAFG00000031536	0.36432400963	0.36432400963	0.36432400963
-ENSCAFG00000000908	0.402080897939	0.402080897939	0.402080897939
-ENSCAFG00000001026	0.442017800604	0.452831729054	0.430122661191
-ENSCAFG00000000905	0.402080897939	0.402080897939	0.402080897939
-ENSCAFG00000031480	0.402080897939	0.402080897939	0.402080897939
-ENSCAFG00000000901	0.402080897939	0.402080897939	0.402080897939
-ENSCAFG00000000239	0.453013801403	0.500663017366	0.40536458544
-ENSCAFG00000000171	0.445797458857	0.527270908085	0.36432400963
-ENSCAFG00000000170	0.527270908085	0.527270908085	0.527270908085
-ENSCAFG00000000173	0.36432400963	0.36432400963	0.36432400963
-ENSCAFG00000000172	0.445797458857	0.527270908085	0.36432400963
-
+gene	mean_stats1	max_stats1	min_stats1	mean_stats2	max_stats2	min_stats2
+ENSCAFG00000029562	0.4455	0.527	0.364	4.45	5.3	3.6
+ENSCAFG00000000911	0.402	0.402	0.402	4.0	4.0	4.0
+ENSCAFG00000000897	0.402	0.402	0.402	4.0	4.0	4.0
+ENSCAFG00000000894	0.402	0.402	0.402	4.0	4.0	4.0
+ENSCAFG00000029833	0.4455	0.527	0.364	4.45	5.3	3.6
+ENSCAFG00000023012	0.364	0.364	0.364	3.6	3.6	3.6
+ENSCAFG00000030357	0.38	0.38	0.38	3.8	3.8	3.8
+ENSCAFG00000031536	0.364	0.364	0.364	3.6	3.6	3.6
+ENSCAFG00000000908	0.402	0.402	0.402	4.0	4.0	4.0
+ENSCAFG00000001026	0.442	0.453	0.43	4.3999999999999995	4.5	4.3
+ENSCAFG00000000905	0.402	0.402	0.402	4.0	4.0	4.0
+ENSCAFG00000031480	0.402	0.402	0.402	4.0	4.0	4.0
+ENSCAFG00000000901	0.402	0.402	0.402	4.0	4.0	4.0
+ENSCAFG00000000239	0.453	0.501	0.405	4.55	5.0	4.1
+ENSCAFG00000000171	0.4455	0.527	0.364	4.45	5.3	3.6
+ENSCAFG00000000170	0.527	0.527	0.527	5.3	5.3	5.3
+ENSCAFG00000000173	0.364	0.364	0.364	3.6	3.6	3.6
+ENSCAFG00000000172	0.4455	0.527	0.364	4.45	5.3	3.6
 
 #command:
 
-$ python annotate_genes_withSlidingWindowsStats.py -i input.table -o output.tab
+$ python2 annotate_genes_withSlidingWindowsStats.py \
+    -i input.txt \
+    -o output.txt
 
 #contact:
 
 Dmytro Kryvokhyzha dmytro.kryvokhyzha@evobio.eu
-
 '''
 
 ############################# modules #############################
 
 import calls # my custom module
+import numpy as np
 
 ############################# options #############################
 
@@ -68,29 +69,40 @@ outfile = open(args.output, 'w')
 
 with open(args.input) as datafile:
   header_words = datafile.readline().split()
+  statName = header_words[3:-1]
+
   output = open(args.output, 'w')
-  output.write('gene\tmean_%s\tmax_%s\tmin_%s\n' % (header_words[0], header_words[0], header_words[0]))
+  output.write('gene')
+  for i in statName:
+    output.write('\tmean_%s\tmax_%s\tmin_%s' % (i,i,i))
+  output.write('\n')
+
   genesDics = {}
 
   for line in datafile:
     words = line.split()
-    stats = words[0]
-    genes = words[1].split(',')
+    stats = []
+    for i in words[3:-1]:
+      if i=='NA':
+        stats.append(np.nan)
+      else:
+        stats.append(float(i))
+    genes = words[-1].split(',')
     for g in genes:
       if g in genesDics.keys():
         genesDics[g].append(stats)
       else:
         genesDics[g] = [stats]
   for k in genesDics.keys():
-    v = []
-    for i in genesDics[k]:
-      if i != "NA":
-        v.append(float(i))
-    try:
-      output.write('%s\t%s\t%s\t%s\n' % (k, sum(v)/len(v), max(v), min(v)))
-    except:
-      print("WARNING: Stats for %s is not numeric. The output value will be NA" % k)
-      output.write('%s\tNA\tNA\tNA\n' % k)
+    mt = np.stack(genesDics[k])
+    mt_mean = np.nanmean(mt, axis=0)
+    mt_min = np.nanmin(mt, axis=0)
+    mt_max = np.nanmax(mt, axis=0)
+    
+    output.write(k)
+    for i in range(0,len(statName)):
+      output.write('\t%s\t%s\t%s' % (mt_mean[i],mt_max[i],mt_min[i]))
+    output.write('\n')
 
 datafile.close()
 outfile.close()
