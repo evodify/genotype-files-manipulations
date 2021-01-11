@@ -128,7 +128,7 @@ with open(args.input) as input:
     inputWords = line.split()
     inputScaf = inputWords[0]
     inputPos = int(inputWords[1])
-    inputVal = str(inputWords[2])
+    inputVal = str(inputWords[1:])
 
     while ((inputScaf != scoresScaf) or (inputScaf == scoresScaf and inputPos > scoresEnd)):
       scoresWords = scoresFile.readline().split()
