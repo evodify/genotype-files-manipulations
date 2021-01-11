@@ -166,6 +166,8 @@ chr_3   5   G   -   N   N   G   G   G   C   G
 
 [slidingWindowSNPs.py](slidingWindowSNPs.py) cuts genotype calls file with the given window size and outputs FASTA files for every window.
 
+[snp_annotation_to_genes_annotation.py](snp_annotation_to_genes_annotation.py) transforms stats annotated with genes to genes annotated with stats.
+
 [split_calls_by_chromosomes.py](split_calls_by_chromosomes.py) splits a calls file into several files by chromosomes.
 
 [summarizeTAB.awk](summarizeTAB.awk) summarizes the genotyope file by counting homozygot, heterozygot, missing etc.
